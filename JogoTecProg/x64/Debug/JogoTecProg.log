@@ -1,0 +1,22 @@
+﻿  Ente.cpp
+  Entidade.cpp
+  Fase.cpp
+  FasePrimeira.cpp
+  FaseSegunda.cpp
+  Gerenciador_Colisoes.cpp
+  Gerenciador_Grafico.cpp
+  Inim_Facil.cpp
+  Inim_Medio.cpp
+  Inimigo.cpp
+  Jogador.cpp
+  Jogo.cpp
+  Lista_Entidade.cpp
+  Menu.cpp
+  Obst_Dificil.cpp
+  Obst_Medio.cpp
+  Obstaculo.cpp
+  Personagem.cpp
+  Plataforma.cpp
+  Projetil.cpp
+  Gerando Código...
+  JogoTecProg.vcxproj -> C:\Users\Jhon\Desktop\JogoTEC-PROG\JogoTECProg\x64\Debug\JogoTecProg.exe
