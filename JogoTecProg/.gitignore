@@ -23,3 +23,42 @@ Release/
 *.sdf
 *.opensdf
 *.VC.db*
+
+Arquivos temporários do Visual Studio
+
+.vs/
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+
+Arquivos de compilação
+
+*.obj
+*.pdb
+*.ilk
+*.pch
+*.ipch
+
+Arquivos temporários
+
+*.user
+*.suo
+
+
+# Visual Studio
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+# Arquivos compilados
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+*.dll
+*.obj
+*.pdb
+*.ipch
+*.pch
