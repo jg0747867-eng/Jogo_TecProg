@@ -1,1 +1,0 @@
-#include "Obst_Medio.h"
