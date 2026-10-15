@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.db-shm
+*.VC.db-wal
+*.VC.opendb
+
+# Compilação
+x64/
+Debug/
+Release/
+[Bb]in/
+[Oo]bj/
+
+# Arquivos compilados
+*.exe
+*.pdb
+*.ipch
+
+# Visual Studio temporários
+*.sdf
+*.opensdf
+*.VC.db*
