@@ -23,9 +23,6 @@ namespace Trabalhojogo {
         {
             pGG->desenharEnte(this);
         }
-
-        // desenharEnte(this); não sei se é isso mesmo e a funcao nao ta feita ainda
-        // deixei comentado pois tava dando erro. Acho que o uso do this faz sentido...
     }
     sf::RectangleShape& Ente::getBody()
     {

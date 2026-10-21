@@ -1,23 +1,27 @@
-#pragma once
-
 #ifndef ENTIDADE_H_
 #define ENTIDADE_H_
 
-class Entidade
+#include "Ente.h"
+using namespace Trabalhojogo;
+
+namespace Entidades
 {
-protected:
-    int x;
-    int y;
-    // ostream buffer (como a gente conversou não sei direito o que é)
+    class Entidade: public Ente
+    {
+    protected:
+        int x;
+        int y;
+        // ostream buffer (como a gente conversou nï¿½o sei direito o que ï¿½)
 
-public:
-    Entidade();
-    virtual ~Entidade();
-    virtual void executar() = 0;
-    virtual void salvar() = 0;
+    public:
+        Entidade();
+        virtual ~Entidade();
+        virtual void executar() = 0;
+        virtual void salvar() = 0;
 
-    //protected:
-        // void salvarDataBuffer();
-};
+        //protected:
+            // void salvarDataBuffer();
+    };
+}
 
 #endif

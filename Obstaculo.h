@@ -1,11 +1,31 @@
-#pragma once
-
 #ifndef OBSTACULO_H_
 #define OBSTACULO_H_
 
-class Obstaculo
-{
+#include "Entidade.h"
+using namespace Trabalhojogo;
+using namespace Entidades;
 
-};
+
+class Jogador;
+
+namespace Obstaculos
+{
+    class Obstaculo: public Entidade
+    {
+        protected:
+            bool danoso;
+        
+        public:
+            Obstaculo();
+
+            ~Obstaculo();
+
+            // void salvarDataBuffer();
+
+            virtual void executar() = 0;
+            virtual void salvar() = 0;
+            virtual void obstaculizar (Jogador* pJogador) = 0;
+    };
+}
 
 #endif

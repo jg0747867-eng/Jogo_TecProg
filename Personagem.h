@@ -1,10 +1,11 @@
-#pragma once
-
 #ifndef PERSONAGEM_H_
 #define PERSONAGEM_H_
 
 #include "Entidade.h"
+using namespace Entidades;
 
+namespace Personagens
+{
 class Personagem: public Entidade
 {
     protected:
@@ -21,5 +22,6 @@ class Personagem: public Entidade
         virtual void salvar() = 0;
         virtual void mover() = 0;
 };
+}
 
 #endif
