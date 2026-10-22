@@ -1,18 +1,25 @@
 #include "Inimigo.h"
 
-using namespace Personagens;
+namespace Trabalhojogo {
+	namespace Entidades {
+		namespace Personagens {
 
-Inimigo::Inimigo(): Personagem(), nivel_maldade()
-{
+			Inimigo::Inimigo() : Personagem(), nivel_maldade()
+			{
 
+			}
+
+			Inimigo::~Inimigo()
+			{
+
+			}
+
+			/*
+			void Inimigo::salvarDataBuffer();
+			*/
+		}
+	}
 }
 
-Inimigo::~Inimigo()
-{
 
-}
-
-/*
-void Inimigo::salvarDataBuffer();
-*/
 

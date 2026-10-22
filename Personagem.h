@@ -1,27 +1,33 @@
+#pragma once
+
 #ifndef PERSONAGEM_H_
 #define PERSONAGEM_H_
 
 #include "Entidade.h"
-using namespace Entidades;
 
-namespace Personagens
-{
-class Personagem: public Entidade
-{
-    protected:
-        int num_vidas;
-    
-    public:
-        Personagem();
+namespace Trabalhojogo {
+    namespace Entidades {
+        namespace Personagens
+        {
+            class Personagem : public Entidade
+            {
+            protected:
+                int num_vidas;
 
-        ~Personagem();
+            public:
+                Personagem();
 
-        // void salvarDataBuffer();
+                ~Personagem();
 
-        virtual void executar() = 0;
-        virtual void salvar() = 0;
-        virtual void mover() = 0;
-};
+                // void salvarDataBuffer();
+
+                virtual void executar() = 0;
+                virtual void salvar() = 0;
+                virtual void mover() = 0;
+            };
+        }
+    }
 }
+
 
 #endif

@@ -2,26 +2,48 @@
 #define ENTIDADE_H_
 
 #include "Ente.h"
-using namespace Trabalhojogo;
 
-namespace Entidades
-{
-    class Entidade: public Ente
+namespace Trabalhojogo {
+    namespace Entidades
     {
-    protected:
-        int x;
-        int y;
-        // ostream buffer (como a gente conversou n�o sei direito o que �)
+        class Entidade : public Ente
+        {
+        protected:
+            int x;
+            int y;
 
-    public:
-        Entidade();
-        virtual ~Entidade();
-        virtual void executar() = 0;
-        virtual void salvar() = 0;
+            int velocidadeY;
+            bool noChao;
 
-        //protected:
-            // void salvarDataBuffer();
-    };
+            bool ativo;
+            // ostream buffer (como a gente conversou n�o sei direito o que �)
+
+        public:
+            Entidade();
+            virtual ~Entidade();
+            virtual void executar() = 0;
+            virtual void salvar() = 0;
+
+            void setPosicao(int x, int y);
+            int getX() const;
+            int getY() const;
+
+            virtual void aplicarGravidade();
+
+            int getVelocidadeY() const;
+            void zerarVelocidadeY();
+
+            void setNoChao(bool estado);
+
+            void ativar();
+            void desativar();
+            bool estaAtivo() const;
+
+            //protected:
+                // void salvarDataBuffer();
+        };
+    }
 }
+
 
 #endif

@@ -14,6 +14,7 @@ namespace Trabalhojogo {
 			//Entidades::Personagens::Jogador* pJog1; Emprementar o resto depois
 			Gerenciadores::GerenciadorGrafico* pGG;
 			sf::RenderWindow window;
+			Entidades::Personagens::Jogador* pJog1;
 
 		public:
 			Jogo();

@@ -28,8 +28,25 @@ namespace Trabalhojogo {
     {
         return body;
     }
-    const sf::RectangleShape& Ente::getBody() const
+   
+    bool Ente::carregarTextura(const char* caminho)
     {
-        return body;
+        try {
+            if (caminho == NULL) {
+                throw std::runtime_error("Caminho da textura nulo.");
+            }
+
+            if (!texturaEntidade.loadFromFile(caminho)) {
+                throw std::runtime_error(std::string("Erro ao carregar textura: ") + caminho);
+            }
+
+            body.setTexture(&texturaEntidade);
+
+            return true;
+        }
+        catch (const std::exception& erro) {
+            std::cout << erro.what() << std::endl;
+            return false;
+        }
     }
 }

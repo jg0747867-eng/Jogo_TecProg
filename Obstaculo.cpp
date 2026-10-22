@@ -3,13 +3,9 @@ using namespace Trabalhojogo;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Obstaculo::Obstaculo(): Entidade(), danoso(true)
-{
-}
+Obstaculo::Obstaculo(): Entidade(), danoso(true){}
 
-Obstaculo::~Obstaculo()
-{
-}
+Obstaculo::~Obstaculo(){}
 
 /*
 void Obstaculo::salvarDataBuffer();

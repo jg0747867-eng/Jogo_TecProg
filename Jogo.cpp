@@ -9,14 +9,17 @@
 namespace Trabalhojogo {
 
 	Jogo::Jogo() :
-		pGG(NULL)
+		pGG(NULL),
+        pJog1(NULL)
 	{
 		pGG = new Gerenciadores::GerenciadorGrafico();
 		Ente::setGG(pGG);
+        pJog1 = new Entidades::Personagens::Jogador();
 	}
 	Jogo::~Jogo()
 	{
 		delete pGG;
+        delete pJog1;
 	}
     void Jogo::executar()
     {
@@ -32,7 +35,9 @@ namespace Trabalhojogo {
                     janela.close();
             }
 
+            pJog1->executar();
             janela.clear(sf::Color::Black);
+            pGG->desenharEnte(pJog1);
             janela.display();
         }
     }

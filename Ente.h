@@ -13,6 +13,7 @@ namespace Trabalhojogo {
     protected:
         int id;
         static Gerenciadores::GerenciadorGrafico* pGG;
+        sf::Texture texturaEntidade;
         sf::RectangleShape body;
 
     public:
@@ -23,9 +24,9 @@ namespace Trabalhojogo {
         void desenhar();
 
         static void setGG(Gerenciadores::GerenciadorGrafico* pG);
+        bool carregarTextura(const char* caminho);
 
         sf::RectangleShape& getBody();
-        const sf::RectangleShape& getBody() const;
     };
 }
 
