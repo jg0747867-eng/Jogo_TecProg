@@ -361,3 +361,19 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# Arquivos de compilação
+x64/
+Debug/
+Release/
+
+# Biblioteca SFML local
+SFML-2.6.1/
+
+# Pasta duplicada do projeto, se não for utilizada
+JogoTecProg/
+# Pastas locais que nao devem ir para o GitHub
+/JogoTecProg/
+/SFML-2.6.1/
+/x64/
