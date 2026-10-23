@@ -33,7 +33,7 @@ namespace Trabalhojogo {
 
 			int limiteChao;
 		private:
-			//bool const verificarColisao(Entidades::Entidade* pE1, Entidades::Entidade* pE2) const;
+			bool const verificarColisao(Entidades::Entidade* pE1, Entidades::Entidade* pE2) const;
 
 			void tratarColisaoChao(Entidades::Entidade* pEntidade);
 			void tratarColisaoEntidadeObstaculo(Entidades::Entidade* pEntidade, Entidades::Obstaculos::Obstaculo* pObstaculo);
@@ -43,6 +43,7 @@ namespace Trabalhojogo {
 			void tratarColisoesJogsProjeteis();
 
 			void tratarColisoesInimigosObstaculos();
+			void tratarColisoesObsDificil();
 		public:
 			GerenciadorColisoes();
 			~GerenciadorColisoes();

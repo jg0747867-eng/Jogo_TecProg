@@ -7,7 +7,9 @@
 #include "GerenciadorGrafico.h"
 
 namespace Trabalhojogo {
-
+	namespace Fases {
+		class FasePrimeira;
+	}
 	class Jogo
 	{
 		private:
@@ -15,6 +17,7 @@ namespace Trabalhojogo {
 			Gerenciadores::GerenciadorGrafico* pGG;
 			sf::RenderWindow window;
 			Entidades::Personagens::Jogador* pJog1;
+			Fases::FasePrimeira* pFase;
 
 		public:
 			Jogo();

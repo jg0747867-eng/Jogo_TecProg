@@ -47,6 +47,15 @@ namespace Trabalhojogo
         {
             LEs.percorrer();
         }
+        void ListaEntidades::desenhar() {
+            for (int i = 0; i < LEs.getTamanho(); i++) {
+                Entidades::Entidade* pEntidade = LEs[i];
+
+                if (pEntidade != NULL && pEntidade->estaAtivo()) {
+                    pEntidade->desenhar();
+                }
+            }
+        }
 
     }
 }

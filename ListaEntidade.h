@@ -40,6 +40,7 @@ namespace Trabalhojogo
 
                 void percorrer();
                 void limpaLista();
+                void desenhar();
                 //void salvar(ostream* arquivo);
 
         };

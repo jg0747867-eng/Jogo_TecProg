@@ -34,6 +34,12 @@ namespace Trabalhojogo {
         }
         void Entidade::aplicarGravidade()
         {
+            if (noChao && velocidadeY >= 0)
+            {
+                velocidadeY = 0;
+                return;
+            }
+
             const int gravidade = 1;
             const int velocidadeMaxima = 20;
 
