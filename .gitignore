@@ -374,6 +374,11 @@ SFML-2.6.1/
 # Pasta duplicada do projeto, se não for utilizada
 JogoTecProg/
 # Pastas locais que nao devem ir para o GitHub
-/JogoTecProg/
+/JogoTecProg_backup/
 /SFML-2.6.1/
 /x64/
+
+# DLLs do SFML
+sfml-graphics-d-2.dll
+sfml-system-d-2.dll
+sfml-window-d-2.dll
