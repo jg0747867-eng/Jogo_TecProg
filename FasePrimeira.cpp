@@ -12,7 +12,7 @@ namespace Trabalhojogo{
 			maxInimMedio(10),
 			maxObsMedio(10)
 		{
-			//carregaFundo("assets/cenariofrio.jfif");
+			//carregaFundo("assets/cenario.jfif");
 			criarCenario();
 		}
 		FasePrimeira::~FasePrimeira() {}

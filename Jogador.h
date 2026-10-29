@@ -4,12 +4,13 @@
 #include "Personagem.h"
 namespace Trabalhojogo {
     namespace Entidades {
-        namespace Personagens
-        {
+        namespace Personagens{
+
             class Jogador : public Personagem
             {
             protected:
                 int pontos;
+                int direcao;
 
             private:
                 sf::Vector2f vel;
@@ -25,6 +26,7 @@ namespace Trabalhojogo {
                 void mover();
                 void inicializa();
                 void salvar();
+                void pular();
 
             };
         }

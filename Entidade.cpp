@@ -67,5 +67,7 @@ namespace Trabalhojogo {
         /*
         void Entidade::salvarDataBuffer();
         */
+
+
     }
 }

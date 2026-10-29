@@ -220,12 +220,25 @@ namespace Trabalhojogo
         template <class TL>
         void Lista<TL>::percorrer()
         {
-            Elemento<TL>* pAux = NULL;
+            Elemento<TL>* pAux = pPrimeiro;
+
+            while (pAux != NULL)
+            {
+                TL* entidade = pAux->getInfo();
+
+                if (entidade != NULL)
+                {
+                    entidade->executar();
+                }
+
+                pAux = pAux->getProx();
+            }
+           /*Elemento<TL>* pAux = NULL;
 
             while(pPrimeiro != NULL)
             {
                 pAux = pPrimeiro->getProx();
-            }
+            }*/ 
         }
     }
 }

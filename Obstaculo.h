@@ -4,9 +4,12 @@
 #include "Entidade.h"
 namespace Trabalhojogo {
     namespace Entidades {
+        namespace Personagens {
+            class Jogador;
+        }
         namespace Obstaculos
         {
-            class Jogador;
+            
             class Obstaculo : public Entidade
             {
             protected:
@@ -21,7 +24,7 @@ namespace Trabalhojogo {
 
                 virtual void executar() = 0;
                 virtual void salvar() = 0;
-                virtual void obstaculizar(Jogador* pJogador) = 0;
+                virtual void obstaculizar(Trabalhojogo::Entidades::Personagens::Jogador* pJogador) = 0;
             };
         }
     }

@@ -1,44 +1,56 @@
+
 #include "Jogo.h"
 #include "Ente.h"
-#include "GerenciadorGrafico.h"
 #include <SFML/Graphics.hpp>
-
-#include <cstdlib>
-#include <ctime>
 
 namespace Trabalhojogo {
 
-	Jogo::Jogo() :
-		pGG(NULL),
-        pJog1(NULL)
-	{
-		pGG = new Gerenciadores::GerenciadorGrafico();
-		Ente::setGG(pGG);
-        pJog1 = new Entidades::Personagens::Jogador();
-	}
-	Jogo::~Jogo()
-	{
-		delete pGG;
-        delete pJog1;
-	}
+    Jogo::Jogo() :
+        pGG(new Gerenciadores::GerenciadorGrafico()),
+        pFase(nullptr)
+    {
+        Ente::setGG(pGG);
+
+        // O construtor da FasePrimeira já chama criarCenario().
+        pFase = new Fases::FasePrimeira();
+    }
+
+    Jogo::~Jogo()
+    {
+        delete pFase;
+        pFase = nullptr;
+
+        delete pGG;
+        pGG = nullptr;
+    }
+
     void Jogo::executar()
     {
+        if (pGG == nullptr || pFase == nullptr) {
+            return;
+        }
+
+        // getJanela() retorna uma referência, não um ponteiro.
         sf::RenderWindow& janela = pGG->getJanela();
 
-        while (janela.isOpen())
-        {
+        while (janela.isOpen()) {
             sf::Event evento;
 
-            while (janela.pollEvent(evento))
-            {
-                if (evento.type == sf::Event::Closed)
+            while (janela.pollEvent(evento)) {
+                if (evento.type == sf::Event::Closed) {
                     janela.close();
+                }
             }
 
-            pJog1->executar();
+            if (!janela.isOpen()) {
+                break;
+            }
+
             janela.clear(sf::Color::Black);
-            pGG->desenharEnte(pJog1);
-            janela.display();
+
+            pFase->executar();
+
+            pGG->mostrar();
         }
     }
 }
