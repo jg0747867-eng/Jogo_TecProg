@@ -35,7 +35,7 @@ namespace Trabalhojogo {
             void Jogador::inicializa()
             {
                 pontos = 0;
-                body.setSize(sf::Vector2f(150.0f, 150.0f));
+                body.setSize(sf::Vector2f(120.0f, 120.0f));
                 body.setFillColor(sf::Color::White);
                 
                 if (!carregarTextura("assets/jogador1.png")) {
@@ -83,14 +83,6 @@ namespace Trabalhojogo {
             void Jogador::salvar()
             {
 
-            }
-            void Jogador::pular() 
-            {
-                if (noChao)
-                {
-                    velocidadeY = -25;
-                    noChao = false;
-                }
             }
         }
     }

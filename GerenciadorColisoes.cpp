@@ -56,7 +56,26 @@ namespace Trabalhojogo {
 
 		void GerenciadorColisoes::tratarColisoesJogsObstaculos() 
 		{
-			
+			if (pJog1 == NULL) {
+				return;
+			}
+
+			pJog1->setNoChao(false);
+
+			std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
+
+			for (it = LOs.begin(); it != LOs.end(); it++)
+			{
+				Entidades::Obstaculos::Obstaculo* pObstaculo = *it;
+
+				if (pObstaculo != NULL)
+				{
+					if (verificarColisao(pJog1, pObstaculo))
+					{
+						pObstaculo->obstaculizar(pJog1);
+					}
+				}
+			}
 		}
 
 		void GerenciadorColisoes::tratarColisoesInimigosObstaculos() 
@@ -85,6 +104,15 @@ namespace Trabalhojogo {
 
 			tratarColisoesJogsObstaculos();
 			tratarColisoesInimigosObstaculos();
+
+			if (pJog1 != NULL)
+				LimiteLateral(pJog1);
+
+			for (unsigned int i = 0; i < LIs.size(); i++)
+			{
+				if (LIs[i] != NULL)
+					LimiteLateral(LIs[i]);
+			}
 
 			if (pJog1 != NULL && pJog1->estaAtivo())
 			{
@@ -126,15 +154,30 @@ namespace Trabalhojogo {
 				pEntidade->zerarVelocidadeY();
 				pEntidade->setNoChao(true);
 			}
-			else
-			{
-				pEntidade->setNoChao(false);
-			}
 		}
 
 		void GerenciadorColisoes::tratarColisaoEntidadeObstaculo(Entidades::Entidade* pEntidade, Entidades::Obstaculos::Obstaculo* pObstaculo)
 		{
 		
+		}
+
+		void GerenciadorColisoes::LimiteLateral(Entidades::Entidade* pEnti)
+		{
+			if (pEnti == NULL || !pEnti->estaAtivo())
+				return;
+
+			const int limiteEsquerdo = 0;
+			const int limiteDireito = 1900;
+
+			int x = pEnti->getX();
+			int largura = static_cast<int>(pEnti->getBody().getSize().x);
+
+			if (x < limiteEsquerdo)
+				pEnti->setPosicao(limiteEsquerdo, pEnti->getY());
+
+			if (x + largura > limiteDireito)
+				pEnti->setPosicao(limiteDireito - largura, pEnti->getY());
+
 		}
 
 	}

@@ -64,7 +64,7 @@ namespace Trabalhojogo {
 			}
 			void Plataforma::obstaculizar(Trabalhojogo::Entidades::Personagens::Jogador* pJogador)
 			{
-				if (pJogador == 0)
+				if (pJogador == NULL)
 				{
 					return;
 				}
@@ -72,19 +72,26 @@ namespace Trabalhojogo {
 				sf::FloatRect corpoJogador = pJogador->getBody().getGlobalBounds();
 				sf::FloatRect corpoPlataforma = body.getGlobalBounds();
 
-				if (corpoJogador.intersects(corpoPlataforma)) {
+				if (corpoJogador.intersects(corpoPlataforma))
+				{
 					float baseJogador = corpoJogador.top + corpoJogador.height;
 					float topoPlataforma = corpoPlataforma.top;
+
 					float baseAnterior = baseJogador - pJogador->getVelocidadeY();
 
-					if (pJogador->getVelocidadeY() >= 0 && baseAnterior <= topoPlataforma) {
-						pJogador->setPosicao(pJogador->getX(), static_cast<int>(topoPlataforma - corpoJogador.height));
+					// Verifica se o jogador está caindo sobre a plataforma
+					if (pJogador->getVelocidadeY() >= 0 &&
+						baseAnterior <= topoPlataforma)
+					{
+						pJogador->setPosicao(
+							pJogador->getX(),
+							static_cast<int>(topoPlataforma - corpoJogador.height)
+						);
+
+						pJogador->zerarVelocidadeY();
+						pJogador->setNoChao(true);
 					}
-
-					pJogador->zerarVelocidadeY();
-					pJogador->setNoChao(true);
 				}
-
 			}
 			void Plataforma::salvar()
 			{}

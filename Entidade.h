@@ -29,6 +29,7 @@ namespace Trabalhojogo {
             int getY() const;
 
             virtual void aplicarGravidade();
+            virtual void pular();
 
             int getVelocidadeY() const;
             void zerarVelocidadeY();

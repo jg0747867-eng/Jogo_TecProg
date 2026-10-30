@@ -14,7 +14,7 @@ namespace Trabalhojogo {
 
 			InimFacil::InimFacil(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio()
             {
-                body.setFillColor(sf::Color::Blue);
+                body.setFillColor(sf::Color::White);
                 inicializa();
                 srand(time(NULL));
                 moveAleatorio = rand()%4;
@@ -28,6 +28,8 @@ namespace Trabalhojogo {
             void InimFacil::inicializa()
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
+
+                carregarTextura("assets/polvo1.png");
             }
 
             void InimFacil::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
@@ -52,8 +54,8 @@ namespace Trabalhojogo {
 
             void InimFacil::executar()
             {
-                move();
-                movimentoAleatorio();
+                mover();
+                //movimentoAleatorio();
 
             }
 
@@ -84,7 +86,7 @@ namespace Trabalhojogo {
                 }
             }
 
-            void InimFacil::move()
+            void InimFacil::mover()
             {
                 sf::Vector2f posJogador = jogador->getBody().getPosition();
                 sf::Vector2f posInimigo = body.getPosition();
@@ -97,6 +99,8 @@ namespace Trabalhojogo {
                     movimentoAleatorio();
                 }
             }
+            void InimFacil::salvar()
+            {}
 
 
 

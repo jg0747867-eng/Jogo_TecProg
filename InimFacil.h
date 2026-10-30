@@ -27,10 +27,12 @@ namespace Trabalhojogo {
                     ~InimFacil();
 
                     void executar();
+                    void salvar();
+                    void mover();
 
                     void persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);
                     void movimentoAleatorio();
-                    void move();
+                    
             };
         }
     }

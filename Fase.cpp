@@ -43,23 +43,51 @@ namespace Trabalhojogo {
 		}
 		void Fase::criarInimFacil()
 		{
+			int quantidade = gerarQuantidadeAleatoria(maxInimFacil);
 
+			int posicoes[10][2] = {
+				{80, 800},
+				{440, 700},
+				{820, 560},
+				{1200, 720},
+				{1540, 580},
+				{250, 430},
+				{650, 300},
+				{1050, 390},
+				{1420, 260},
+				{1580, 850}
+			};
+
+			for (int i = 0; i < quantidade; i++)
+			{
+				Entidades::Personagens::InimFacil* pInim =
+					new Entidades::Personagens::InimFacil(pJog1);
+
+				pInim->setPosicao(posicoes[i][0], posicoes[i][1]);
+
+				listaEnts.incluir(pInim);
+
+				if (pGC != NULL)
+				{
+					pGC->incluirInimigo(pInim);
+				}
+			}
 		}
 		void Fase::criarPlataformas()
 		{
 			int quantidade = gerarQuantidadeAleatoria(maxPlataformas);
 
 			int posicoes[10][4] = { //X, Y, Largura, Altura
-			{80,   800, 300, 45},
-			{440,  700, 300, 45},
-			{820,  560, 300, 45},
-			{1200, 720, 300, 45},
-			{1540, 580, 300, 45},
-			{250,  430, 280, 45},
-			{650,  300, 280, 45},
-			{1050, 390, 280, 45},
-			{1420, 260, 280, 45},
-			{1580, 850, 260, 45} };
+			{80,   800, 300, 35},
+			{440,  700, 300, 35},
+			{820,  560, 300, 35},
+			{1200, 720, 300, 35},
+			{1540, 580, 300, 35},
+			{250,  430, 280, 35},
+			{650,  300, 280, 35},
+			{1050, 390, 280, 35},
+			{1420, 260, 280, 35},
+			{1580, 850, 260, 35} };
 
 			for (int i = 0; i < quantidade; i++)
 			{
@@ -80,7 +108,7 @@ namespace Trabalhojogo {
 		}
 		void Fase::criarCenario()
 		{
-			pJog1 = new Entidades::Personagens::Jogador();
+			pJog1 = new Entidades::Personagens::Jogador(1);
 
 			listaEnts.incluir(pJog1);
 

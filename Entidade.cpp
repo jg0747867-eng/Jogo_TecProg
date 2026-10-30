@@ -67,6 +67,14 @@ namespace Trabalhojogo {
         /*
         void Entidade::salvarDataBuffer();
         */
+        void Entidade::pular()
+        {
+            if (noChao)
+            {
+                velocidadeY = -25;
+                noChao = false;
+            }
+        }
 
 
     }

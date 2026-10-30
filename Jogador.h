@@ -32,7 +32,7 @@ namespace Trabalhojogo {
                 void mover();
                 void inicializa();
                 void salvar();
-                void pular();
+                //void pular();
 
             };
         }

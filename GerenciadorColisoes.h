@@ -44,6 +44,9 @@ namespace Trabalhojogo {
 
 			void tratarColisoesInimigosObstaculos();
 			void tratarColisoesObsDificil();
+
+			void LimiteLateral(Entidades::Entidade* pEnti);
+
 		public:
 			GerenciadorColisoes();
 			~GerenciadorColisoes();
