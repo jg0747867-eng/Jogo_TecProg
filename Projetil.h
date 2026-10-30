@@ -3,7 +3,7 @@
 #ifndef PROJETIL_H_
 #define PROGETIL_H_
 
-class Progetil
+class Projetil
 {
 
 };

@@ -13,6 +13,7 @@ namespace Trabalhojogo {
             {
             protected:
                 int nivel_maldade;
+                sf::Vector2f vel;
 
 
             public:
@@ -23,9 +24,9 @@ namespace Trabalhojogo {
                 // void salvarDataBuffer();
 
                 virtual void executar() = 0;
-                virtual void danificar(Jogador* pJo) = 0;
+                //virtual void danificar(Jogador* pJo) = 0;
 
-                virtual void salvar() = 0;
+                //virtual void salvar() = 0;
 
 
             };

@@ -14,11 +14,17 @@ namespace Trabalhojogo {
 
             private:
                 sf::Vector2f vel;
+                int id;
+                sf::Keyboard::Key teclaEsq;
+                sf::Keyboard::Key teclaDir; 
+                sf::Keyboard::Key teclaPulo; 
 
             public:
-                Jogador();
+                Jogador(int id);
 
                 ~Jogador();
+
+                int getID() const {return id;}
 
                 // void colidir (Inimigo* pIn);
 

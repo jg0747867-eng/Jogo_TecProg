@@ -8,12 +8,24 @@ using namespace Personagens;
 namespace Trabalhojogo {
     namespace Entidades {
         namespace Personagens {
-            Jogador::Jogador() : Personagem(), 
+            Jogador::Jogador(int id) : Personagem(), id(id),
                 //vel(sf::Vector2(0.0f, 0.0f)), 
                 pontos(0),
                 direcao(1)
             {
                 inicializa();
+                if (id == 1) 
+                {
+                    teclaEsq  = sf::Keyboard::Left;
+                    teclaDir  = sf::Keyboard::Right;
+                    teclaPulo = sf::Keyboard::Up;
+                } 
+                else 
+                {
+                    teclaEsq  = sf::Keyboard::A;
+                    teclaDir  = sf::Keyboard::D;
+                    teclaPulo = sf::Keyboard::W;
+                }
             }
 
             Jogador::~Jogador()
@@ -42,10 +54,10 @@ namespace Trabalhojogo {
                 int novoX = getX();
                 int antigoX = getX();
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                if (sf::Keyboard::isKeyPressed(teclaEsq))
                     novoX -= velocidadeX;
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                if (sf::Keyboard::isKeyPressed(teclaDir))
                     novoX += velocidadeX;
 
                 if (novoX < antigoX)
@@ -53,7 +65,7 @@ namespace Trabalhojogo {
                 else if (novoX > antigoX)
                     direcao = 1;
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                if (sf::Keyboard::isKeyPressed(teclaPulo))
                     pular();
 
                 setPosicao(novoX, getY());
