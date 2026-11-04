@@ -94,7 +94,33 @@ namespace Trabalhojogo {
 
 		void GerenciadorColisoes::tratarColisoesJogsInimigos() 
 		{
-		
+			for(unsigned int i = 0; i < LJs.size(); i++)
+			{
+				Entidades::Personagens::Jogador* pJogador = LJs[i];
+
+				if (pJogador == NULL)
+				{
+					continue;
+				}
+
+				pJogador->setNoChao(false);
+
+				for(unsigned int j = 0; j < LIs.size(); j++)
+				{
+					Entidades::Personagens::Inimigo* pInim = LIs[j];
+
+					if(pInim == NULL)
+					{
+						continue;
+					}
+
+					if(verificarColisao(pJogador, pInim))
+					{
+						std::cout << "bati\n";
+					}
+					
+				}
+			}
 		}
 
 		void GerenciadorColisoes::tratarColisoesJogsProjeteis()
@@ -196,3 +222,6 @@ namespace Trabalhojogo {
 
 	}
 }
+
+
+
