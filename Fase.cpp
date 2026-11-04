@@ -11,6 +11,7 @@ namespace Trabalhojogo {
 		Fase::Fase() : Ente(),
 			pGC(new Gerenciadores::GerenciadorColisoes()),
 			pJog1(NULL),
+			pJog2(NULL),
 			limiteChao(900),
 			maxInimFacil(10),
 			maxPlataformas(10),
@@ -26,6 +27,7 @@ namespace Trabalhojogo {
 			delete pGC;
 			pGC = NULL;
 			pJog1 = NULL;
+			pJog2 = NULL;
 		}
 		void Fase::executar() {
 
@@ -108,13 +110,16 @@ namespace Trabalhojogo {
 		}
 		void Fase::criarCenario()
 		{
-			pJog1 = new Entidades::Personagens::Jogador(1);
-
+			pJog1 = new Entidades::Personagens::Jogador(0);
+			pJog2 = new Entidades::Personagens::Jogador(1);
+			
 			listaEnts.incluir(pJog1);
+			listaEnts.incluir(pJog2);
 
 			if (pGC != NULL)
 			{
-				pGC->setJogador(pJog1);
+				pGC->incluirJogador(pJog1);
+				pGC->incluirJogador(pJog2);
 			}
 			criarInimFacil();
 			criarObstaculos();

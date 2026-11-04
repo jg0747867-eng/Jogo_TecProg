@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef FASE_H_
 #define FASE_H_
 
@@ -25,6 +23,7 @@ namespace Trabalhojogo {
 				Listas::ListaEntidades listaEnts;
 				Gerenciadores::GerenciadorColisoes* pGC;
 				Entidades::Personagens::Jogador* pJog1;
+				Entidades::Personagens::Jogador* pJog2;
 
 				sf::Texture texturaFundo;
 				sf::Sprite fundo;

@@ -8,16 +8,19 @@
 
 namespace Trabalhojogo {
 	namespace Gerenciadores {
-		GerenciadorColisoes::GerenciadorColisoes() : pJog1(NULL), limiteChao(0) {}
+		GerenciadorColisoes::GerenciadorColisoes(): limiteChao(0) {}
 		GerenciadorColisoes::~GerenciadorColisoes() 
 		{
+			LJs.clear();
 			LIs.clear();
 			LOs.clear();
 			LPs.clear();
-			pJog1 = NULL;
 		}
-		void GerenciadorColisoes::setJogador(Entidades::Personagens::Jogador* pJogador) {
-			pJog1 = pJogador;
+		void GerenciadorColisoes::incluirJogador(Entidades::Personagens::Jogador* pJogador) {
+			if (pJogador)
+			{
+				LJs.push_back(pJogador);
+			}
 		}
 		bool const GerenciadorColisoes::verificarColisao(
 			Entidades::Entidade* pE1,
@@ -56,29 +59,35 @@ namespace Trabalhojogo {
 
 		void GerenciadorColisoes::tratarColisoesJogsObstaculos() 
 		{
-			if (pJog1 == NULL) {
-				return;
-			}
-
-			pJog1->setNoChao(false);
-
-			std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
-
-			for (it = LOs.begin(); it != LOs.end(); it++)
+			for(unsigned int i = 0; i < LJs.size(); i++)
 			{
-				Entidades::Obstaculos::Obstaculo* pObstaculo = *it;
+				Entidades::Personagens::Jogador* pJogador = LJs[i];
 
-				if (pObstaculo != NULL)
+				if(pJogador == NULL)
 				{
-					if (verificarColisao(pJog1, pObstaculo))
+					continue;
+				}
+
+				pJogador->setNoChao(false);
+
+				std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
+
+				for (it = LOs.begin(); it != LOs.end(); it++)
+				{
+					Entidades::Obstaculos::Obstaculo* pObstaculo = *it;
+
+					if (pObstaculo != NULL)
 					{
-						pObstaculo->obstaculizar(pJog1);
+						if (verificarColisao(pJogador, pObstaculo))
+						{
+							pObstaculo->obstaculizar(pJogador);
+						}
 					}
 				}
 			}
-		}
 
-		void GerenciadorColisoes::tratarColisoesInimigosObstaculos() 
+		}	
+		void GerenciadorColisoes::tratarColisoesInimigosObstaculos()
 		{
 		
 		}
@@ -105,8 +114,11 @@ namespace Trabalhojogo {
 			tratarColisoesJogsObstaculos();
 			tratarColisoesInimigosObstaculos();
 
-			if (pJog1 != NULL)
-				LimiteLateral(pJog1);
+			for (unsigned int i = 0; i < LJs.size(); i++)
+			{
+    			if (LJs[i] != NULL)
+        		LimiteLateral(LJs[i]);
+			}
 
 			for (unsigned int i = 0; i < LIs.size(); i++)
 			{
@@ -114,11 +126,13 @@ namespace Trabalhojogo {
 					LimiteLateral(LIs[i]);
 			}
 
-			if (pJog1 != NULL && pJog1->estaAtivo())
+			for (unsigned int i = 0; i < LJs.size(); i++)
 			{
-				tratarColisaoChao(pJog1);
+				if (LJs[i] != NULL && LJs[i]->estaAtivo())
+				{
+					tratarColisaoChao(LJs[i]);
+				}
 			}
-
 			for (unsigned int i = 0; i < LIs.size(); i++) {
 				if (LIs[i] != NULL && LIs[i]->estaAtivo()) {
 					tratarColisaoChao(LIs[i]);
@@ -182,6 +196,3 @@ namespace Trabalhojogo {
 
 	}
 }
-
-
-

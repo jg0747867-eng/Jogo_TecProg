@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef GERENCIADOR_COLISOES_H_
 #define GERENCIADOR_COLISOES_H_
 
@@ -25,11 +23,10 @@ namespace Trabalhojogo {
 		class GerenciadorColisoes 
 		{
 		private:
+			std::vector<Entidades::Personagens::Jogador*> LJs;
 			std::vector<Entidades::Personagens::Inimigo*> LIs;
 			std::list<Entidades::Obstaculos::Obstaculo*> LOs;
 			std::set<Entidades::Projetil*> LPs;
-
-			Entidades::Personagens::Jogador* pJog1;
 
 			int limiteChao;
 		private:
@@ -51,8 +48,8 @@ namespace Trabalhojogo {
 			GerenciadorColisoes();
 			~GerenciadorColisoes();
 
-			void setJogador(Entidades::Personagens::Jogador* pJogador);
-
+			void incluirJogador(Entidades::Personagens::Jogador* pJogador);
+			
 			void setLimiteChao(int limite);
 
 			void incluirInimigo(Entidades::Personagens::Inimigo* pI);
@@ -64,6 +61,5 @@ namespace Trabalhojogo {
 	}
 
 }
-
 
 #endif
