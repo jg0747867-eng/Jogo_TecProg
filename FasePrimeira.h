@@ -13,7 +13,7 @@ namespace Trabalhojogo {
 			const int maxInimMedio;
 			const int maxObsMedio;
 		public:
-			FasePrimeira();
+			FasePrimeira(int quantidadeJogadores);
 			~FasePrimeira();
 
 			virtual bool jogadorVivo() const;
@@ -25,6 +25,8 @@ namespace Trabalhojogo {
 			void criarObsMedio();
 
 			void carregaFundo(const std::string& caminho);
+
+			int quantidadeJogadores;
 		};
 	}
 }

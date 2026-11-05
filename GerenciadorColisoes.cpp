@@ -103,8 +103,6 @@ namespace Trabalhojogo {
 					continue;
 				}
 
-				pJogador->setNoChao(false);
-
 				for(unsigned int j = 0; j < LIs.size(); j++)
 				{
 					Entidades::Personagens::Inimigo* pInim = LIs[j];

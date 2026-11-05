@@ -54,6 +54,7 @@ namespace Trabalhojogo {
 
             void InimFacil::executar()
             {
+                aplicarGravidade();
                 mover();
                 //movimentoAleatorio();
 

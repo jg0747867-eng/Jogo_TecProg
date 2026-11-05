@@ -15,7 +15,7 @@ namespace Trabalhojogo {
 				danoso = false;
 
 				body.setSize(sf::Vector2f(1200.0f, 30.f));
-				body.setFillColor(sf::Color::Yellow);
+				body.setFillColor(sf::Color::Black);
 
 				/*if (!carregarTextura("assets/"))
 				{
@@ -34,7 +34,7 @@ namespace Trabalhojogo {
 				body.setSize(sf::Vector2f(static_cast<float>(largura),
 					static_cast<float>(altura)));
 
-				body.setFillColor(sf::Color::Yellow);
+				body.setFillColor(sf::Color::Black);
 
 				/*if (!carregarTextura("assets/"))
 				{

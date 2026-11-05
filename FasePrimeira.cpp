@@ -7,12 +7,12 @@
 
 namespace Trabalhojogo{
 	namespace Fases {
-		FasePrimeira::FasePrimeira() :
-			Fase(),
+		FasePrimeira::FasePrimeira(int quantidadeJogadores) :
+			Fase(quantidadeJogadores),
 			maxInimMedio(10),
 			maxObsMedio(10)
 		{
-			//carregaFundo("assets/cenario.jfif");
+			carregaFundo("assets/cenario1.jpg");
 			criarCenario();
 		}
 		FasePrimeira::~FasePrimeira() {}

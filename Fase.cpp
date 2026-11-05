@@ -8,7 +8,7 @@
 
 namespace Trabalhojogo {
 	namespace Fases {
-		Fase::Fase() : Ente(),
+		Fase::Fase(int quantidadeJogadores) : Ente(),
 			pGC(new Gerenciadores::GerenciadorColisoes()),
 			pJog1(NULL),
 			pJog2(NULL),
@@ -22,6 +22,7 @@ namespace Trabalhojogo {
 			{
 				pGC->setLimiteChao(limiteChao);
 			}
+			this->quantidadeJogadores = quantidadeJogadores;
 		}
 		Fase::~Fase() {
 			delete pGC;
@@ -29,7 +30,9 @@ namespace Trabalhojogo {
 			pJog1 = NULL;
 			pJog2 = NULL;
 		}
-		void Fase::executar() {
+		void Fase::executar() 
+		{
+			pGG->getJanela().draw(fundo);
 
 			listaEnts.percorrer();
 			if (pGC != NULL)
@@ -48,8 +51,8 @@ namespace Trabalhojogo {
 			int quantidade = gerarQuantidadeAleatoria(maxInimFacil);
 
 			int posicoes[10][2] = {
-				{80, 800},
-				{440, 700},
+				{340, 800},
+				{540, 700},
 				{820, 560},
 				{1200, 720},
 				{1540, 580},
@@ -80,7 +83,7 @@ namespace Trabalhojogo {
 			int quantidade = gerarQuantidadeAleatoria(maxPlataformas);
 
 			int posicoes[10][4] = { //X, Y, Largura, Altura
-			{80,   800, 300, 35},
+			{200,   800, 150, 35},
 			{440,  700, 300, 35},
 			{820,  560, 300, 35},
 			{1200, 720, 300, 35},
@@ -111,16 +114,26 @@ namespace Trabalhojogo {
 		void Fase::criarCenario()
 		{
 			pJog1 = new Entidades::Personagens::Jogador(0);
-			pJog2 = new Entidades::Personagens::Jogador(1);
-			
+
 			listaEnts.incluir(pJog1);
-			listaEnts.incluir(pJog2);
 
 			if (pGC != NULL)
 			{
 				pGC->incluirJogador(pJog1);
-				pGC->incluirJogador(pJog2);
 			}
+
+			if (quantidadeJogadores == 2)
+			{
+				pJog2 = new Entidades::Personagens::Jogador(1);
+
+				listaEnts.incluir(pJog2);
+
+				if (pGC != NULL)
+				{
+					pGC->incluirJogador(pJog2);
+				}
+			}
+
 			criarInimFacil();
 			criarObstaculos();
 			criarPlataformas();

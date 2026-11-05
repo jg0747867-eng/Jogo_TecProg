@@ -32,8 +32,9 @@ namespace Trabalhojogo {
 
 				const int maxInimFacil;
 				const int maxPlataformas;
+
 			public:
-				Fase();
+				Fase(int quantidadeJogadores);
 				~Fase();
 
 				virtual void executar();
@@ -46,6 +47,7 @@ namespace Trabalhojogo {
 
 				int inimigosVivos;
 				bool faseConcluida;
+				int quantidadeJogadores;
 				virtual void criarInimigos() = 0;
 				virtual void criarObstaculos() = 0;
 
