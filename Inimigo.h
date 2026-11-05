@@ -24,7 +24,7 @@ namespace Trabalhojogo {
                 // void salvarDataBuffer();
 
                 virtual void executar() = 0;
-                //virtual void danificar(Jogador* pJo) = 0;
+                virtual void danificar(Jogador* pJo) = 0;
 
                 //virtual void salvar() = 0;
 

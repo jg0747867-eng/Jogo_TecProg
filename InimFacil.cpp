@@ -1,5 +1,6 @@
 #include "InimFacil.h"
 #include "Jogador.h"
+#include "GerenciadorColisoes.h"
 #include "cmath"
 #define VELOCIDADE_INIMIGOFACIL_X 1.0f
 #define VELOCIDADE_INIMIGOFACIL_Y 1.0f
@@ -29,7 +30,8 @@ namespace Trabalhojogo {
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
-                carregarTextura("assets/polvo1.png");
+                carregarTextura("/home/carlos/Testes/Jogo_TecProg/assets/polvo1.png");
+                nivel_maldade = 1;
             }
 
             void InimFacil::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
@@ -101,10 +103,16 @@ namespace Trabalhojogo {
                 }
             }
             void InimFacil::salvar()
-            {}
+            {
 
+            }
 
-
-		}
-	}
+            void InimFacil::danificar(Jogador* pJogador)
+            {
+                if (pJogador)
+                {
+                    pJogador->operator--();
+                }
+            }
+    }   }
 }   

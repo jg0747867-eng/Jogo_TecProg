@@ -26,8 +26,11 @@ namespace Trabalhojogo {
 
                     ~InimFacil();
 
-                    void executar();
+                    void danificar(Jogador* pJogador);
+
                     void salvar();
+                    void executar();
+                
                     void mover();
 
                     void persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);

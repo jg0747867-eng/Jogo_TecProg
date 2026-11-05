@@ -15,6 +15,7 @@ namespace Trabalhojogo {
             private:
                 sf::Vector2f vel;
                 int id;
+                int vida;
                 sf::Keyboard::Key teclaEsq;
                 sf::Keyboard::Key teclaDir; 
                 sf::Keyboard::Key teclaPulo; 
@@ -27,6 +28,10 @@ namespace Trabalhojogo {
                 int getID() const {return id;}
 
                 // void colidir (Inimigo* pIn);
+
+                void operator--(){vida--;}
+
+                const int getVida() const {return vida;}
 
                 void executar();
                 void mover();

@@ -8,7 +8,7 @@ using namespace Personagens;
 namespace Trabalhojogo {
     namespace Entidades {
         namespace Personagens {
-            Jogador::Jogador(int id) : Personagem(), id(id),
+            Jogador::Jogador(int id) : Personagem(), id(id), vida(10),
                 //vel(sf::Vector2(0.0f, 0.0f)), 
                 pontos(0),
                 direcao(1)
@@ -30,6 +30,7 @@ namespace Trabalhojogo {
 
             Jogador::~Jogador()
             {
+                vida = 0;
             }
 
             void Jogador::inicializa()
@@ -38,7 +39,7 @@ namespace Trabalhojogo {
                 body.setSize(sf::Vector2f(120.0f, 120.0f));
                 body.setFillColor(sf::Color::White);
                 
-                if (!carregarTextura("assets/jogador1.png")) {
+                if (!carregarTextura("/home/carlos/Testes/Jogo_TecProg/assets/jogador1.png")) {
                     body.setFillColor(sf::Color::Red);
                 }
                 //vel = sf::Vector2f(8.0f, 8.0f);

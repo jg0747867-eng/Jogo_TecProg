@@ -114,7 +114,7 @@ namespace Trabalhojogo {
 
 					if(verificarColisao(pJogador, pInim))
 					{
-						std::cout << "bati\n";
+						pInim->danificar(pJogador);
 					}
 					
 				}
