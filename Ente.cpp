@@ -1,6 +1,6 @@
 #include "Ente.h"
 #include "GerenciadorGrafico.h"
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 
     Gerenciadores::GerenciadorGrafico* Ente::pGG = NULL;
 

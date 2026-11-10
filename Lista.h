@@ -12,7 +12,7 @@
  * e vídeo 8 da playlist Tutorial Jogo SFML.
  */
 
-namespace Trabalhojogo
+namespace IlhaDosPiratas
 {
     namespace Listas
     {

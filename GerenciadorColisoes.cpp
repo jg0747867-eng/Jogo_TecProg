@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Gerenciadores {
 		GerenciadorColisoes::GerenciadorColisoes(): limiteChao(0) {}
 		GerenciadorColisoes::~GerenciadorColisoes() 

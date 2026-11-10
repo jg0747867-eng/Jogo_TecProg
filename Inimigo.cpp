@@ -1,6 +1,6 @@
 #include "Inimigo.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Entidades {
 		namespace Personagens {
 

@@ -3,7 +3,7 @@
 #include "Ente.h"
 #include <SFML/Graphics.hpp>
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 
     Jogo::Jogo() :
         pGG(new Gerenciadores::GerenciadorGrafico()),

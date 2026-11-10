@@ -2,18 +2,18 @@
 #include "GerenciadorColisoes.h"
 #include "Plataforma.h"
 #include "Jogador.h"
-#include "InimFacil.h"
+#include "Fantasma.h"
 #include "GerenciadorGrafico.h"
 #include <iostream>
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Fases {
 		Fase::Fase(int quantidadeJogadores) : Ente(),
 			pGC(new Gerenciadores::GerenciadorColisoes()),
 			pJog1(NULL),
 			pJog2(NULL),
 			limiteChao(900),
-			maxInimFacil(10),
+			maxFantasmas(10),
 			maxPlataformas(10),
 			inimigosVivos(0),
 			faseConcluida(false)
@@ -46,9 +46,9 @@ namespace Trabalhojogo {
 				pGG->fecharJanela();
 			}
 		}
-		void Fase::criarInimFacil()
+		void Fase::criarFantasmas()
 		{
-			int quantidade = gerarQuantidadeAleatoria(maxInimFacil);
+			int quantidade = gerarQuantidadeAleatoria(maxFantasmas);
 
 			int posicoes[10][2] = {
 				{340, 800},
@@ -65,8 +65,8 @@ namespace Trabalhojogo {
 
 			for (int i = 0; i < quantidade; i++)
 			{
-				Entidades::Personagens::InimFacil* pInim =
-					new Entidades::Personagens::InimFacil(pJog1);
+				Entidades::Personagens::Fantasma* pInim =
+					new Entidades::Personagens::Fantasma(pJog1);
 
 				pInim->setPosicao(posicoes[i][0], posicoes[i][1]);
 
@@ -134,7 +134,7 @@ namespace Trabalhojogo {
 				}
 			}
 
-			criarInimFacil();
+			criarFantasmas();
 			criarObstaculos();
 			criarPlataformas();
 			criarInimigos();

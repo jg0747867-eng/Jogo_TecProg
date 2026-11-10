@@ -1,6 +1,6 @@
 #include "Ente.h"
 #include "GerenciadorGrafico.h"
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 
     Gerenciadores::GerenciadorGrafico* Ente::pGG = NULL;
 
@@ -24,7 +24,7 @@ namespace Trabalhojogo {
             pGG->desenharEnte(this);
         }
 
-        // desenharEnte(this); não sei se é isso mesmo e a funcao nao ta feita ainda
+        // desenharEnte(this); nï¿½o sei se ï¿½ isso mesmo e a funcao nao ta feita ainda
         // deixei comentado pois tava dando erro. Acho que o uso do this faz sentido...
     }
     sf::RectangleShape& Ente::getBody()

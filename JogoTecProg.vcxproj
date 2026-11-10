@@ -156,7 +156,7 @@
     <ClCompile Include="GerenciadorColisoes.cpp" />
     <ClCompile Include="GerenciadorGrafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
-    <ClCompile Include="InimFacil.cpp" />
+    <ClCompile Include="Fantasma.cpp" />
     <ClCompile Include="InimMedio.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Jogo.cpp" />
@@ -180,7 +180,7 @@
     <ClInclude Include="GerenciadorColisoes.h" />
     <ClInclude Include="GerenciadorGrafico.h" />
     <ClInclude Include="Inimigo.h" />
-    <ClInclude Include="InimFacil.h" />
+    <ClInclude Include="Fantasma.h" />
     <ClInclude Include="InimMedio.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Jogo.h" />

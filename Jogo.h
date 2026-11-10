@@ -8,7 +8,7 @@
 #include "FasePrimeira.h"
 #include "Menu.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 
     class Jogo {
     private:

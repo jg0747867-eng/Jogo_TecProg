@@ -1,19 +1,19 @@
-#include "InimFacil.h"
+#include "Fantasma.h"
 #include "Jogador.h"
 #include "GerenciadorColisoes.h"
 #include "cmath"
 #define VELOCIDADE_INIMIGOFACIL_X 1.0f
 #define VELOCIDADE_INIMIGOFACIL_Y 1.0f
 
-using namespace Trabalhojogo;
+using namespace IlhaDosPiratas;
 using namespace Entidades;
 using namespace Personagens;
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Entidades {
 		namespace Personagens {
 
-			InimFacil::InimFacil(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio()
+			Fantasma::Fantasma(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio()
             {
                 body.setFillColor(sf::Color::White);
                 inicializa();
@@ -21,12 +21,12 @@ namespace Trabalhojogo {
                 moveAleatorio = rand()%4;
             }
 
-            InimFacil::~InimFacil()
+            Fantasma::~Fantasma()
             {
 
             }
 
-            void InimFacil::inicializa()
+            void Fantasma::inicializa()
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
@@ -34,7 +34,7 @@ namespace Trabalhojogo {
                 nivel_maldade = 1;
             }
 
-            void InimFacil::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
+            void Fantasma::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
             {
                 if(posJogador.x - posInimigo.x > 0.0f)
                 {
@@ -54,7 +54,7 @@ namespace Trabalhojogo {
                 }
             }
 
-            void InimFacil::executar()
+            void Fantasma::executar()
             {
                 aplicarGravidade();
                 mover();
@@ -62,7 +62,7 @@ namespace Trabalhojogo {
 
             }
 
-            void InimFacil::movimentoAleatorio()
+            void Fantasma::movimentoAleatorio()
             {
                 if(moveAleatorio == 0)
                 {
@@ -89,7 +89,7 @@ namespace Trabalhojogo {
                 }
             }
 
-            void InimFacil::mover()
+            void Fantasma::mover()
             {
                 sf::Vector2f posJogador = jogador->getBody().getPosition();
                 sf::Vector2f posInimigo = body.getPosition();
@@ -102,12 +102,12 @@ namespace Trabalhojogo {
                     movimentoAleatorio();
                 }
             }
-            void InimFacil::salvar()
+            void Fantasma::salvar()
             {
 
             }
 
-            void InimFacil::danificar(Jogador* pJogador)
+            void Fantasma::danificar(Jogador* pJogador)
             {
                 if (pJogador)
                 {

@@ -5,7 +5,7 @@
 
 #include "Fase.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Fases {
 		class FasePrimeira : public Fase
 		{

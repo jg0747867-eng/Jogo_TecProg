@@ -2,7 +2,7 @@
 
 int main()
 {
-    Trabalhojogo::Jogo jogo;
+    IlhaDosPiratas::Jogo jogo;
     jogo.executar();
 
     return 0;

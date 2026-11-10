@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 
 	Jogo::Jogo() :
 		pGG(NULL)

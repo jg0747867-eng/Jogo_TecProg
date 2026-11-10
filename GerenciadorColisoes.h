@@ -6,7 +6,7 @@
 #include <set>
 
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Entidades {
 		class Entidade;
 		class Projetil;

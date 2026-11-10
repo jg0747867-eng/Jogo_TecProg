@@ -2,7 +2,7 @@
 #define JOGADOR_H_
 
 #include "Personagem.h"
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
     namespace Entidades {
         namespace Personagens{
 

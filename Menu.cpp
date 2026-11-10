@@ -6,7 +6,7 @@
 #include <string>
 #include "Ente.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
         Menu::Menu() :
             telaAtual(MENU_PRINCIPAL),
             faseSelecionada(1),
@@ -83,7 +83,7 @@ namespace Trabalhojogo {
 
             if (telaAtual == MENU_PRINCIPAL) {
 
-                titulo.setString("Definir");
+                titulo.setString("Ilha dos Piratas");
 
                 adicionarBotao(
                     "NOVO JOGO",
@@ -312,7 +312,7 @@ namespace Trabalhojogo {
            int limite = std::min(5, (int)pontuacoes.size());
 
            for (int i = 0; i < limite; i++) {
-               resultado += std::to_string(i + 1) + "º - ";
+               resultado += std::to_string(i + 1) + "ï¿½ - ";
                resultado += pontuacoes[i].first + " : ";
                resultado += std::to_string(pontuacoes[i].second);
                resultado += "\n";

@@ -10,21 +10,21 @@
 
 class Jogador;
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
     namespace Entidades {
         namespace Personagens
         {
-            class InimFacil : public Inimigo
+            class Fantasma : public Inimigo
             {
                 private:
-                    Trabalhojogo::Entidades::Personagens::Jogador* jogador;
+                    IlhaDosPiratas::Entidades::Personagens::Jogador* jogador;
                     sf::Clock relogio;
                     short moveAleatorio;
                     void inicializa();
                 public:
-                    InimFacil(Jogador* pJogador);
+                    Fantasma(Jogador* pJogador);
 
-                    ~InimFacil();
+                    ~Fantasma();
 
                     void danificar(Jogador* pJogador);
 

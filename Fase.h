@@ -5,7 +5,7 @@
 #include "ListaEntidade.h"
 #include "GerenciadorColisoes.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 		namespace Entidades {
 			namespace Personagesn {
 				class Jogador;
@@ -30,7 +30,7 @@ namespace Trabalhojogo {
 
 				int limiteChao;
 
-				const int maxInimFacil;
+				const int maxFantasmas;
 				const int maxPlataformas;
 
 			public:
@@ -41,7 +41,7 @@ namespace Trabalhojogo {
 				virtual bool jogadorVivo() const = 0;
 				bool acabou() const;
 			protected:
-				void criarInimFacil();
+				void criarFantasmas();
 				void criarPlataformas();
 				void criarCenario();
 

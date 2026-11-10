@@ -1,11 +1,11 @@
 #include "Jogador.h"
 #include "Obstaculo.h"
 
-using namespace Trabalhojogo;
+using namespace IlhaDosPiratas;
 using namespace Entidades;
 using namespace Personagens;
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
     namespace Entidades {
         namespace Personagens {
             Jogador::Jogador(int id) : Personagem(), id(id), vida(10),

@@ -5,7 +5,7 @@
 #include <iostream>
 #include "GerenciadorGrafico.h"
 
-namespace Trabalhojogo{
+namespace IlhaDosPiratas{
 	namespace Fases {
 		FasePrimeira::FasePrimeira(int quantidadeJogadores) :
 			Fase(quantidadeJogadores),

@@ -3,7 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Gerenciadores {
 		GerenciadorGrafico::GerenciadorGrafico() : obj(sf::VideoMode(1920, 1080), "TrabalhoJogo++") 
 		{

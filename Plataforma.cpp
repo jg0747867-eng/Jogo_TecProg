@@ -1,7 +1,7 @@
 #include "Plataforma.h"
 #include "Jogador.h"
 
-namespace Trabalhojogo {
+namespace IlhaDosPiratas {
 	namespace Entidades {
 		namespace Obstaculos {
 			namespace Personagens {
@@ -62,7 +62,7 @@ namespace Trabalhojogo {
 				zerarVelocidadeY();
 				setNoChao(true);
 			}
-			void Plataforma::obstaculizar(Trabalhojogo::Entidades::Personagens::Jogador* pJogador)
+			void Plataforma::obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador)
 			{
 				if (pJogador == NULL)
 				{
@@ -79,7 +79,7 @@ namespace Trabalhojogo {
 
 					float baseAnterior = baseJogador - pJogador->getVelocidadeY();
 
-					// Verifica se o jogador está caindo sobre a plataforma
+					// Verifica se o jogador estï¿½ caindo sobre a plataforma
 					if (pJogador->getVelocidadeY() >= 0 &&
 						baseAnterior <= topoPlataforma)
 					{

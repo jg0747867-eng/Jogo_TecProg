@@ -66,7 +66,7 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="InimFacil.cpp">
+    <ClCompile Include="Fantasma.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="InimMedio.cpp">
@@ -107,7 +107,7 @@
     <ClInclude Include="GerenciadorGrafico.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="InimFacil.h">
+    <ClInclude Include="Fantasma.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="InimMedio.h">
