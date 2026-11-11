@@ -7,8 +7,10 @@
 
 namespace IlhaDosPiratas{
 	namespace Fases {
-		FasePrimeira::FasePrimeira(int quantidadeJogadores) :
-			Fase(quantidadeJogadores),
+		FasePrimeira::FasePrimeira(int quantidadeJogadores, 
+			Entidades::Personagens::Jogador* pJog1,
+			Entidades::Personagens::Jogador* pJog2):
+			Fase(quantidadeJogadores, pJog1, pJog2),
 			maxInimMedio(10),
 			maxObsMedio(10)
 		{
@@ -52,7 +54,8 @@ namespace IlhaDosPiratas{
 
 		}
 		bool FasePrimeira::jogadorVivo() const {
-			return pJog1 != nullptr && pJog1->estaAtivo();
+			return (pJog1 != NULL && pJog1->estaAtivo()) ||
+				   (pJog2 != NULL && pJog2->estaAtivo());
 		}
 	}
 }

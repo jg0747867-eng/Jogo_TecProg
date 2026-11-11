@@ -34,7 +34,8 @@ namespace IlhaDosPiratas {
 				const int maxPlataformas;
 
 			public:
-				Fase(int quantidadeJogadores);
+				Fase(int quantidadeJogadores, Entidades::Personagens::Jogador* pJog1,
+						Entidades::Personagens::Jogador* pJog2);
 				~Fase();
 
 				virtual void executar();

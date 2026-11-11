@@ -13,7 +13,8 @@ namespace IlhaDosPiratas {
 			const int maxInimMedio;
 			const int maxObsMedio;
 		public:
-			FasePrimeira(int quantidadeJogadores);
+			FasePrimeira(int quantidadeJogadores, Entidades::Personagens::Jogador* pJog1,
+					Entidades::Personagens::Jogador* pJog2);
 			~FasePrimeira();
 
 			virtual bool jogadorVivo() const;

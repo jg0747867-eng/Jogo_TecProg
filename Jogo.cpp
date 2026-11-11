@@ -1,5 +1,6 @@
 
 #include "Jogo.h"
+#include "Jogador.h"
 #include "Ente.h"
 #include <SFML/Graphics.hpp>
 
@@ -8,6 +9,8 @@ namespace IlhaDosPiratas {
     Jogo::Jogo() :
         pGG(new Gerenciadores::GerenciadorGrafico()),
         pMenu(new Menu()),
+        pJog1(NULL),
+        pJog2(NULL),
         pFase1(nullptr),
         //pFase2(nullptr),
         jogando(false),
@@ -34,13 +37,26 @@ namespace IlhaDosPiratas {
 
     void Jogo::iniciarPartida()
     {
-        if (faseSelecionada == 1) {
-            if (pFase1 == nullptr)
-                pFase1 = new Fases::FasePrimeira(quantidadeJogadores);
+        if(pJog1 ==  NULL)
+        {
+            pJog1 = new Entidades::Personagens::Jogador(0);
+
+            if(quantidadeJogadores == 2)
+            {
+                pJog2 = new Entidades::Personagens::Jogador(1);
+            }
         }
-        else if (faseSelecionada == 2) {
-          // if (pFase2 == nullptr)
-                //pFase2 = new Fases::FaseSegunda();
+
+        if(faseSelecionada == 1)
+        {
+            if(pFase1 == NULL)
+            {
+                pFase1 = new Fases::FasePrimeira(quantidadeJogadores, pJog1, pJog2);
+            }
+            else if(faseSelecionada == 2)
+            {
+                //pFase2 = new Fases::faseSegunda(quantidadeJogadores, pJog1, pJog2);
+            }
         }
 
         jogando = true;

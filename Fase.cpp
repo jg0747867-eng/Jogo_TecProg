@@ -8,7 +8,9 @@
 
 namespace IlhaDosPiratas {
 	namespace Fases {
-		Fase::Fase(int quantidadeJogadores) : Ente(),
+		Fase::Fase(int quantidadeJogadores,
+				Entidades::Personagens::Jogador* pJog1,
+				Entidades::Personagens::Jogador* pJog2): Ente(),
 			pGC(new Gerenciadores::GerenciadorColisoes()),
 			pJog1(NULL),
 			pJog2(NULL),
@@ -113,22 +115,21 @@ namespace IlhaDosPiratas {
 		}
 		void Fase::criarCenario()
 		{
-			pJog1 = new Entidades::Personagens::Jogador(0);
-
-			listaEnts.incluir(pJog1);
-
-			if (pGC != NULL)
+			if(pJog1 != NULL)
 			{
-				pGC->incluirJogador(pJog1);
+				listaEnts.incluir(pJog1);
+
+				if(pGC != NULL)
+				{
+					pGC->incluirJogador(pJog1);
+				}
 			}
 
-			if (quantidadeJogadores == 2)
+			if(pJog2 != NULL)
 			{
-				pJog2 = new Entidades::Personagens::Jogador(1);
-
 				listaEnts.incluir(pJog2);
-
-				if (pGC != NULL)
+				
+				if(pGC != NULL)
 				{
 					pGC->incluirJogador(pJog2);
 				}
