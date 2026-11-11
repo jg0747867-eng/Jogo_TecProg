@@ -37,14 +37,14 @@ namespace IlhaDosPiratas {
 
     void Jogo::iniciarPartida()
     {
-        if(pJog1 ==  NULL)
+        if(pJog1 == NULL)
         {
             pJog1 = new Entidades::Personagens::Jogador(0);
+        }
 
-            if(quantidadeJogadores == 2)
-            {
-                pJog2 = new Entidades::Personagens::Jogador(1);
-            }
+        if(quantidadeJogadores == 2 && pJog2 == NULL)
+        {
+            pJog2 = new Entidades::Personagens::Jogador(1);
         }
 
         if(faseSelecionada == 1)
