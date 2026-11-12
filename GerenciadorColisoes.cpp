@@ -69,6 +69,7 @@ namespace IlhaDosPiratas {
 				}
 
 				pJogador->setNoChao(false);
+				pJogador->setLento(false);
 
 				std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
 

@@ -14,7 +14,7 @@ namespace IlhaDosPiratas{
 			maxInimMedio(10),
 			maxObsMedio(10)
 		{
-			carregaFundo("assets/cenario1.jpg");
+			carregaFundo("assets/cenario1.png");
 			criarCenario();
 		}
 		FasePrimeira::~FasePrimeira() {}
@@ -22,10 +22,12 @@ namespace IlhaDosPiratas{
 		void FasePrimeira::criarInimigos()
 		{
 			criarInimMedio();
+			criarFantasmas();
 		}
 		void FasePrimeira::criarObstaculos()
 		{
 			criarObsMedio();
+			criarPlataformas();
 		}
 
 		void FasePrimeira::carregaFundo(const std::string& caminho)
@@ -51,7 +53,38 @@ namespace IlhaDosPiratas{
 		}
 		void FasePrimeira::criarObsMedio()
 		{
+			int quantidade = gerarQuantidadeAleatoria(maxObsMedio);
 
+			int posicoes[10][2] = {
+				{300, 840},
+				{650, 600},
+				{1000, 750},
+				{1450, 610},
+				{450, 450},
+				{900, 810},
+				{1300, 450},
+				{1650, 450},
+				{200, 300},
+				{1100, 550}
+			};
+
+			for (int i = 0; i < quantidade; i++)
+			{
+				Entidades::Obstaculos::ObstMedio* pTeia =
+					new Entidades::Obstaculos::ObstMedio();
+
+				pTeia->setPosicao(
+					posicoes[i][0],
+					posicoes[i][1]
+				);
+
+				listaEnts.incluir(pTeia);
+
+				if (pGC != NULL)
+				{
+					pGC->incluirObstaculo(pTeia);
+				}
+			}
 		}
 		bool FasePrimeira::jogadorVivo() const {
 			return (pJog1 != NULL && pJog1->estaAtivo()) ||

@@ -8,10 +8,13 @@ using namespace Personagens;
 namespace IlhaDosPiratas {
     namespace Entidades {
         namespace Personagens {
-            Jogador::Jogador(int id) : Personagem(), id(id), vida(10),
-                //vel(sf::Vector2(0.0f, 0.0f)), 
+            Jogador::Jogador(int id) : 
+                Personagem(),   
                 pontos(0),
-                direcao(1)
+                direcao(1),
+                id(id),
+                vida(10),
+                lento(false)
             {
                 inicializa();
                 if (id == 1) 
@@ -39,18 +42,16 @@ namespace IlhaDosPiratas {
                 body.setSize(sf::Vector2f(120.0f, 120.0f));
                 body.setFillColor(sf::Color::White);
                 
-                if (!carregarTextura("/home/carlos/Testes/Jogo_TecProg/assets/jogador1.png")) {
+                if (!carregarTextura("assets/jogador1.png")) {
                     body.setFillColor(sf::Color::Red);
                 }
-                //vel = sf::Vector2f(8.0f, 8.0f);
-                //setPosicao(50, 200);
 
             }
 
 
             void Jogador::mover()
             {
-                const int velocidadeX = 5;
+                const int velocidadeX = lento ? 1 : 5;
 
                 int novoX = getX();
                 int antigoX = getX();

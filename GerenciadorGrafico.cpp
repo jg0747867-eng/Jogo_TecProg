@@ -5,7 +5,7 @@
 
 namespace IlhaDosPiratas {
 	namespace Gerenciadores {
-		GerenciadorGrafico::GerenciadorGrafico() : obj(sf::VideoMode(1920, 1080), "TrabalhoJogo++") 
+		GerenciadorGrafico::GerenciadorGrafico() : obj(sf::VideoMode(1920, 1080), "Ilha Dos Piratas") 
 		{
 			obj.setFramerateLimit(60);
 		}

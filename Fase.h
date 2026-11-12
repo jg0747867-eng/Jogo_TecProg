@@ -7,7 +7,7 @@
 
 namespace IlhaDosPiratas {
 		namespace Entidades {
-			namespace Personagesn {
+			namespace Personagens {
 				class Jogador;
 			}
 		}

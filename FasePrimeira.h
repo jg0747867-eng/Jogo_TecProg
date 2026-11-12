@@ -18,6 +18,7 @@ namespace IlhaDosPiratas {
 			~FasePrimeira();
 
 			virtual bool jogadorVivo() const;
+
 		protected:
 			virtual void criarInimigos();
 			virtual void criarObstaculos();
@@ -27,14 +28,8 @@ namespace IlhaDosPiratas {
 
 			void carregaFundo(const std::string& caminho);
 
-			int quantidadeJogadores;
 		};
 	}
 }
-	
-class FasePrimeira
-{
-
-};
 
 #endif

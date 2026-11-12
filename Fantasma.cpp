@@ -13,7 +13,7 @@ namespace IlhaDosPiratas {
 	namespace Entidades {
 		namespace Personagens {
 
-			Fantasma::Fantasma(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio()
+			Fantasma::Fantasma(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio(), baseY(0), baseDefinida(false)
             {
                 body.setFillColor(sf::Color::White);
                 inicializa();
@@ -30,7 +30,7 @@ namespace IlhaDosPiratas {
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
-                carregarTextura("/home/carlos/Testes/Jogo_TecProg/assets/polvo1.png");
+                carregarTextura("assets/fantasma.png");
                 nivel_maldade = 1;
             }
 
@@ -56,9 +56,9 @@ namespace IlhaDosPiratas {
 
             void Fantasma::executar()
             {
-                aplicarGravidade();
+                //aplicarGravidade();
                 mover();
-                //movimentoAleatorio();
+                aplicarEmpuxo();
 
             }
 
@@ -112,6 +112,24 @@ namespace IlhaDosPiratas {
                 if (pJogador)
                 {
                     pJogador->operator--();
+                }
+            }
+            void Fantasma::aplicarEmpuxo()
+            {
+                if (!baseDefinida)
+                {
+                    baseY = getY();
+                    baseDefinida = true;
+                }
+                aplicarGravidade();
+
+                int forcaEmpuxo = getY() - baseY;
+
+                if (forcaEmpuxo > 0)
+                {
+                    setPosicao(getX(), baseY);
+                    zerarVelocidadeY();
+                    setNoChao(true);
                 }
             }
     }   }

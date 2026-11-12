@@ -14,7 +14,7 @@ namespace IlhaDosPiratas {
 			pGC(new Gerenciadores::GerenciadorColisoes()),
 			pJog1(pJog1),
 			pJog2(pJog2),
-			limiteChao(900),
+			limiteChao(1000),
 			maxFantasmas(10),
 			maxPlataformas(10),
 			inimigosVivos(0),
@@ -52,7 +52,7 @@ namespace IlhaDosPiratas {
 		{
 			int quantidade = gerarQuantidadeAleatoria(maxFantasmas);
 
-			int posicoes[10][2] = {
+			int posicoes[10][2] = { //X, Y
 				{340, 800},
 				{540, 700},
 				{820, 560},
@@ -135,15 +135,12 @@ namespace IlhaDosPiratas {
 				}
 			}
 
-			criarFantasmas();
 			criarObstaculos();
-			criarPlataformas();
 			criarInimigos();
 		}
 
 		int Fase::gerarQuantidadeAleatoria(const int maximo) const {
 			const int minimo = 3;
-
 			if (maximo < minimo) {
 				return minimo;
 			}

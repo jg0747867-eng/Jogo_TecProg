@@ -16,6 +16,7 @@ namespace IlhaDosPiratas {
                 sf::Vector2f vel;
                 int id;
                 int vida;
+                bool lento;
                 sf::Keyboard::Key teclaEsq;
                 sf::Keyboard::Key teclaDir; 
                 sf::Keyboard::Key teclaPulo; 
@@ -37,7 +38,8 @@ namespace IlhaDosPiratas {
                 void mover();
                 void inicializa();
                 void salvar();
-                //void pular();
+                
+                void setLento(bool estado) { lento = estado; }
 
             };
         }
