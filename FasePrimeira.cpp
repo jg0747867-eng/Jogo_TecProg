@@ -1,5 +1,5 @@
 #include "FasePrimeira.h"
-#include "InimMedio.h"
+#include "Lobisomem.h"
 #include "ObstMedio.h"
 #include "Jogador.h"
 #include <iostream>
@@ -14,7 +14,7 @@ namespace IlhaDosPiratas{
 			maxInimMedio(10),
 			maxObsMedio(10)
 		{
-			carregaFundo("assets/cenario1.png");
+			carregaFundo("/home/carlos/pqp/Jogo_TecProg/assets/cenario1.png");
 			criarCenario();
 		}
 		FasePrimeira::~FasePrimeira() {}
@@ -49,6 +49,32 @@ namespace IlhaDosPiratas{
 		}
 		void FasePrimeira::criarInimMedio()
 		{
+			int quantidade = gerarQuantidadeAleatoria(maxInimMedio);
+
+			int posicoes[5][2] = 
+			{
+				{400, 800},
+				{750, 800},
+				{1100, 800},
+				{1400, 800},
+				{1700, 800}
+			};
+
+			for(int i = 0; i < quantidade; i++)
+			{
+				Entidades::Personagens::Inimigo* pInim =
+					new Entidades::Personagens::Lobisomem(pJog1);
+
+					pInim->setPosicao(posicoes[i][0], posicoes[i][1]);
+
+					listaEnts.incluir(pInim);
+
+					if(pGC != NULL)
+					{
+						pGC->incluirInimigo(pInim);
+					}
+
+			}
 
 		}
 		void FasePrimeira::criarObsMedio()

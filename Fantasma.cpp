@@ -1,6 +1,5 @@
 #include "Fantasma.h"
 #include "Jogador.h"
-#include "GerenciadorColisoes.h"
 #include "cmath"
 #define VELOCIDADE_INIMIGOFACIL_X 1.0f
 #define VELOCIDADE_INIMIGOFACIL_Y 1.0f
@@ -66,7 +65,7 @@ namespace IlhaDosPiratas {
 
             }
 
-            void Fantasma::voar()
+            void Fantasma::movimentoAleatorio()
             {
                 sf::Vector2f posAtual = body.getPosition();
                 float novoX = posAtual.x;
@@ -109,7 +108,7 @@ namespace IlhaDosPiratas {
                     persegueJogador(posJogador, posInimigo);
                 else
                 {
-                    voar();
+                    movimentoAleatorio();
                 }
             }
             void Fantasma::salvar()
