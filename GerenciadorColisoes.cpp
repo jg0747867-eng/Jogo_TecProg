@@ -3,6 +3,7 @@
 #include "Jogador.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
+#include "ObstMedio.h"
 
 #include <iostream>
 
@@ -70,6 +71,7 @@ namespace IlhaDosPiratas {
 
 				pJogador->setNoChao(false);
 				pJogador->setLento(false);
+				pJogador->setQuedaLenta(false);
 
 				std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
 
@@ -82,18 +84,19 @@ namespace IlhaDosPiratas {
 						if (verificarColisao(pJogador, pObstaculo))
 						{
 							pObstaculo->obstaculizar(pJogador);
+
+							// Feita essa parte para não afetar a teia
+							if (dynamic_cast<Entidades::Obstaculos::ObstMedio*>(pObstaculo) == NULL)
+							{
+								tratarColisaoEntidadeObstaculo(pJogador, pObstaculo);
+							}
 						}
 					}
 				}
 			}
 
 		}	
-		void GerenciadorColisoes::tratarColisoesInimigosObstaculos()
-		{
-		
-		}
-
-		void GerenciadorColisoes::tratarColisoesJogsInimigos() 
+		void GerenciadorColisoes::tratarColisoesJogsInimigos()
 		{
 			for(unsigned int i = 0; i < LJs.size(); i++)
 			{
@@ -137,7 +140,6 @@ namespace IlhaDosPiratas {
 			//tratarColisoesObsDificil();
 
 			tratarColisoesJogsObstaculos();
-			tratarColisoesInimigosObstaculos();
 
 			for (unsigned int i = 0; i < LJs.size(); i++)
 			{
@@ -200,9 +202,64 @@ namespace IlhaDosPiratas {
 			}
 		}
 
-		void GerenciadorColisoes::tratarColisaoEntidadeObstaculo(Entidades::Entidade* pEntidade, Entidades::Obstaculos::Obstaculo* pObstaculo)
-		{
-		
+		void GerenciadorColisoes::tratarColisaoEntidadeObstaculo(Entidades::Entidade* pEntidade, Entidades::Obstaculos::Obstaculo* pObstaculo) {
+			if (pEntidade == NULL || pObstaculo == NULL) {
+				return;
+			}
+
+			const float toleranciaColisao = 25.0f;
+
+			sf::FloatRect entidade = pEntidade->getBody().getGlobalBounds();
+			sf::FloatRect obstaculo = pObstaculo->getBody().getGlobalBounds();
+
+			float baseEntidade = entidade.top + entidade.height;
+			float topoEntidade = entidade.top;
+
+			float baseObstaculo = obstaculo.top + obstaculo.height;
+			float topoObstaculo = obstaculo.top;
+
+			bool dentroHorizontal = entidade.left + entidade.width > obstaculo.left &&
+				entidade.left < obstaculo.left + obstaculo.width;
+
+			bool bateuCima = pEntidade->getVelocidadeY() >= 0.0f &&
+				baseEntidade >= topoObstaculo &&
+				baseEntidade <= topoObstaculo + toleranciaColisao &&
+				dentroHorizontal;
+
+			bool bateuBaixo = pEntidade->getVelocidadeY() < 0.0f &&
+				topoEntidade <= baseObstaculo &&
+				topoEntidade >= baseObstaculo - toleranciaColisao &&
+				dentroHorizontal;
+
+			if (bateuCima) {
+				int novoY = static_cast<int>(topoObstaculo - entidade.height);
+
+				pEntidade->setPosicao(pEntidade->getX(), novoY);
+				pEntidade->zerarVelocidadeY();
+				pEntidade->setNoChao(true);
+			}
+			else if (bateuBaixo) {
+				int novoY = static_cast<int>(baseObstaculo);
+
+				pEntidade->setPosicao(pEntidade->getX(), novoY);
+				pEntidade->zerarVelocidadeY();
+			}
+			else
+			{
+				float centroEntidade = entidade.left + entidade.width / 2.0f;
+				float centroObstaculo = obstaculo.left + obstaculo.width / 2.0f;
+
+				if (centroEntidade < centroObstaculo)
+				{
+					int novoX = static_cast<int>(obstaculo.left - entidade.width);
+					pEntidade->setPosicao(novoX, pEntidade->getY());
+				}
+				else
+				{
+					int novoX = static_cast<int>(obstaculo.left + obstaculo.width);
+					pEntidade->setPosicao(novoX, pEntidade->getY());
+				}
+			}
 		}
 
 		void GerenciadorColisoes::LimiteLateral(Entidades::Entidade* pEnti)

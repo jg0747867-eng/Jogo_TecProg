@@ -33,7 +33,8 @@ namespace IlhaDosPiratas {
 			ObstMedio::ObstMedio() : 
                 Obstaculo(),
                 baseY(0),
-                baseDefinida(false)
+                baseDefinida(false),
+                empuxo(0.0f)
 			{
                 danoso = false;
 
@@ -76,7 +77,10 @@ namespace IlhaDosPiratas {
             void ObstMedio::obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador)
             {
                 if (pJogador != NULL)
+                {
                     pJogador->setLento(true);
+                    pJogador->setQuedaLenta(true);
+                }
             }
             void ObstMedio::aplicarEmpuxo() 
             {

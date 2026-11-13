@@ -11,10 +11,10 @@ namespace IlhaDosPiratas{
 			Entidades::Personagens::Jogador* pJog1,
 			Entidades::Personagens::Jogador* pJog2):
 			Fase(quantidadeJogadores, pJog1, pJog2),
-			maxInimMedio(10),
+			maxInimMedio(5),
 			maxObsMedio(10)
 		{
-			carregaFundo("/home/carlos/pqp/Jogo_TecProg/assets/cenario1.png");
+			carregaFundo("assets/cenario1.png");
 			criarCenario();
 		}
 		FasePrimeira::~FasePrimeira() {}

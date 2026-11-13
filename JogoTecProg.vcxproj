@@ -157,11 +157,11 @@
     <ClCompile Include="GerenciadorGrafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Fantasma.cpp" />
-    <ClCompile Include="InimMedio.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="JogoMain.cpp" />
     <ClCompile Include="ListaEntidade.cpp" />
+    <ClCompile Include="Lobisomem.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="ObstDificil.cpp" />
@@ -181,11 +181,11 @@
     <ClInclude Include="GerenciadorGrafico.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Fantasma.h" />
-    <ClInclude Include="InimMedio.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidade.h" />
+    <ClInclude Include="Lobisomem.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="ObstDificil.h" />

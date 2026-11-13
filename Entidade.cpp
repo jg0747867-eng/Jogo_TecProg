@@ -7,6 +7,7 @@ namespace IlhaDosPiratas {
             y(0),
             velocidadeY(0),
             noChao(false),
+            quedaLenta(false),
             ativo(true) {}// nao sei se a gente inicia o x e o y em 0, qualquer coisa alteramos depois
 
         Entidade::~Entidade() {}
@@ -41,7 +42,7 @@ namespace IlhaDosPiratas {
             }
 
             const int gravidade = 1;
-            const int velocidadeMaxima = 20;
+            const int velocidadeMaxima = quedaLenta ? 2 : 20;
 
             velocidadeY += gravidade;
 
@@ -76,6 +77,10 @@ namespace IlhaDosPiratas {
             }
         }
 
+        void Entidade::setQuedaLenta(bool lento)
+        {
+            quedaLenta = lento;
+        }
 
     }
 }

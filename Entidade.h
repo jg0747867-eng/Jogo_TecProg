@@ -16,6 +16,7 @@ namespace IlhaDosPiratas {
             bool noChao;
 
             bool ativo;
+            bool quedaLenta;
             // ostream buffer (como a gente conversou n�o sei direito o que �)
 
         public:
@@ -39,6 +40,7 @@ namespace IlhaDosPiratas {
             void ativar();
             void desativar();
             bool estaAtivo() const;
+            void setQuedaLenta(bool lento);
 
             //protected:
                 // void salvarDataBuffer();

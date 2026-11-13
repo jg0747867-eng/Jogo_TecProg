@@ -39,7 +39,6 @@ namespace IlhaDosPiratas {
 			void tratarColisoesJogsInimigos();
 			void tratarColisoesJogsProjeteis();
 
-			void tratarColisoesInimigosObstaculos();
 			void tratarColisoesObsDificil();
 
 			void LimiteLateral(Entidades::Entidade* pEnti);

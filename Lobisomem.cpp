@@ -3,6 +3,30 @@
 
 #define VELOCIDADE_LOBISOMEM_X 2.0f
 
+
+namespace
+{
+    struct TexturaLobo
+    {
+        sf::Texture textura;
+        bool carregada;
+
+        TexturaLobo()
+        {
+            carregada = textura.loadFromFile("assets/lobo.png");
+
+            if (!carregada)
+                std::cout << "Erro ao carregar assets/lobo.png" << std::endl;
+        }
+    };
+
+    TexturaLobo& obterTexturaLobo()
+    {
+        static TexturaLobo recurso;
+        return recurso;
+    }
+}
+
 namespace IlhaDosPiratas
 {
     namespace Entidades
@@ -13,8 +37,21 @@ namespace IlhaDosPiratas
                     relogioPatrulha(), direcaoPatrulha(rand()%2),
                     relogioPulo(), intervaloPulo(2.0f)
             {
-                body.setFillColor(sf::Color::Green);
+                body.setFillColor(sf::Color::White);
                 inicializa();
+
+                TexturaLobo& carregar = obterTexturaLobo();
+
+                if (carregar.carregada)
+                {
+                    body.setTexture(&carregar.textura);
+
+                    body.setTextureRect(sf::IntRect(
+                        0, 0,
+                        carregar.textura.getSize().x,
+                        carregar.textura.getSize().y
+                    ));
+                }
             }
 
             Lobisomem::~Lobisomem()

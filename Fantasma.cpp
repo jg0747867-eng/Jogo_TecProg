@@ -27,7 +27,7 @@ namespace IlhaDosPiratas {
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
-                carregarTextura("/home/carlos/pqp/Jogo_TecProg/assets/fantasma.png");
+                carregarTextura("assets/fantasma.png");
                 nivel_maldade = 1;
             }
 
