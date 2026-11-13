@@ -66,7 +66,7 @@ namespace IlhaDosPiratas {
 
             }
 
-            void Fantasma::movimentoAleatorio()
+            void Fantasma::voar()
             {
                 sf::Vector2f posAtual = body.getPosition();
                 float novoX = posAtual.x;
@@ -109,7 +109,7 @@ namespace IlhaDosPiratas {
                     persegueJogador(posJogador, posInimigo);
                 else
                 {
-                    movimentoAleatorio();
+                    voar();
                 }
             }
             void Fantasma::salvar()

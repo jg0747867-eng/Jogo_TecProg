@@ -21,7 +21,7 @@ namespace IlhaDosPiratas {
                     sf::Clock relogio;
                     short moveAleatorio;
                     void inicializa();
-                    void movimentoAleatorio();
+                    void voar();
                 public:
                     Fantasma(Jogador* pJogador);
 
