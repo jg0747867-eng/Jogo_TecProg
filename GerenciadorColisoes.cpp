@@ -159,14 +159,19 @@ namespace IlhaDosPiratas {
 				}
 			}
 			for (unsigned int i = 0; i < LIs.size(); i++) {
-				if (LIs[i] != NULL && LIs[i]->estaAtivo()) {
-					tratarColisaoChao(LIs[i]);
+				if (LIs[i] != NULL && LIs[i]->estaAtivo()) 
+				{
+					if(!LIs[i]->ehVoador())
+					{
+						tratarColisaoChao(LIs[i]);
+					}	
 				}
 			}
 
 			tratarColisoesJogsInimigos();
 			tratarColisoesJogsProjeteis();
 		}
+
 
 		void GerenciadorColisoes::setLimiteChao(int limite)
 		{
@@ -216,6 +221,27 @@ namespace IlhaDosPiratas {
 
 			if (x + largura > limiteDireito)
 				pEnti->setPosicao(limiteDireito - largura, pEnti->getY());
+
+
+			const int limiteTeto = 0;
+
+			sf::FloatRect corpo = pEnti->getBody().getGlobalBounds();
+
+			float teto = corpo.top;
+			float base = corpo.top + corpo.height;
+
+			if (teto < limiteTeto)
+			{
+				pEnti->setPosicao(pEnti->getX(), static_cast<int>(pEnti->getY() - teto + limiteTeto));
+			}
+
+			if (base > limiteChao) 
+			{
+       	 		pEnti->setPosicao(
+            		pEnti->getX(), 
+            		static_cast<int>(pEnti->getY() - (base - limiteChao))
+        		);
+			}
 
 		}
 

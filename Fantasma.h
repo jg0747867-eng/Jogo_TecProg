@@ -21,22 +21,20 @@ namespace IlhaDosPiratas {
                     sf::Clock relogio;
                     short moveAleatorio;
                     void inicializa();
-                    int baseY;
-                    bool baseDefinida;
+                    void movimentoAleatorio();
                 public:
                     Fantasma(Jogador* pJogador);
 
                     ~Fantasma();
 
-                    void danificar(Jogador* pJogador);
+                    bool ehVoador() const {return true;}
 
+
+                    void danificar(Jogador* pJogador);
                     void salvar();
                     void executar();
-                
                     void mover();
-
                     void persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);
-                    void movimentoAleatorio();
                     void aplicarEmpuxo();
                     
             };

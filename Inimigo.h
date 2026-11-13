@@ -23,6 +23,8 @@ namespace IlhaDosPiratas {
 
                 // void salvarDataBuffer();
 
+                virtual bool ehVoador() const {return false;}
+
                 virtual void executar() = 0;
                 virtual void danificar(Jogador* pJo) = 0;
 
@@ -33,6 +35,3 @@ namespace IlhaDosPiratas {
         }
     }
 }
-
-
-#endif

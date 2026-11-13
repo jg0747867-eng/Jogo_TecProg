@@ -13,12 +13,10 @@ namespace IlhaDosPiratas {
 	namespace Entidades {
 		namespace Personagens {
 
-			Fantasma::Fantasma(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio(), baseY(0), baseDefinida(false)
+			Fantasma::Fantasma(Jogador* pJogador): Inimigo(), jogador(pJogador), relogio(), moveAleatorio(rand()%4)
             {
                 body.setFillColor(sf::Color::White);
                 inicializa();
-                srand(time(NULL));
-                moveAleatorio = rand()%4;
             }
 
             Fantasma::~Fantasma()
@@ -30,30 +28,36 @@ namespace IlhaDosPiratas {
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
-                carregarTextura("assets/fantasma.png");
+                carregarTextura("/home/carlos/pqp/Jogo_TecProg/assets/fantasma.png");
                 nivel_maldade = 1;
             }
 
             void Fantasma::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
             {
-                if(posJogador.x - posInimigo.x > 0.0f)
-                {
-                    body.move(vel.x, 0.0f);
-                }
-                else
-                {
-                    body.move(-vel.x, 0.0f);
-                }
-                if (posJogador.y - posInimigo.y > 0.0f)
-                {
-                    body.move(0.0f, vel.y);
-                }
-                else
-                {
-                    body.move(0.0f, -vel.y);
-                }
-            }
+                int novoX = getX();
+                int novoY = getY();
+                float dx = posJogador.x - posInimigo.x;
+                float dy = posJogador.y - posInimigo.y;
 
+                if (dx > vel.x)
+                {
+                    novoX += vel.x;
+                }       
+                else if (dx < -vel.x) 
+                {
+                    novoX -= vel.x;
+                }
+                if (dy > vel.y) 
+                {
+                    novoY += vel.y;
+                }
+                else if (dy < -vel.y) 
+                {
+                    novoY -= vel.y;
+                }
+                setPosicao(novoX, novoY);
+            }
+            
             void Fantasma::executar()
             {
                 //aplicarGravidade();
@@ -64,22 +68,28 @@ namespace IlhaDosPiratas {
 
             void Fantasma::movimentoAleatorio()
             {
+                sf::Vector2f posAtual = body.getPosition();
+                float novoX = posAtual.x;
+                float novoY = posAtual.y;
+
                 if(moveAleatorio == 0)
                 {
-                    body.move(vel.x, 0.0f);
+                   novoX += vel.x;
                 }
                 else if(moveAleatorio == 1)
                 {
-                    body.move(-vel.x, 0.0f);
+                    novoX -= vel.x;
                 }
                 else if(moveAleatorio == 2)
                 {
-                    body.move(0.0f, vel.y);
+                    novoY += vel.y;
                 }
                 else
                 {
-                    body.move(0.0f, -vel.y);
+                    novoY -= vel.y;
                 }
+
+                setPosicao(novoX, novoY);
 
                 float dt = relogio.getElapsedTime().asSeconds();
                 if (dt >= 1.0f)
@@ -116,21 +126,14 @@ namespace IlhaDosPiratas {
             }
             void Fantasma::aplicarEmpuxo()
             {
-                if (!baseDefinida)
-                {
-                    baseY = getY();
-                    baseDefinida = true;
-                }
+                
+                int xAntes = getX();
+                int yAntes = getY();
+
                 aplicarGravidade();
 
-                int forcaEmpuxo = getY() - baseY;
-
-                if (forcaEmpuxo > 0)
-                {
-                    setPosicao(getX(), baseY);
-                    zerarVelocidadeY();
-                    setNoChao(true);
-                }
+                setPosicao(xAntes, yAntes); 
+                zerarVelocidadeY();                      
             }
     }   }
 }   
