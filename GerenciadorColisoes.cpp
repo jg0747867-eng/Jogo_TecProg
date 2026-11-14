@@ -85,7 +85,7 @@ namespace IlhaDosPiratas {
 						{
 							pObstaculo->obstaculizar(pJogador);
 
-							// Feita essa parte para não afetar a teia
+							// Feita essa parte para nï¿½o afetar a teia
 							if (dynamic_cast<Entidades::Obstaculos::ObstMedio*>(pObstaculo) == NULL)
 							{
 								tratarColisaoEntidadeObstaculo(pJogador, pObstaculo);
@@ -98,33 +98,44 @@ namespace IlhaDosPiratas {
 		}	
 		void GerenciadorColisoes::tratarColisoesJogsInimigos()
 		{
-			for(unsigned int i = 0; i < LJs.size(); i++)
+			for (unsigned int i = 0; i < LJs.size(); i++)
 			{
 				Entidades::Personagens::Jogador* pJogador = LJs[i];
 
 				if (pJogador == NULL)
-				{
 					continue;
-				}
 
-				for(unsigned int j = 0; j < LIs.size(); j++)
+				for (unsigned int j = 0; j < LIs.size(); j++)
 				{
 					Entidades::Personagens::Inimigo* pInim = LIs[j];
 
-					if(pInim == NULL)
-					{
+					if (pInim == NULL)
 						continue;
-					}
 
-					if(verificarColisao(pJogador, pInim))
+					if (verificarColisao(pJogador, pInim))
 					{
-						pInim->danificar(pJogador);
+						sf::FloatRect corpoJog = pJogador->getBody().getGlobalBounds();
+						sf::FloatRect corpoIni = pInim->getBody().getGlobalBounds();
+
+						float baseJog   = corpoJog.top + corpoJog.height;
+						float metadeIni = corpoIni.top + corpoIni.height / 2.f;
+
+						bool caindo = pJogador->getVelocidadeY() > 0;
+
+						if (caindo && baseJog <= metadeIni)
+						{
+							pInim->desativar();
+							pJogador->setNoChao(true);	
+							pJogador->pular();
+						}
+						else
+						{
+							pInim->danificar(pJogador);
+						}
 					}
-					
 				}
 			}
 		}
-
 		void GerenciadorColisoes::tratarColisoesJogsProjeteis()
 		{
 		
