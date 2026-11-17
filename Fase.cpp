@@ -26,7 +26,17 @@ namespace IlhaDosPiratas {
 			}
 			this->quantidadeJogadores = quantidadeJogadores;
 		}
-		Fase::~Fase() {
+		Fase::~Fase()
+		{
+			for (int i = 0; i < (int)listaEnts.getTamanho(); i++)
+			{
+				Entidades::Entidade* pE = listaEnts[i];
+
+				if (pE != NULL && pE != pJog1 && pE != pJog2)
+					delete pE;
+			}
+			listaEnts.limpaLista();
+
 			delete pGC;
 			pGC = NULL;
 			pJog1 = NULL;
@@ -43,10 +53,6 @@ namespace IlhaDosPiratas {
 			}
 			listaEnts.desenhar();
 
-			if (!jogadorVivo())
-			{
-				pGG->fecharJanela();
-			}
 		}
 		void Fase::criarFantasmas()
 		{

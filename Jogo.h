@@ -24,6 +24,7 @@ namespace IlhaDosPiratas {
         int quantidadeJogadores;
 
         void iniciarPartida();
+        void terminarPartida();
 
     public:
         Jogo();

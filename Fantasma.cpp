@@ -27,7 +27,7 @@ namespace IlhaDosPiratas {
             {
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
-                carregarTextura("assets/fantasma.png");
+                carregarTextura("/home/carlos/pqp/Jogo_TecProg/assets/fantasma.png");
                 nivel_maldade = 1;
             }
 
@@ -118,7 +118,7 @@ namespace IlhaDosPiratas {
 
             void Fantasma::danificar(Jogador* pJogador)
             {
-                if (pJogador)
+                if (pJogador && pJogador->getVida() > 0)
                 {
                     pJogador->operator--();
                 }

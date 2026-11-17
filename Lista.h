@@ -155,10 +155,8 @@ namespace IlhaDosPiratas
             if(indice < 0 || indice >= (int)tamLista)
                 return; 
             
-            Elemento<TL>* pAtual = NULL;
+            Elemento<TL>* pAtual = pPrimeiro;
             Elemento<TL>* pAnte = NULL;
-
-            TL* info = pAtual->getInfo();
 
             int i = 0;
             while(i < indice)
@@ -187,31 +185,25 @@ namespace IlhaDosPiratas
         template<class TL>
         void Lista<TL>::apagar(TL* pinfo)
         {
-            if(pPrimeiro == NULL)
-                return;
-            
             Elemento<TL>* pAtual = pPrimeiro;
             Elemento<TL>* pAnte = NULL;
 
-            TL* info = pAtual->getInfo();
-
-            while(pAtual != NULL && pAtual->getInfo() != pinfo)
+            while (pAtual != NULL && pAtual->getInfo() != pinfo)
             {
                 pAnte = pAtual;
-                pAtual = pAnte->getProx();
+                pAtual = pAtual->getProx();
             }
 
-            if (pAtual == pPrimeiro)
-            {
-                pPrimeiro = pAtual->getProx();
-            }
-            else if (pAtual == pUltimo)
-            {
-                pAnte->setProx(NULL);
-                pUltimo = pAnte;
-            }
+            if (pAtual == NULL)
+                return;                        // não achou
+
+            if (pAnte == NULL)
+                pPrimeiro = pAtual->getProx(); // era o primeiro
             else
                 pAnte->setProx(pAtual->getProx());
+
+            if (pAtual == pUltimo)
+                pUltimo = pAnte;
 
             tamLista--;
             delete pAtual;

@@ -22,11 +22,7 @@ namespace IlhaDosPiratas {
 
     Jogo::~Jogo()
     {
-        delete pFase1;
-        pFase1 = nullptr;
-
-       // delete pFase2;
-        //pFase2 = nullptr;
+        terminarPartida();
 
         delete pMenu;
         pMenu = nullptr;
@@ -53,11 +49,15 @@ namespace IlhaDosPiratas {
             {
                 pFase1 = new Fases::FasePrimeira(quantidadeJogadores, pJog1, pJog2);
             }
-            else if(faseSelecionada == 2)
-            {
-                //pFase2 = new Fases::faseSegunda(quantidadeJogadores, pJog1, pJog2);
-            }
         }
+        /*else if(faseSelecionada == 2)
+        {
+            if(pFase2 == NULL)
+            {
+                 //pFase2 = new Fases::faseSegunda(quantidadeJogadores, pJog1, pJog2);
+            }
+           
+        }*/
 
         jogando = true;
     }
@@ -110,6 +110,13 @@ namespace IlhaDosPiratas {
 
                 if (faseSelecionada == 1 && pFase1 != nullptr) {
                     pFase1->executar();
+
+                    bool vivo = pFase1->jogadorVivo();
+
+                    if(!vivo)
+                    {
+                        terminarPartida();
+                    }
                 }
                 else if (faseSelecionada == 2/* && pFase2 != nullptr*/) {
                    // pFase2->executar();
@@ -122,4 +129,22 @@ namespace IlhaDosPiratas {
             pGG->mostrar();
         }
     }
+
+    void Jogo::terminarPartida()
+    {
+        delete pFase1;
+        pFase1 = NULL;
+
+        //delete pFase2;
+        //pFase2 = NULL;
+
+        delete pJog1;
+        pJog1 = NULL;
+
+        delete pJog2;
+        pJog2 = NULL;
+
+        jogando = false;
+    }
+
 }

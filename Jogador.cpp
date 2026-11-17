@@ -1,6 +1,8 @@
 #include "Jogador.h"
 #include "Obstaculo.h"
 
+#define TEMPO_INVULNERAVEL 1.5f
+
 using namespace IlhaDosPiratas;
 using namespace Entidades;
 using namespace Personagens;
@@ -14,7 +16,8 @@ namespace IlhaDosPiratas {
                 direcao(1),
                 id(id),
                 vida(10),
-                lento(false)
+                lento(false),
+                invulneravel(false)
             {
                 inicializa();
                 if (id == 1) 
@@ -48,6 +51,23 @@ namespace IlhaDosPiratas {
 
             }
 
+            void Jogador::operator--()
+            {
+                if(invulneravel)
+                {
+                    return;
+                }
+
+                vida--;
+                invulneravel = true;
+                relogioInvulneravel.restart();
+                if (vida <= 0)
+                {
+                    desativar();
+                }
+            }
+
+
 
             void Jogador::mover()
             {
@@ -74,9 +94,18 @@ namespace IlhaDosPiratas {
             }
 
 
+
             void Jogador::executar()
             {
-                //inicializa();
+                if(!estaAtivo())
+                {
+                    return;
+                }
+
+                if(invulneravel && relogioInvulneravel.getElapsedTime().asSeconds() >= TEMPO_INVULNERAVEL)
+                {
+                    invulneravel = false;
+                }
                 mover();
                 aplicarGravidade();
             }

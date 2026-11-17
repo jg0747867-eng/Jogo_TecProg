@@ -20,7 +20,7 @@ namespace IlhaDosPiratas
 {
     namespace Listas
     {
-        class ListaEntidades: public Lista<Entidades::Entidade>
+        class ListaEntidades
         {
             private:
                 Lista<Entidades::Entidade> LEs;

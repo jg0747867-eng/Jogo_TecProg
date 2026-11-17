@@ -14,9 +14,11 @@ namespace IlhaDosPiratas {
 
             private:
                 sf::Vector2f vel;
+                sf::Clock relogioInvulneravel;
                 int id;
                 int vida;
                 bool lento;
+                bool invulneravel;
                 sf::Keyboard::Key teclaEsq;
                 sf::Keyboard::Key teclaDir; 
                 sf::Keyboard::Key teclaPulo; 
@@ -30,7 +32,9 @@ namespace IlhaDosPiratas {
 
                 // void colidir (Inimigo* pIn);
 
-                void operator--(){vida--;}
+                void operator--();
+                
+                void operator++(){pontos++;}
 
                 const int getVida() const {return vida;}
 
@@ -41,6 +45,8 @@ namespace IlhaDosPiratas {
                 
                 void setLento(bool estado) { lento = estado; }
 
+
+
             };
         }
     }
@@ -48,3 +54,4 @@ namespace IlhaDosPiratas {
 
 
 #endif
+
