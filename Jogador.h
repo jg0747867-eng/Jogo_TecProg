@@ -52,7 +52,7 @@ namespace IlhaDosPiratas {
                 
                 void setLento(bool estado) { lento = estado; }
 
-                bool receberDano();
+                bool receberDano(int dano);
                 void aplicarVeneno();
                 void atualizarVeneno();
 
