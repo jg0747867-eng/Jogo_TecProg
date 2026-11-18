@@ -5,7 +5,7 @@
 
 
 
-namespace IlhaDosPiratas
+namespace Tripulação_Amaldiçoada
 {
     namespace Entidades
     {

@@ -1,22 +1,19 @@
-
-#pragma once
-
 #ifndef JOGO_H_
 #define JOGO_H_
 
 #include "GerenciadorGrafico.h"
-#include "FasePrimeira.h"
+#include "Mansao.h"
 #include "FaseSegunda.h"
 #include "Menu.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 
     class Jogo {
     private:
         Gerenciadores::GerenciadorGrafico* pGG;
         Entidades::Personagens::Jogador* pJog1;
         Entidades::Personagens::Jogador* pJog2;
-        Fases::FasePrimeira* pFase1;
+        Fases::Mansao* pFase1;
         Fases::FaseSegunda* pFase2;
         Menu* pMenu;
 

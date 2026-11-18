@@ -4,7 +4,7 @@
 #include "Personagem.h"
 
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
     namespace Entidades {
         namespace Personagens
         {

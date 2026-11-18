@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 
 	Jogo::Jogo() :
 		pGG(NULL)

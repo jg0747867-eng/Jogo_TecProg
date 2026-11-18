@@ -2,10 +2,9 @@
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Ente.h"
-#include "FaseSegunda.h"
 #include <SFML/Graphics.hpp>
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 
     Jogo::Jogo() :
         pGG(new Gerenciadores::GerenciadorGrafico()),
@@ -48,7 +47,7 @@ namespace IlhaDosPiratas {
         {
             if(pFase1 == NULL)
             {
-                pFase1 = new Fases::FasePrimeira(quantidadeJogadores, pJog1, pJog2);
+                pFase1 = new Fases::Mansao(quantidadeJogadores, pJog1, pJog2);
             }
         }
         else if(faseSelecionada == 2)

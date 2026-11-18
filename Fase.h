@@ -5,7 +5,7 @@
 #include "ListaEntidade.h"
 #include "GerenciadorColisoes.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 		namespace Entidades {
 			namespace Personagens {
 				class Jogador;

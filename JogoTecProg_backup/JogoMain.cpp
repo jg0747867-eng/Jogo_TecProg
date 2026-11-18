@@ -2,7 +2,7 @@
 
 int main()
 {
-    IlhaDosPiratas::Jogo jogo;
+    Tripulação_Amaldiçoada::Jogo jogo;
     jogo.executar();
 
     return 0;

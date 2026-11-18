@@ -1,6 +1,6 @@
 #include "ListaEntidade.h"
 
-namespace IlhaDosPiratas
+namespace Tripulação_Amaldiçoada
 {
     namespace Listas
     {

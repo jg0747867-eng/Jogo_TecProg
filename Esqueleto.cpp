@@ -4,7 +4,7 @@
 #define VELOCIDADE_ESQUELETO_X 2.0f
 #define INTERVALO_TIRO 2.0f
 
-namespace IlhaDosPiratas
+namespace Tripulação_Amaldiçoada
 {
     namespace Entidades
     {

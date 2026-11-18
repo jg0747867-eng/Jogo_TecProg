@@ -1,12 +1,12 @@
 #ifndef JOGADOR_H_
 #define JOGADOR_H_
-
 #include "Personagem.h"
-namespace IlhaDosPiratas {
+
+namespace Tripulação_Maldita {
     namespace Entidades {
         namespace Personagens{
 
-            class Jogador : public Personagem
+            class Jogador: public Personagem
             {
             protected:
                 int pontos;
@@ -61,4 +61,6 @@ namespace IlhaDosPiratas {
     }
 }
 
+
 #endif
+

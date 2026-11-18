@@ -4,11 +4,11 @@
 #include "Osso.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
-#include "ObstMedio.h"
+#include "Teia.h"
 
 #include <iostream>
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 	namespace Gerenciadores {
 		GerenciadorColisoes::GerenciadorColisoes(): limiteChao(0) {}
 		GerenciadorColisoes::~GerenciadorColisoes() 
@@ -87,7 +87,7 @@ namespace IlhaDosPiratas {
 							pObstaculo->obstaculizar(pJogador);
 
 							// Feita essa parte para n�o afetar a teia
-							if (dynamic_cast<Entidades::Obstaculos::ObstMedio*>(pObstaculo) == NULL)
+							if (dynamic_cast<Entidades::Obstaculos::Teia*>(pObstaculo) == NULL)
 							{
 								tratarColisaoEntidadeObstaculo(pJogador, pObstaculo);
 							}

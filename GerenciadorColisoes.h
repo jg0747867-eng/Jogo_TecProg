@@ -6,7 +6,7 @@
 #include <set>
 
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 	namespace Entidades {
 		class Entidade;
 		class Osso;

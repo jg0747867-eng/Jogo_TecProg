@@ -2,7 +2,7 @@
 #define OBSTACULO_H_
 
 #include "Entidade.h"
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
     namespace Entidades {
         namespace Personagens {
             class Jogador;
@@ -24,7 +24,7 @@ namespace IlhaDosPiratas {
 
                 virtual void executar() = 0;
                 virtual void salvar() = 0;
-                virtual void obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador) = 0;
+                virtual void obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador) = 0;
             };
         }
     }

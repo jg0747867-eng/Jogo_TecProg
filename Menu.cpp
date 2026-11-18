@@ -6,7 +6,7 @@
 #include <string>
 #include "Ente.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
         Menu::Menu() :
             telaAtual(MENU_PRINCIPAL),
             faseSelecionada(1),
@@ -255,10 +255,12 @@ namespace IlhaDosPiratas {
 
                case UM_JOGADOR:
                    quantidadeJogadores = 1;
+                   telaAtual = MENU_PRINCIPAL;
                    return INICIAR_PARTIDA;
 
                case DOIS_JOGADORES:
                    quantidadeJogadores = 2;
+                   telaAtual = MENU_PRINCIPAL;
                    return INICIAR_PARTIDA;
 
                case VOLTAR:

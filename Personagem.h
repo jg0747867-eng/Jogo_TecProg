@@ -1,11 +1,9 @@
-#pragma once
-
 #ifndef PERSONAGEM_H_
 #define PERSONAGEM_H_
 
 #include "Entidade.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
     namespace Entidades {
         namespace Personagens
         {

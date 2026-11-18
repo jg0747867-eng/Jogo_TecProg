@@ -3,7 +3,7 @@
 int main()
 {
     srand(static_cast<unsigned int>(time(NULL)));
-    IlhaDosPiratas::Jogo jogo;
+    Tripulação_Amaldiçoada::Jogo jogo;
     jogo.executar();
 
     return 0;

@@ -10,7 +10,7 @@
 #include <utility>
 #include "Ente.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 
         class Menu {
         private:

@@ -1,4 +1,4 @@
-#include "ObstMedio.h"
+#include "Teia.h"
 #include "Jogador.h"
 
 
@@ -26,11 +26,11 @@ namespace
 }
 
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 	namespace Entidades {
 		namespace Obstaculos {
 
-			ObstMedio::ObstMedio() : 
+			Teia::Teia() : 
                 Obstaculo(),
                 baseY(0),
                 baseDefinida(false),
@@ -55,11 +55,11 @@ namespace IlhaDosPiratas {
                 }
 			}
 
-            ObstMedio::~ObstMedio()
+            Teia::~Teia()
             {
             }
 
-            void ObstMedio::executar()
+            void Teia::executar()
             {
                if (!baseDefinida)
                {
@@ -70,11 +70,11 @@ namespace IlhaDosPiratas {
                aplicarEmpuxo();
             }
 
-            void ObstMedio::salvar()
+            void Teia::salvar()
             {
             }
 
-            void ObstMedio::obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador)
+            void Teia::obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador)
             {
                 if (pJogador != NULL)
                 {
@@ -82,7 +82,7 @@ namespace IlhaDosPiratas {
                     pJogador->setQuedaLenta(true);
                 }
             }
-            void ObstMedio::aplicarEmpuxo() 
+            void Teia::aplicarEmpuxo() 
             {
                 aplicarGravidade();
 

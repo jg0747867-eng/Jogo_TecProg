@@ -1,16 +1,14 @@
-#pragma once
-
-#ifndef OBST_MEDIO_H_
-#define OBST_MEDIO_H_
+#ifndef TEIA_H_
+#define TEIA_H_
 
 #include "Obstaculo.h"
 
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 	namespace Entidades {
 		namespace Obstaculos {
 
-			class ObstMedio : public Obstaculo
+			class Teia : public Obstaculo
 			{
 			private:
 
@@ -20,13 +18,13 @@ namespace IlhaDosPiratas {
 				int empuxo;
 
 			public:
-				ObstMedio();
-				~ObstMedio();
+				Teia();
+				~Teia();
 
 				void executar();
 				void salvar();
 
-				void obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador);
+				void obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador);
 
 				virtual void aplicarEmpuxo();
 			};

@@ -1,5 +1,5 @@
 #include "Obstaculo.h"
-using namespace IlhaDosPiratas;
+using namespace Tripulação_Amaldiçoada;
 using namespace Entidades;
 using namespace Obstaculos;
 

@@ -9,7 +9,7 @@
 
 #include "GerenciadorGrafico.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
     namespace Fases {
 
         FaseSegunda::FaseSegunda(

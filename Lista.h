@@ -12,7 +12,7 @@
  * e vídeo 8 da playlist Tutorial Jogo SFML.
  */
 
-namespace IlhaDosPiratas
+namespace Tripulação_Amaldiçoada
 {
     namespace Listas
     {

@@ -1,6 +1,6 @@
 #include "Entidade.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
     namespace Entidades {
         Entidade::Entidade() :
             x(0),

@@ -1,13 +1,13 @@
-#include "FasePrimeira.h"
+#include "Mansao.h"
 #include "Lobisomem.h"
 #include "ObstMedio.h"
 #include "Jogador.h"
 #include <iostream>
 #include "GerenciadorGrafico.h"
 
-namespace IlhaDosPiratas{
+namespace Tripulação_Amaldiçoada{
 	namespace Fases {
-		FasePrimeira::FasePrimeira(int quantidadeJogadores, 
+		Mansao::Mansao(int quantidadeJogadores, 
 			Entidades::Personagens::Jogador* pJog1,
 			Entidades::Personagens::Jogador* pJog2):
 			Fase(quantidadeJogadores, pJog1, pJog2),
@@ -17,20 +17,20 @@ namespace IlhaDosPiratas{
 			carregaFundo("assets/cenario1.png");
 			criarCenario();
 		}
-		FasePrimeira::~FasePrimeira() {}
+		Mansao::~Mansao() {}
 
-		void FasePrimeira::criarInimigos()
+		void Mansao::criarInimigos()
 		{
 			criarInimMedio();
 			criarFantasmas();
 		}
-		void FasePrimeira::criarObstaculos()
+		void Mansao::criarObstaculos()
 		{
 			criarObsMedio();
 			criarPlataformas();
 		}
 
-		void FasePrimeira::carregaFundo(const std::string& caminho)
+		void Mansao::carregaFundo(const std::string& caminho)
 		{
 			if (!texturaFundo.loadFromFile(caminho)) {
 				std::cout << "Erro ao carregar fundo: " << caminho << std::endl;
@@ -47,7 +47,7 @@ namespace IlhaDosPiratas{
 				static_cast<float>(tamJanela.y) / tamTextura.y
 			);
 		}
-		void FasePrimeira::criarInimMedio()
+		void Mansao::criarInimMedio()
 		{
 			int quantidade = gerarQuantidadeAleatoria(maxInimMedio);
 
@@ -77,7 +77,7 @@ namespace IlhaDosPiratas{
 			}
 
 		}
-		void FasePrimeira::criarObsMedio()
+		void Mansao::criarObsMedio()
 		{
 			int quantidade = gerarQuantidadeAleatoria(maxObsMedio);
 
@@ -96,8 +96,8 @@ namespace IlhaDosPiratas{
 
 			for (int i = 0; i < quantidade; i++)
 			{
-				Entidades::Obstaculos::ObstMedio* pTeia =
-					new Entidades::Obstaculos::ObstMedio();
+				Entidades::Obstaculos::Teia* pTeia =
+					new Entidades::Obstaculos::Teia();
 
 				pTeia->setPosicao(
 					posicoes[i][0],
@@ -112,7 +112,7 @@ namespace IlhaDosPiratas{
 				}
 			}
 		}
-		bool FasePrimeira::jogadorVivo() const {
+		bool Mansao::jogadorVivo() const {
 			return (pJog1 != NULL && pJog1->estaAtivo()) ||
 				   (pJog2 != NULL && pJog2->estaAtivo());
 		}

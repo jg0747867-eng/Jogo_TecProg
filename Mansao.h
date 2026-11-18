@@ -1,21 +1,19 @@
-#pragma once
-
-#ifndef FASE_PRIMEIRA_H_
-#define FASE_PRIMEIRA_H_
+#ifndef MANSAO_H_
+#define MANSAO_H_
 
 #include "Fase.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulação_Amaldiçoada {
 	namespace Fases {
-		class FasePrimeira : public Fase
+		class Mansao : public Fase
 		{
 		private:
 			const int maxInimMedio;
 			const int maxObsMedio;
 		public:
-			FasePrimeira(int quantidadeJogadores, Entidades::Personagens::Jogador* pJog1,
+			Mansao(int quantidadeJogadores, Entidades::Personagens::Jogador* pJog1,
 					Entidades::Personagens::Jogador* pJog2);
-			~FasePrimeira();
+			~Mansao();
 
 			virtual bool jogadorVivo() const;
 
