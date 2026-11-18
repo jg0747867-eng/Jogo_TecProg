@@ -84,10 +84,10 @@ namespace IlhaDosPiratas {
                 if (pJogador == NULL || !danoso)
                     return;
 
-                if (pJogador->receberDano())
+                if (pJogador->receberDano(1))
                 {
                     for (int i = 1; i < danosidade; i++)
-                        pJogador->receberDano();
+                        pJogador->receberDano(1);
 
                     int sorteio = rand() % 100;
 

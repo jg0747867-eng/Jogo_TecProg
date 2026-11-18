@@ -62,6 +62,7 @@ namespace IlhaDosPiratas
             void Lobisomem::inicializa()
             {
                 vel = sf::Vector2f(VELOCIDADE_LOBISOMEM_X, 0.0f);
+                nivel_maldade = 2;
             }
 
             void Lobisomem::patrulhar()
@@ -85,7 +86,6 @@ namespace IlhaDosPiratas
                     direcaoPatrulha = rand() % 2;
                     relogioPatrulha.restart();
                 }
-                nivel_maldade = 2;
             }
 
             void Lobisomem::pular()

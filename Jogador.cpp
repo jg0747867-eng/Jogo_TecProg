@@ -55,7 +55,7 @@ namespace IlhaDosPiratas {
 
             void Jogador::operator--()
             {
-                receberDano();
+                receberDano(1);
             }
 
 
@@ -115,12 +115,12 @@ namespace IlhaDosPiratas {
             }
 
 
-            bool Jogador::receberDano()
+            bool Jogador::receberDano(int dano)
             {
                 if (invulneravel || !estaAtivo())
                     return false;
 
-                vida--;
+                vida -= dano;
 
                 invulneravel = true;
                 relogioInvulneravel.restart();
