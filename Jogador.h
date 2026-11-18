@@ -61,6 +61,4 @@ namespace IlhaDosPiratas {
     }
 }
 
-
 #endif
-

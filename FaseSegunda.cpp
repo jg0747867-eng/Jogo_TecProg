@@ -2,6 +2,8 @@
 #include "FaseSegunda.h"
 #include "Espinho.h"
 #include "Jogador.h"
+#include "Osso.h"
+#include "Esqueleto.h"
 
 #include <iostream>
 
@@ -16,7 +18,7 @@ namespace IlhaDosPiratas {
             Entidades::Personagens::Jogador* pJog2
         ) :
             Fase(quantidadeJogadores, pJog1, pJog2),
-            maxEspinhos(10)
+            maxEspinhos(10), maxEsqueletos(5)
         {
             carregaFundo("assets/cenario2.png");
             criarCenario();
@@ -29,6 +31,7 @@ namespace IlhaDosPiratas {
         void FaseSegunda::criarInimigos()
         {
             criarFantasmas();
+            criarEsqueletos();
         }
 
         void FaseSegunda::criarObstaculos()
@@ -92,6 +95,44 @@ namespace IlhaDosPiratas {
                     pGC->incluirObstaculo(pEspinho);
                 }
             }
+        }
+
+
+        void FaseSegunda::criarEsqueletos()
+        {
+            int quantidade = gerarQuantidadeAleatoria(maxEsqueletos);
+
+			int posicoes[5][2] = 
+			{
+				{600, 800},
+				{830, 800},
+				{1240, 800},
+				{1600, 800},
+				{1700, 800}
+			};
+
+            for(int i = 0; i < quantidade; i++)
+            {
+                 Entidades::Osso* pOsso = new Entidades::Osso(3);
+                Entidades::Personagens::Inimigo* pEsqueleto =
+                new Entidades::Personagens::Esqueleto(pJog1, pOsso);
+
+                pEsqueleto->setPosicao(
+                posicoes[i][0],
+                posicoes[i][1]
+                );
+
+                listaEnts.incluir(pEsqueleto);
+                listaEnts.incluir(pOsso);
+
+                if(pGC != NULL)
+                {
+                    pGC->incluirInimigo(pEsqueleto);
+                    pGC->incluirProjetil(pOsso);
+                }
+            }
+
+
         }
 
         bool FaseSegunda::jogadorVivo() const

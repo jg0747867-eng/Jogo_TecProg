@@ -1,6 +1,7 @@
 #include "GerenciadorColisoes.h"
 #include "Entidade.h"
 #include "Jogador.h"
+#include "Osso.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
 #include "ObstMedio.h"
@@ -51,10 +52,10 @@ namespace IlhaDosPiratas {
 			}
 		}
 
-		void GerenciadorColisoes::incluirProjetil(Entidades::Projetil* pP) 
+		void GerenciadorColisoes::incluirProjetil(Entidades::Osso* pO) 
 		{
-			if (pP != NULL) {
-				LPs.insert(pP);
+			if (pO != NULL) {
+				LPs.insert(pO);
 			}
 		}
 
@@ -138,7 +139,29 @@ namespace IlhaDosPiratas {
 		}
 		void GerenciadorColisoes::tratarColisoesJogsProjeteis()
 		{
-		
+			for(unsigned int i = 0; i < LJs.size(); i++)
+			{
+				Entidades::Personagens::Jogador* pJogador = LJs[i];
+
+				if(pJogador == NULL)
+				{
+					continue;
+				}
+
+				std::set<Entidades::Osso*>::iterator it; 
+				for(it = LPs.begin(); it != LPs.end(); it++)
+				{
+					Entidades::Osso* pOsso = *it;
+
+					if(pOsso != NULL)
+					{
+						if(verificarColisao(pJogador, pOsso))
+						{
+							pOsso->danificar(pJogador);
+						}
+					}
+				}
+			}
 		}
 
 		void GerenciadorColisoes::tratarColisoesObsDificil()

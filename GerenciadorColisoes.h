@@ -9,7 +9,7 @@
 namespace IlhaDosPiratas {
 	namespace Entidades {
 		class Entidade;
-		class Projetil;
+		class Osso;
 
 		namespace Personagens {
 			class Jogador;
@@ -26,7 +26,7 @@ namespace IlhaDosPiratas {
 			std::vector<Entidades::Personagens::Jogador*> LJs;
 			std::vector<Entidades::Personagens::Inimigo*> LIs;
 			std::list<Entidades::Obstaculos::Obstaculo*> LOs;
-			std::set<Entidades::Projetil*> LPs;
+			std::set<Entidades::Osso*> LPs;
 
 			int limiteChao;
 		private:
@@ -53,7 +53,7 @@ namespace IlhaDosPiratas {
 
 			void incluirInimigo(Entidades::Personagens::Inimigo* pI);
 			void incluirObstaculo(Entidades::Obstaculos::Obstaculo* pO);
-			void incluirProjetil(Entidades::Projetil* pP);
+			void incluirProjetil(Entidades::Osso* pO);
 
 			void executar();
 		};

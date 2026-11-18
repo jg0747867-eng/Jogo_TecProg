@@ -1,6 +1,3 @@
-
-#pragma once
-
 #ifndef FASE_SEGUNDA_H_
 #define FASE_SEGUNDA_H_
 
@@ -13,6 +10,7 @@ namespace IlhaDosPiratas {
         {
         private:
             const int maxEspinhos;
+            const int maxEsqueletos;
 
         public:
             FaseSegunda(int quantidadeJogadores, Entidades::Personagens::Jogador* pJog1,
@@ -28,6 +26,7 @@ namespace IlhaDosPiratas {
             virtual void criarObstaculos();
 
             void criarEspinhos();
+            void criarEsqueletos();
 
             void carregaFundo(const std::string& caminho);
         };
