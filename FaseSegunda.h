@@ -2,7 +2,10 @@
 #define FASE_SEGUNDA_H_
 
 #include "Fase.h"
+<<<<<<< HEAD
 #include "Esqueleto.h"
+=======
+>>>>>>> d6446e812ad68247177bea3f35e6deb0e396db4e
 class Jogador;
 
 namespace Tripulacao_Amaldicoada {

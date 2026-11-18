@@ -1,7 +1,5 @@
-#pragma once
-
-#ifndef OBST_DIFICIL_H_
-#define OBST_DIFICIL_H_
+#ifndef ESPINHO_H_
+#define ESPINHO_H_
 
 #include "Obstaculo.h"
 

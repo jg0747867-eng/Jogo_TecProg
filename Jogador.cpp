@@ -10,7 +10,7 @@ using namespace Personagens;
 namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Personagens {
-            Jogador::Jogador(int id) : 
+            Jogador::Jogador(int id): 
                 Personagem(),   
                 pontos(0),
                 direcao(1),

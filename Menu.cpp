@@ -255,10 +255,12 @@ namespace Tripulacao_Amaldicoada {
 
                case UM_JOGADOR:
                    quantidadeJogadores = 1;
+                   telaAtual = MENU_PRINCIPAL;
                    return INICIAR_PARTIDA;
 
                case DOIS_JOGADORES:
                    quantidadeJogadores = 2;
+                   telaAtual = MENU_PRINCIPAL;
                    return INICIAR_PARTIDA;
 
                case VOLTAR:

@@ -1,7 +1,6 @@
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Ente.h"
-#include "FaseSegunda.h"
 #include <SFML/Graphics.hpp>
 
 namespace Tripulacao_Amaldicoada {

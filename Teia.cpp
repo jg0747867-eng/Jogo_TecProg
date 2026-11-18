@@ -1,4 +1,4 @@
-#include "ObstMedio.h"
+#include "Teia.h"
 #include "Jogador.h"
 
 

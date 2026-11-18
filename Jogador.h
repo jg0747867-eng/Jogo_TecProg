@@ -1,12 +1,16 @@
 #ifndef JOGADOR_H_
 #define JOGADOR_H_
-
 #include "Personagem.h"
+<<<<<<< HEAD
+
+namespace Tripulação_Maldita {
+=======
 namespace Tripulacao_Amaldicoada {
+>>>>>>> 7e8a7ccc0569bbc748f8abe4905f490c18f86386
     namespace Entidades {
         namespace Personagens{
 
-            class Jogador : public Personagem
+            class Jogador: public Personagem
             {
             protected:
                 int pontos;
@@ -61,4 +65,6 @@ namespace Tripulacao_Amaldicoada {
     }
 }
 
+
 #endif
+
