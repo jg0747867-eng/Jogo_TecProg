@@ -5,7 +5,7 @@
 #define JOGO_H_
 
 #include "GerenciadorGrafico.h"
-#include "FasePrimeira.h"
+#include "Mansao.h"
 #include "FaseSegunda.h"
 #include "Menu.h"
 

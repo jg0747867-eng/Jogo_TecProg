@@ -1,4 +1,3 @@
-
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Ente.h"

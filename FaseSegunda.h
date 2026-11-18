@@ -2,6 +2,8 @@
 #define FASE_SEGUNDA_H_
 
 #include "Fase.h"
+#include "Esqueleto.h"
+class Jogador;
 
 namespace Tripulacao_Amaldicoada {
     namespace Fases {
@@ -27,7 +29,7 @@ namespace Tripulacao_Amaldicoada {
 
             void criarEspinhos();
             void criarEsqueletos();
-
+            void criarProjeteis(Entidades::Personagens::Esqueleto* pEsqueleto);
             void carregaFundo(const std::string& caminho);
         };
     }

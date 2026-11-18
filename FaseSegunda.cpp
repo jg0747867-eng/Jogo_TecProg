@@ -1,9 +1,7 @@
-
+#include "Jogador.h"
 #include "FaseSegunda.h"
 #include "Espinho.h"
-#include "Jogador.h"
 #include "Osso.h"
-#include "Esqueleto.h"
 
 #include <iostream>
 
@@ -20,7 +18,7 @@ namespace Tripulacao_Amaldicoada {
             Fase(quantidadeJogadores, pJog1, pJog2),
             maxEspinhos(10), maxEsqueletos(5)
         {
-            carregaFundo("assets/cenario2.png");
+            carregaFundo("/home/carlos/FODASE/Jogo_TecProg/assets/cenario2.jpeg");
             criarCenario();
         }
 
@@ -98,6 +96,25 @@ namespace Tripulacao_Amaldicoada {
         }
 
 
+        void FaseSegunda::criarProjeteis(Entidades::Personagens::Esqueleto* pEsqueleto)
+        {
+            if (pEsqueleto == NULL)
+            {
+                return;
+            }
+
+            Entidades::Osso* pOsso = new Entidades::Osso(3);
+
+            pEsqueleto->setOsso(pOsso);
+            listaEnts.incluir(pOsso);
+
+            if(pGC != NULL)
+            {
+                pGC->incluirProjetil(pOsso);
+            }
+
+        }
+
         void FaseSegunda::criarEsqueletos()
         {
             int quantidade = gerarQuantidadeAleatoria(maxEsqueletos);
@@ -113,9 +130,8 @@ namespace Tripulacao_Amaldicoada {
 
             for(int i = 0; i < quantidade; i++)
             {
-                 Entidades::Osso* pOsso = new Entidades::Osso(3);
-                Entidades::Personagens::Inimigo* pEsqueleto =
-                new Entidades::Personagens::Esqueleto(pJog1, pOsso);
+                Entidades::Personagens::Esqueleto* pEsqueleto =
+                new Entidades::Personagens::Esqueleto(pJog1);
 
                 pEsqueleto->setPosicao(
                 posicoes[i][0],
@@ -123,16 +139,14 @@ namespace Tripulacao_Amaldicoada {
                 );
 
                 listaEnts.incluir(pEsqueleto);
-                listaEnts.incluir(pOsso);
 
                 if(pGC != NULL)
                 {
                     pGC->incluirInimigo(pEsqueleto);
-                    pGC->incluirProjetil(pOsso);
                 }
+
+                criarProjeteis(pEsqueleto);
             }
-
-
         }
 
         bool FaseSegunda::jogadorVivo() const
