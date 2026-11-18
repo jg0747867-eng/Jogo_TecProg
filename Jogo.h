@@ -6,6 +6,7 @@
 
 #include "GerenciadorGrafico.h"
 #include "FasePrimeira.h"
+#include "FaseSegunda.h"
 #include "Menu.h"
 
 namespace IlhaDosPiratas {
@@ -16,7 +17,7 @@ namespace IlhaDosPiratas {
         Entidades::Personagens::Jogador* pJog1;
         Entidades::Personagens::Jogador* pJog2;
         Fases::FasePrimeira* pFase1;
-        //Fases::FaseSegunda* pFase2;
+        Fases::FaseSegunda* pFase2;
         Menu* pMenu;
 
         bool jogando;

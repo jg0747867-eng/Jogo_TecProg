@@ -17,7 +17,9 @@ namespace IlhaDosPiratas {
                 id(id),
                 vida(10),
                 lento(false),
-                invulneravel(false)
+                invulneravel(false),
+                envenenado(false),
+                vermelho(false)
             {
                 inicializa();
                 if (id == 1) 
@@ -53,18 +55,7 @@ namespace IlhaDosPiratas {
 
             void Jogador::operator--()
             {
-                if(invulneravel)
-                {
-                    return;
-                }
-
-                vida--;
-                invulneravel = true;
-                relogioInvulneravel.restart();
-                if (vida <= 0)
-                {
-                    desativar();
-                }
+                receberDano();
             }
 
 
@@ -97,17 +88,24 @@ namespace IlhaDosPiratas {
 
             void Jogador::executar()
             {
-                if(!estaAtivo())
-                {
+                if (!estaAtivo())
                     return;
-                }
 
-                if(invulneravel && relogioInvulneravel.getElapsedTime().asSeconds() >= TEMPO_INVULNERAVEL)
+                if (invulneravel &&
+                    relogioInvulneravel.getElapsedTime().asSeconds() >= TEMPO_INVULNERAVEL)
                 {
                     invulneravel = false;
                 }
+    
+                if (vermelho && relogioVermelho.getElapsedTime().asSeconds() >= 0.2f)
+                {
+                    vermelho = false;
+                    body.setFillColor(sf::Color::White);
+                }
+
                 mover();
                 aplicarGravidade();
+                atualizarVeneno();
             }
 
 
@@ -115,8 +113,69 @@ namespace IlhaDosPiratas {
             {
 
             }
+
+
+            bool Jogador::receberDano()
+            {
+                if (invulneravel || !estaAtivo())
+                    return false;
+
+                vida--;
+
+                invulneravel = true;
+                relogioInvulneravel.restart();
+
+               
+                vermelho = true;
+                relogioVermelho.restart();
+                body.setFillColor(sf::Color::Red);
+
+                if (vida <= 0)
+                    desativar();
+
+                return true;
+            }
+
+            void Jogador::aplicarVeneno()
+            {
+                if (!envenenado && estaAtivo())
+                {
+                    envenenado = true;
+                    relogioVeneno.restart();
+                    relogioDanoVeneno.restart();
+                }
+            }
+
+            void Jogador::atualizarVeneno()
+            {
+                if (!envenenado || !estaAtivo())
+                    return;
+
+                if (relogioDanoVeneno.getElapsedTime().asSeconds() >= 1.0f)
+                {
+                    vida--;
+
+                    vermelho = true;
+                    relogioVermelho.restart();
+                    body.setFillColor(sf::Color::Red);
+
+                    relogioDanoVeneno.restart();
+
+                    if (vida <= 0)
+                    {
+                        desativar();
+                        envenenado = false;
+                        return;
+                    }
+                }
+
+                if (relogioVeneno.getElapsedTime().asSeconds() >= 5.0f)
+                {
+                    envenenado = false;
+                }
+            }
+
         }
     }
 }
-
 

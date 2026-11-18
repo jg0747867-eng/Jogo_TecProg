@@ -51,7 +51,7 @@
     <ClCompile Include="Plataforma.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="ObstDificil.cpp">
+    <ClCompile Include="Espinho.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="ObstMedio.cpp">
@@ -131,7 +131,7 @@
     <ClInclude Include="Menu.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="ObstDificil.h">
+    <ClInclude Include="Espinho.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="ObstMedio.h">

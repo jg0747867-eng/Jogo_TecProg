@@ -15,7 +15,7 @@ namespace IlhaDosPiratas {
 				danoso = false;
 
 				body.setSize(sf::Vector2f(1200.0f, 30.f));
-				body.setFillColor(sf::Color::Black);
+				body.setFillColor(sf::Color::White);
 
 				/*if (!carregarTextura("assets/"))
 				{

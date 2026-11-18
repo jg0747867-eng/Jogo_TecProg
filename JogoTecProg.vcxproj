@@ -164,7 +164,7 @@
     <ClCompile Include="Lobisomem.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
-    <ClCompile Include="ObstDificil.cpp" />
+    <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="ObstMedio.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
@@ -188,7 +188,7 @@
     <ClInclude Include="Lobisomem.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Obstaculo.h" />
-    <ClInclude Include="ObstDificil.h" />
+    <ClInclude Include="Espinho.h" />
     <ClInclude Include="ObstMedio.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />

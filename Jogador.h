@@ -23,6 +23,13 @@ namespace IlhaDosPiratas {
                 sf::Keyboard::Key teclaDir; 
                 sf::Keyboard::Key teclaPulo; 
 
+                bool envenenado;
+                sf::Clock relogioVeneno;
+                sf::Clock relogioDanoVeneno;
+
+                sf::Clock relogioVermelho;
+                bool vermelho;
+
             public:
                 Jogador(int id);
 
@@ -45,7 +52,9 @@ namespace IlhaDosPiratas {
                 
                 void setLento(bool estado) { lento = estado; }
 
-
+                bool receberDano();
+                void aplicarVeneno();
+                void atualizarVeneno();
 
             };
         }

@@ -2,6 +2,7 @@
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Ente.h"
+#include "FaseSegunda.h"
 #include <SFML/Graphics.hpp>
 
 namespace IlhaDosPiratas {
@@ -12,7 +13,7 @@ namespace IlhaDosPiratas {
         pJog1(NULL),
         pJog2(NULL),
         pFase1(nullptr),
-        //pFase2(nullptr),
+        pFase2(nullptr),
         jogando(false),
         faseSelecionada(0),
         quantidadeJogadores(1)
@@ -50,14 +51,14 @@ namespace IlhaDosPiratas {
                 pFase1 = new Fases::FasePrimeira(quantidadeJogadores, pJog1, pJog2);
             }
         }
-        /*else if(faseSelecionada == 2)
+        else if(faseSelecionada == 2)
         {
             if(pFase2 == NULL)
             {
-                 //pFase2 = new Fases::faseSegunda(quantidadeJogadores, pJog1, pJog2);
+                pFase2 = new Fases::FaseSegunda(quantidadeJogadores, pJog1, pJog2);
             }
            
-        }*/
+        }
 
         jogando = true;
     }
@@ -81,8 +82,7 @@ namespace IlhaDosPiratas {
 
                 if (!jogando) {
 
-                    Menu::Resultado resultado =
-                        pMenu->tratarEventos(evento, janela);
+                    Menu::Resultado resultado = pMenu->tratarEventos(evento, janela);
 
                     if (resultado == Menu::INICIAR_PARTIDA) {
 
@@ -118,8 +118,8 @@ namespace IlhaDosPiratas {
                         terminarPartida();
                     }
                 }
-                else if (faseSelecionada == 2/* && pFase2 != nullptr*/) {
-                   // pFase2->executar();
+                else if (faseSelecionada == 2 && pFase2 != nullptr) {
+                   pFase2->executar();
                 }
             }
             else {
@@ -135,8 +135,8 @@ namespace IlhaDosPiratas {
         delete pFase1;
         pFase1 = NULL;
 
-        //delete pFase2;
-        //pFase2 = NULL;
+        delete pFase2;
+        pFase2 = NULL;
 
         delete pJog1;
         pJog1 = NULL;
