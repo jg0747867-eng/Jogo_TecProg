@@ -85,6 +85,7 @@ namespace IlhaDosPiratas
                     direcaoPatrulha = rand() % 2;
                     relogioPatrulha.restart();
                 }
+                nivel_maldade = 2;
             }
 
             void Lobisomem::pular()
@@ -138,7 +139,10 @@ namespace IlhaDosPiratas
 
             void Lobisomem::danificar(Jogador* pJogador)
             {
-
+                if(pJogador && pJogador->getVida() > 0)
+                {
+                    pJogador->receberDano(nivel_maldade * 2);
+                }
             }
         }
     }
