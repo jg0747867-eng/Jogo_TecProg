@@ -2,7 +2,7 @@
 
 int main()
 {
-    Tripulação_Amaldiçoada::Jogo jogo;
+    Tripulacao_Amaldicoada::Jogo jogo;
     jogo.executar();
 
     return 0;

@@ -4,7 +4,7 @@
 #include "Obstaculo.h"
 
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Obstaculos {
 
@@ -24,7 +24,7 @@ namespace Tripulação_Amaldiçoada {
 				void executar();
 				void salvar();
 
-				void obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador);
+				void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador);
 
 				virtual void aplicarEmpuxo();
 			};

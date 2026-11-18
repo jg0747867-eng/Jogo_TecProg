@@ -6,7 +6,7 @@
 #include "GerenciadorGrafico.h"
 #include <iostream>
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Fases {
 		Fase::Fase(int quantidadeJogadores,
 				Entidades::Personagens::Jogador* pJog1,

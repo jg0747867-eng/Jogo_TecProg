@@ -6,7 +6,7 @@
 #include "Jogador.h"
 #include "GerenciadorGrafico.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 
 	class Jogo
 	{

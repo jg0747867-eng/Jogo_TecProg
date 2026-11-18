@@ -4,7 +4,7 @@
 #include "Ente.h"
 #include <SFML/Graphics.hpp>
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 
     Jogo::Jogo() :
         pGG(new Gerenciadores::GerenciadorGrafico()),

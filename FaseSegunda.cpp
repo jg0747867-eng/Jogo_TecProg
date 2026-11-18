@@ -1,7 +1,6 @@
-
+#include "Jogador.h"
 #include "FaseSegunda.h"
 #include "Espinho.h"
-#include "Jogador.h"
 #include "Osso.h"
 #include "Esqueleto.h"
 
@@ -9,7 +8,7 @@
 
 #include "GerenciadorGrafico.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Fases {
 
         FaseSegunda::FaseSegunda(

@@ -6,7 +6,7 @@
 #include "FaseSegunda.h"
 #include "Menu.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 
     class Jogo {
     private:

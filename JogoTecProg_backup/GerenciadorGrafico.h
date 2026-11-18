@@ -4,7 +4,7 @@
 #define GERENCIADOR_GRAFICO_H_
 #include <SFML/Graphics.hpp>
 
-namespace Tripulação_Amaldiçoada
+namespace Tripulacao_Amaldicoada
 {
 	class Ente;
 

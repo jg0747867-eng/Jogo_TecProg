@@ -3,11 +3,11 @@
 
 #define TEMPO_INVULNERAVEL 1.5f
 
-using namespace Tripulação_Amaldiçoada;
+using namespace Tripulacao_Amaldicoada;
 using namespace Entidades;
 using namespace Personagens;
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Personagens {
             Jogador::Jogador(int id): 

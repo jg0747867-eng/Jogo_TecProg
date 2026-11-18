@@ -1,11 +1,9 @@
-#pragma once
-
-#ifndef OBST_DIFICIL_H_
-#define OBST_DIFICIL_H_
+#ifndef ESPINHO_H_
+#define ESPINHO_H_
 
 #include "Obstaculo.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Obstaculos {
 
@@ -28,7 +26,7 @@ namespace Tripulação_Amaldiçoada {
                 void salvar();
                 void executar();
 
-                void obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador);
+                void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador);
 
                 virtual void aplicarEmpuxo();
             };

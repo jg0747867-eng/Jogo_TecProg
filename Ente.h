@@ -4,7 +4,7 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Gerenciadores {
         class GerenciadorGrafico;
     }

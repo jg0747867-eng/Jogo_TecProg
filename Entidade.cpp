@@ -1,6 +1,6 @@
 #include "Entidade.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         Entidade::Entidade() :
             x(0),

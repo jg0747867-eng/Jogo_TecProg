@@ -2,8 +2,9 @@
 #define FASE_SEGUNDA_H_
 
 #include "Fase.h"
+class Jogador;
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Fases {
 
         class FaseSegunda : public Fase

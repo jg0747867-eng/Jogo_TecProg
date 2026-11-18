@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Gerenciadores {
 		GerenciadorColisoes::GerenciadorColisoes(): limiteChao(0) {}
 		GerenciadorColisoes::~GerenciadorColisoes() 

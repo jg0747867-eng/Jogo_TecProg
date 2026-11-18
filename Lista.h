@@ -12,7 +12,7 @@
  * e vídeo 8 da playlist Tutorial Jogo SFML.
  */
 
-namespace Tripulação_Amaldiçoada
+namespace Tripulacao_Amaldicoada
 {
     namespace Listas
     {

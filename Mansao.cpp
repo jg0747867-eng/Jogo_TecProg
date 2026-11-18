@@ -5,7 +5,7 @@
 #include <iostream>
 #include "GerenciadorGrafico.h"
 
-namespace Tripulação_Amaldiçoada{
+namespace Tripulacao_Amaldicoada{
 	namespace Fases {
 		Mansao::Mansao(int quantidadeJogadores, 
 			Entidades::Personagens::Jogador* pJog1,

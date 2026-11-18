@@ -1,6 +1,6 @@
 #include "Ente.h"
 #include "GerenciadorGrafico.h"
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 
     Gerenciadores::GerenciadorGrafico* Ente::pGG = NULL;
 

@@ -6,7 +6,7 @@
 #include <set>
 
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		class Entidade;
 		class Osso;

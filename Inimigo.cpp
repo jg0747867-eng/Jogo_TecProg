@@ -1,6 +1,6 @@
 #include "Inimigo.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Personagens {
 

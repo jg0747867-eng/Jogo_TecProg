@@ -4,7 +4,7 @@
 #include "Inimigo.h"
 
 
-namespace Tripulação_Amaldiçoada
+namespace Tripulacao_Amaldicoada
 {
     namespace Entidades
     {
@@ -13,7 +13,7 @@ namespace Tripulação_Amaldiçoada
             class Lobisomem : public Inimigo
             {
                 private:
-                    Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* jogador;
+                    Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* jogador;
                     sf::Clock relogioPatrulha;
                     sf::Clock relogioPulo;
                     float intervaloPulo;

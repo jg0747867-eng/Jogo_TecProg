@@ -5,7 +5,7 @@
 
 #include "Obstaculo.h"
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Personagens {
 			class Jogador;
@@ -24,7 +24,7 @@ namespace Tripulação_Amaldiçoada {
 				~Plataforma();
 
 				void executar();
-				void obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador);
+				void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador);
 
 				virtual void seguraPlat();
 

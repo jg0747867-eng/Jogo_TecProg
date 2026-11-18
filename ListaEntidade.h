@@ -16,7 +16,7 @@
 
 
 
-namespace Tripulação_Amaldiçoada
+namespace Tripulacao_Amaldicoada
 {
     namespace Listas
     {

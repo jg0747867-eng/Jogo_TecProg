@@ -29,7 +29,7 @@ namespace
     }
 }
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Obstaculos {
 
@@ -79,7 +79,7 @@ namespace Tripulação_Amaldiçoada {
             {
             }
 
-            void Espinho::obstaculizar(Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* pJogador)
+            void Espinho::obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador)
             {
                 if (pJogador == NULL || !danoso)
                     return;

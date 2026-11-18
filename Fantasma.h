@@ -10,14 +10,14 @@
 
 class Jogador;
 
-namespace Tripulação_Amaldiçoada {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Personagens
         {
             class Fantasma : public Inimigo
             {
                 private:
-                    Tripulação_Amaldiçoada::Entidades::Personagens::Jogador* jogador;
+                    Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* jogador;
                     sf::Clock relogio;
                     short moveAleatorio;
                     void inicializa();
