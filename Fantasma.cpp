@@ -4,11 +4,11 @@
 #define VELOCIDADE_INIMIGOFACIL_X 1.0f
 #define VELOCIDADE_INIMIGOFACIL_Y 1.0f
 
-using namespace IlhaDosPiratas;
+using namespace Tripulacao_Amaldicoada;
 using namespace Entidades;
 using namespace Personagens;
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Personagens {
 

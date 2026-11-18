@@ -1,6 +1,6 @@
 #include "Mansao.h"
 #include "Lobisomem.h"
-#include "ObstMedio.h"
+#include "Teia.h"
 #include "Jogador.h"
 #include <iostream>
 #include "GerenciadorGrafico.h"
