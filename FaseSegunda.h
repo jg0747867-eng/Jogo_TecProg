@@ -3,7 +3,7 @@
 
 #include "Fase.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Fases {
 
         class FaseSegunda : public Fase

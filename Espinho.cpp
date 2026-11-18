@@ -29,7 +29,7 @@ namespace
     }
 }
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Obstaculos {
 
@@ -79,7 +79,7 @@ namespace IlhaDosPiratas {
             {
             }
 
-            void Espinho::obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador)
+            void Espinho::obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador)
             {
                 if (pJogador == NULL || !danoso)
                     return;

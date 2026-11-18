@@ -1,7 +1,7 @@
 #include "Plataforma.h"
 #include "Jogador.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Obstaculos {
 			namespace Personagens {
@@ -62,7 +62,7 @@ namespace IlhaDosPiratas {
 				zerarVelocidadeY();
 				setNoChao(true);
 			}
-			void Plataforma::obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador)
+			void Plataforma::obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador)
 			{
 				if (pJogador == NULL)
 				{

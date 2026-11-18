@@ -16,7 +16,7 @@
 
 
 
-namespace IlhaDosPiratas
+namespace Tripulacao_Amaldicoada
 {
     namespace Listas
     {

@@ -6,7 +6,7 @@
 #define GRAVIDADE 0.45f
 #define PI 3.14159265f
 
-namespace IlhaDosPiratas
+namespace Tripulacao_Amaldicoada
 {
     namespace Entidades
     {

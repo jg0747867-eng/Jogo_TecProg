@@ -4,7 +4,7 @@
 #include "Inimigo.h"
 
 
-namespace IlhaDosPiratas
+namespace Tripulacao_Amaldicoada
 {
     namespace Entidades
     {
@@ -17,7 +17,7 @@ namespace IlhaDosPiratas
             class Esqueleto: public Inimigo
             {
                 private:
-                    IlhaDosPiratas::Entidades::Personagens::Jogador* jogador;
+                    Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* jogador;
                     Osso* pOsso;
                     sf::Clock lancarProjetil;
                     sf::Clock relogioPulo;

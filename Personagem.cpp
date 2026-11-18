@@ -1,5 +1,5 @@
 #include "Personagem.h"
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Personagens {
             Personagem::Personagem() : Entidade(), num_vidas(1)

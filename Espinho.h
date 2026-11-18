@@ -5,7 +5,7 @@
 
 #include "Obstaculo.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Obstaculos {
 
@@ -28,7 +28,7 @@ namespace IlhaDosPiratas {
                 void salvar();
                 void executar();
 
-                void obstaculizar(IlhaDosPiratas::Entidades::Personagens::Jogador* pJogador);
+                void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador);
 
                 virtual void aplicarEmpuxo();
             };

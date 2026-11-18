@@ -6,7 +6,7 @@
 #include "Jogador.h"
 #include "GerenciadorGrafico.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
 
 	class Jogo
 	{

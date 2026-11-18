@@ -3,7 +3,7 @@
 
 #include "Ente.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades
     {
         class Entidade : public Ente

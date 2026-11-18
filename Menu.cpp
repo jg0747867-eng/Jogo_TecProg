@@ -6,7 +6,7 @@
 #include <string>
 #include "Ente.h"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
         Menu::Menu() :
             telaAtual(MENU_PRINCIPAL),
             faseSelecionada(1),

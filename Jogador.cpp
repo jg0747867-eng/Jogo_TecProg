@@ -3,11 +3,11 @@
 
 #define TEMPO_INVULNERAVEL 1.5f
 
-using namespace IlhaDosPiratas;
+using namespace Tripulacao_Amaldicoada;
 using namespace Entidades;
 using namespace Personagens;
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Entidades {
         namespace Personagens {
             Jogador::Jogador(int id) : 

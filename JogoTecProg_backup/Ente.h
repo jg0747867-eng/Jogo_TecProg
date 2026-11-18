@@ -6,7 +6,7 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 
-namespace IlhaDosPiratas {
+namespace Tripulacao_Amaldicoada {
     namespace Gerenciadores {
         class GerenciadorGrafico;
     }
