@@ -11,9 +11,8 @@ namespace Tripulacao_Amaldicoada
         namespace Personagens
         {
             Esqueleto::Esqueleto(Jogador* pJogador, Osso* pO): Inimigo(), jogador(pJogador),
-                    relogioPulo(), lancarProjetil(), 
-                    intervaloPulo(2.0f), pulando(false),
-                    pOsso(pO)
+                    pOsso(pO), lancarProjetil(), relogioPulo(), 
+                    intervaloPulo(2.0f), pulando(false)
             {
                 body.setFillColor(sf::Color::Yellow);
                 inicializa();

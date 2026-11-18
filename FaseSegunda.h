@@ -28,7 +28,7 @@ namespace Tripulacao_Amaldicoada {
 
             void criarEspinhos();
             void criarEsqueletos();
-
+            void criarProjeteis(Entidades::Personagens::Esqueleto* pEsqueleto);
             void carregaFundo(const std::string& caminho);
         };
     }

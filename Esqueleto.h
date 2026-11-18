@@ -31,6 +31,7 @@ namespace Tripulacao_Amaldicoada
                     ~Esqueleto();
                     bool ehVoador() const {return false;}
 
+                    void setOsso(Osso* pO) {pOsso = pO;}
                     void danificar(Jogador* pJogador);
                     void salvar();
                     void executar();

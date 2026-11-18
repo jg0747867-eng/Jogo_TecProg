@@ -97,6 +97,25 @@ namespace Tripulacao_Amaldicoada {
         }
 
 
+        void FaseSegunda::criarProjeteis(Entidades::Personagens::Esqueleto* pEsqueleto)
+        {
+            if (pEsqueleto == NULL)
+            {
+                return;
+            }
+
+            Entidades::Osso* pOsso = new Entidades::Osso(3);
+
+            pEsqueleto->setOsso(pOsso);
+            listaEnts.incluir(pOsso);
+
+            if(pGC != NULL)
+            {
+                pGC->incluirProjetil(pOsso);
+            }
+
+        }
+
         void FaseSegunda::criarEsqueletos()
         {
             int quantidade = gerarQuantidadeAleatoria(maxEsqueletos);
@@ -112,9 +131,8 @@ namespace Tripulacao_Amaldicoada {
 
             for(int i = 0; i < quantidade; i++)
             {
-                 Entidades::Osso* pOsso = new Entidades::Osso(3);
-                Entidades::Personagens::Inimigo* pEsqueleto =
-                new Entidades::Personagens::Esqueleto(pJog1, pOsso);
+                Entidades::Personagens::Esqueleto* pEsqueleto =
+                new Entidades::Personagens::Esqueleto(pJog1);
 
                 pEsqueleto->setPosicao(
                 posicoes[i][0],
@@ -122,16 +140,14 @@ namespace Tripulacao_Amaldicoada {
                 );
 
                 listaEnts.incluir(pEsqueleto);
-                listaEnts.incluir(pOsso);
 
                 if(pGC != NULL)
                 {
                     pGC->incluirInimigo(pEsqueleto);
-                    pGC->incluirProjetil(pOsso);
                 }
+
+                criarProjeteis(pEsqueleto);
             }
-
-
         }
 
         bool FaseSegunda::jogadorVivo() const
