@@ -171,7 +171,7 @@ namespace Tripulacao_Amaldicoada {
 
                 adicionarBotao(
                     "VOLTAR",
-                    VOLTAR,
+                    VOLTAR_MENU,
                     centroX - 180.f,
                     centroY + 180.f
                 );
