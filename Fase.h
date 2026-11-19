@@ -41,6 +41,9 @@ namespace Tripulacao_Amaldicoada {
 				virtual void executar();
 				virtual bool jogadorVivo() const = 0;
 				bool acabou() const;
+				void concluirFase();
+				bool todosInimigosMorreram() const;
+
 			protected:
 				void criarFantasmas();
 				void criarPlataformas();
@@ -51,6 +54,7 @@ namespace Tripulacao_Amaldicoada {
 				int quantidadeJogadores;
 				virtual void criarInimigos() = 0;
 				virtual void criarObstaculos() = 0;
+				int contarInimigosVivos() const;
 
 				int gerarQuantidadeAleatoria(const int maximo) const;
 			};

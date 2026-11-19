@@ -176,6 +176,71 @@ namespace Tripulacao_Amaldicoada {
                     centroY + 180.f
                 );
             }
+            else if (telaAtual == MENU_PAUSA) {
+
+                titulo.setString("JOGO PAUSADO");
+
+                adicionarBotao(
+                    "CONTINUAR",
+                    CONTINUAR,
+                    centroX - 180.f,
+                    centroY - 80.f
+                );
+
+                adicionarBotao(
+                    "REINICIAR",
+                    REINICIAR,
+                    centroX - 180.f,
+                    centroY - 10.f
+                );
+
+                adicionarBotao(
+                    "MENU PRINCIPAL",
+                    VOLTAR_MENU,
+                    centroX - 180.f,
+                    centroY + 60.f
+                );
+
+                adicionarBotao(
+                    "SAIR",
+                    SAIR,
+                    centroX - 180.f,
+                    centroY + 130.f
+                );
+            }
+            else if (telaAtual == MENU_PAUSA) 
+{
+
+            titulo.setString("JOGO PAUSADO");
+
+            adicionarBotao(
+                "CONTINUAR",
+                CONTINUAR,
+                centroX - 180.f,
+                centroY - 80.f
+            );
+
+            adicionarBotao(
+                "REINICIAR",
+                REINICIAR,
+                centroX - 180.f,
+                centroY - 10.f
+            );
+
+            adicionarBotao(
+                "MENU PRINCIPAL",
+                VOLTAR_MENU,
+                centroX - 180.f,
+                centroY + 60.f
+            );
+
+            adicionarBotao(
+                "SAIR",
+                SAIR,
+                centroX - 180.f,
+                centroY + 130.f
+            );
+}
 
             sf::FloatRect limites = titulo.getLocalBounds();
 
@@ -234,6 +299,10 @@ namespace Tripulacao_Amaldicoada {
                    break;
 
                case CONTINUAR:
+
+                   if (telaAtual == MENU_PAUSA)
+                       return RETOMAR_PARTIDA;
+
                    return CONTINUAR_PARTIDA;
 
                case RANK:
@@ -263,7 +332,13 @@ namespace Tripulacao_Amaldicoada {
                    telaAtual = MENU_PRINCIPAL;
                    return INICIAR_PARTIDA;
 
-               case VOLTAR:
+               case REINICIAR:
+                   return REINICIAR_FASE;
+
+               case VOLTAR_MENU:
+
+                   if (telaAtual == MENU_PAUSA)
+                       return VOLTAR_MENU_PRINCIPAL;
 
                    if (telaAtual == SELECIONAR_FASE)
                        telaAtual = MENU_PRINCIPAL;
@@ -276,6 +351,7 @@ namespace Tripulacao_Amaldicoada {
 
                    break;
                }
+
 
                return NENHUM;
            }
@@ -339,5 +415,39 @@ namespace Tripulacao_Amaldicoada {
            );
 
            janela.draw(texto);
+       }
+
+       void Menu::abrirPausa()
+       {
+           telaAtual = MENU_PAUSA;
+       }
+
+       void Menu::abrirMenuPrincipal()
+       {
+           telaAtual = MENU_PRINCIPAL;
+       }
+
+       void Menu::desenharPausa(sf::RenderWindow& janela)
+       {
+           criarBotoes(janela);
+
+           sf::RectangleShape escurecimento;
+
+           escurecimento.setSize(sf::Vector2f(
+               (float)janela.getSize().x,
+               (float)janela.getSize().y
+           ));
+
+           escurecimento.setFillColor(
+               sf::Color(0, 0, 0, 170)
+           );
+
+           janela.draw(escurecimento);
+           janela.draw(titulo);
+
+           for (unsigned int i = 0; i < botoes.size(); i++) {
+               janela.draw(botoes[i].forma);
+               janela.draw(botoes[i].texto);
+           }
        }
 }

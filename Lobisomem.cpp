@@ -33,10 +33,16 @@ namespace Tripulacao_Amaldicoada
     {
         namespace Personagens
         {
-            Lobisomem::Lobisomem(Jogador* pJogador): Inimigo(), jogador(pJogador), 
-                    relogioPatrulha(), direcaoPatrulha(rand()%2),
-                    relogioPulo(), intervaloPulo(2.0f)
+            Lobisomem::Lobisomem(Jogador* pJogador): 
+                Inimigo(), 
+                jogador(pJogador), 
+                relogioPatrulha(), 
+                direcaoPatrulha(rand()%2),
+                relogioPulo(), 
+                intervaloPulo(2.0f)
             {
+                num_vidas = 2;
+
                 body.setFillColor(sf::Color::White);
                 inicializa();
 
@@ -141,7 +147,7 @@ namespace Tripulacao_Amaldicoada
             {
                 if(pJogador && pJogador->getVida() > 0)
                 {
-                    pJogador->receberDano(nivel_maldade * 2);
+                    pJogador->receberDano(nivel_maldade * 1);
                 }
             }
         }

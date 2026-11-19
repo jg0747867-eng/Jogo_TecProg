@@ -16,9 +16,9 @@ namespace Tripulacao_Amaldicoada {
             Entidades::Personagens::Jogador* pJog2
         ) :
             Fase(quantidadeJogadores, pJog1, pJog2),
-            maxEspinhos(10), maxEsqueletos(5)
+            maxEspinhos(5), maxEsqueletos(5)
         {
-            carregaFundo("/home/carlos/FODASE/Jogo_TecProg/assets/cenario2.jpeg");
+            carregaFundo("assets/cenario2.jpeg");
             criarCenario();
         }
 
@@ -62,18 +62,14 @@ namespace Tripulacao_Amaldicoada {
         {
             int quantidade = gerarQuantidadeAleatoria(maxEspinhos);
 
-            int posicoes[10][2] =
+            int posicoes[5][2] =
             {
-                {300, 840},
-                {650, 600},
-                {1000, 750},
-                {1450, 610},
-                {450, 450},
-                {900, 810},
-                {1300, 450},
-                {1650, 450},
-                {200, 300},
-                {1100, 550}
+                {310, 740},
+                {650, 920},
+                {1000, 490},
+                {1390, 660},
+                {650, 630}
+             
             };
 
             for (int i = 0; i < quantidade; i++)
@@ -146,6 +142,7 @@ namespace Tripulacao_Amaldicoada {
                 }
 
                 criarProjeteis(pEsqueleto);
+                inimigosVivos++;
             }
         }
 

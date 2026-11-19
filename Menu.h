@@ -10,6 +10,17 @@
 #include <utility>
 #include "Ente.h"
 
+/*
+ * Ressalto novamente meu agradecimento aos colegas do PETECO,
+ * Raphael Geraldine e Marco Vendramin, e também ao Burda,
+ * visto que nossa implementação foi baseada na deles.
+ *
+ * Vide:
+ * https://github.com/Raphael-Geraldine/O-Equilibrio-da-Forca/blob/master/include/Lista.h
+ * e vídeo 8 da playlist Tutorial Jogo SFML.
+ */
+
+
 namespace Tripulacao_Amaldicoada {
 
         class Menu {
@@ -19,7 +30,8 @@ namespace Tripulacao_Amaldicoada {
                 MENU_PRINCIPAL,
                 SELECIONAR_FASE,
                 SELECIONAR_JOGADORES,
-                TELA_RANKING
+                TELA_RANKING,
+                MENU_PAUSA
             };
 
             enum Acao {
@@ -31,7 +43,9 @@ namespace Tripulacao_Amaldicoada {
                 FASE_2,
                 UM_JOGADOR,
                 DOIS_JOGADORES,
-                VOLTAR
+                VOLTAR,
+                REINICIAR,
+                VOLTAR_MENU
             };
 
             struct Botao {
@@ -69,6 +83,9 @@ namespace Tripulacao_Amaldicoada {
                 NENHUM,
                 INICIAR_PARTIDA,
                 CONTINUAR_PARTIDA,
+                RETOMAR_PARTIDA,
+                REINICIAR_FASE,
+                VOLTAR_MENU_PRINCIPAL,
                 SAIR_DO_JOGO
             };
 
@@ -85,6 +102,10 @@ namespace Tripulacao_Amaldicoada {
             int getFaseSelecionada() const;
             int getQuantidadeJogadores() const;
             void desenharRanking(sf::RenderWindow& janela);
+
+            void abrirPausa();
+            void abrirMenuPrincipal();
+            void desenharPausa(sf::RenderWindow& janela);
         };
 }
 

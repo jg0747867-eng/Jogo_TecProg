@@ -15,7 +15,6 @@ namespace Tripulacao_Amaldicoada {
                 pontos(0),
                 direcao(1),
                 id(id),
-                vida(10),
                 lento(false),
                 invulneravel(false),
                 envenenado(false),
@@ -43,8 +42,9 @@ namespace Tripulacao_Amaldicoada {
 
             void Jogador::inicializa()
             {
+                num_vidas = 10;
                 pontos = 0;
-                body.setSize(sf::Vector2f(120.0f, 120.0f));
+                body.setSize(sf::Vector2f(100.0f, 100.0f));
                 body.setFillColor(sf::Color::White);
                 
                 if (!carregarTextura("assets/jogador1.png")) {
@@ -120,7 +120,7 @@ namespace Tripulacao_Amaldicoada {
                 if (invulneravel || !estaAtivo())
                     return false;
 
-                vida -= dano;
+                num_vidas -= dano;
 
                 invulneravel = true;
                 relogioInvulneravel.restart();
@@ -130,7 +130,7 @@ namespace Tripulacao_Amaldicoada {
                 relogioVermelho.restart();
                 body.setFillColor(sf::Color::Red);
 
-                if (vida <= 0)
+                if (num_vidas <= 0)
                     desativar();
 
                 return true;
@@ -153,7 +153,7 @@ namespace Tripulacao_Amaldicoada {
 
                 if (relogioDanoVeneno.getElapsedTime().asSeconds() >= 1.0f)
                 {
-                    vida--;
+                    num_vidas--;
 
                     vermelho = true;
                     relogioVermelho.restart();
@@ -161,7 +161,7 @@ namespace Tripulacao_Amaldicoada {
 
                     relogioDanoVeneno.restart();
 
-                    if (vida <= 0)
+                    if (num_vidas <= 0)
                     {
                         desativar();
                         envenenado = false;

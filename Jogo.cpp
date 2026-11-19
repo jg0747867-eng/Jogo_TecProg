@@ -1,3 +1,4 @@
+
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Ente.h"
@@ -7,12 +8,13 @@ namespace Tripulacao_Amaldicoada {
 
     Jogo::Jogo() :
         pGG(new Gerenciadores::GerenciadorGrafico()),
-        pMenu(new Menu()),
         pJog1(NULL),
         pJog2(NULL),
-        pFase1(nullptr),
-        pFase2(nullptr),
+        pFase1(NULL),
+        pFase2(NULL),
+        pMenu(new Menu()),
         jogando(false),
+        pausado(false),
         faseSelecionada(0),
         quantidadeJogadores(1)
     {
@@ -24,46 +26,108 @@ namespace Tripulacao_Amaldicoada {
         terminarPartida();
 
         delete pMenu;
-        pMenu = nullptr;
+        pMenu = NULL;
 
         delete pGG;
-        pGG = nullptr;
+        pGG = NULL;
     }
 
     void Jogo::iniciarPartida()
     {
-        if(pJog1 == NULL)
-        {
+        if (pJog1 == NULL)
             pJog1 = new Entidades::Personagens::Jogador(0);
-        }
 
-        if(quantidadeJogadores == 2 && pJog2 == NULL)
-        {
+        if (quantidadeJogadores == 2 && pJog2 == NULL)
             pJog2 = new Entidades::Personagens::Jogador(1);
+
+        if (quantidadeJogadores == 1 && pJog2 != NULL) {
+            delete pJog2;
+            pJog2 = NULL;
         }
 
-        if(faseSelecionada == 1)
-        {
-            if(pFase1 == NULL)
-            {
-                pFase1 = new Fases::Mansao(quantidadeJogadores, pJog1, pJog2);
-            }
+        if (faseSelecionada == 1) {
+
+            pFase1 = new Fases::Mansao(
+                quantidadeJogadores,
+                pJog1,
+                pJog2
+            );
         }
-        else if(faseSelecionada == 2)
-        {
-            if(pFase2 == NULL)
-            {
-                pFase2 = new Fases::FaseSegunda(quantidadeJogadores, pJog1, pJog2);
-            }
-           
+        else if (faseSelecionada == 2) {
+
+            pFase2 = new Fases::FaseSegunda(
+                quantidadeJogadores,
+                pJog1,
+                pJog2
+            );
         }
 
         jogando = true;
+        pausado = false;
+    }
+
+    void Jogo::reiniciarFase()
+    {
+        if (faseSelecionada == 1) {
+
+            delete pFase1;
+            pFase1 = NULL;
+
+            pFase1 = new Fases::Mansao(
+                quantidadeJogadores,
+                pJog1,
+                pJog2
+            );
+        }
+        else if (faseSelecionada == 2) {
+
+            delete pFase2;
+            pFase2 = NULL;
+
+            pFase2 = new Fases::FaseSegunda(
+                quantidadeJogadores,
+                pJog1,
+                pJog2
+            );
+        }
+
+        pausado = false;
+    }
+
+    void Jogo::avancarFase()
+    {
+        if (faseSelecionada != 1)
+            return;
+
+        delete pFase1;
+        pFase1 = NULL;
+
+        faseSelecionada = 2;
+
+        pFase2 = new Fases::FaseSegunda(
+            quantidadeJogadores,
+            pJog1,
+            pJog2
+        );
+
+        if (pJog1 != NULL)
+        {
+            pJog1->setPosicao(100, 750);
+            pJog1->zerarVelocidadeY();
+            pJog1->setNoChao(false);
+        }
+
+        if (pJog2 != NULL)
+        {
+            pJog2->setPosicao(250, 700);
+            pJog2->zerarVelocidadeY();
+            pJog2->setNoChao(false);
+        }
     }
 
     void Jogo::executar()
     {
-        if (pGG == nullptr || pMenu == nullptr)
+        if (pGG == NULL || pMenu == NULL)
             return;
 
         sf::RenderWindow& janela = pGG->getJanela();
@@ -78,9 +142,20 @@ namespace Tripulacao_Amaldicoada {
                     janela.close();
                 }
 
-                if (!jogando) {
+                // ESC para pausar
+                if (jogando &&
+                    !pausado &&
+                    evento.type == sf::Event::KeyPressed &&
+                    evento.key.code == sf::Keyboard::Escape) {
 
-                    Menu::Resultado resultado = pMenu->tratarEventos(evento, janela);
+                    pausado = true;
+                    pMenu->abrirPausa();
+                }
+
+                if (!jogando || pausado) {
+
+                    Menu::Resultado resultado =
+                        pMenu->tratarEventos(evento, janela);
 
                     if (resultado == Menu::INICIAR_PARTIDA) {
 
@@ -91,6 +166,20 @@ namespace Tripulacao_Amaldicoada {
                             pMenu->getQuantidadeJogadores();
 
                         iniciarPartida();
+                    }
+
+                    else if (resultado == Menu::RETOMAR_PARTIDA) {
+                        pausado = false;
+                    }
+
+                    else if (resultado == Menu::REINICIAR_FASE) {
+                        reiniciarFase();
+                    }
+
+                    else if (resultado == Menu::VOLTAR_MENU_PRINCIPAL) {
+
+                        terminarPartida();
+                        pMenu->abrirMenuPrincipal();
                     }
 
                     else if (resultado == Menu::SAIR_DO_JOGO) {
@@ -106,18 +195,38 @@ namespace Tripulacao_Amaldicoada {
 
             if (jogando) {
 
-                if (faseSelecionada == 1 && pFase1 != nullptr) {
-                    pFase1->executar();
+                if (!pausado) {
 
-                    bool vivo = pFase1->jogadorVivo();
+                    if (faseSelecionada == 1 && pFase1 != NULL) {
 
-                    if(!vivo)
-                    {
-                        terminarPartida();
+                        pFase1->executar();
+
+                        if (!pFase1->jogadorVivo()) {
+                            terminarPartida();
+                            pMenu->abrirMenuPrincipal();
+                        }
+                        else if (pFase1->acabou()) {
+                            avancarFase();
+                        }
+                    }
+
+                    else if (faseSelecionada == 2 && pFase2 != NULL) {
+
+                        pFase2->executar();
+
+                        if (!pFase2->jogadorVivo()) {
+                            terminarPartida();
+                            pMenu->abrirMenuPrincipal();
+                        }
+                        else if (pFase2->acabou()) {
+                            terminarPartida();
+                            pMenu->abrirMenuPrincipal();
+                        }
                     }
                 }
-                else if (faseSelecionada == 2 && pFase2 != nullptr) {
-                   pFase2->executar();
+
+                if (pausado) {
+                    pMenu->desenharPausa(janela);
                 }
             }
             else {
@@ -143,6 +252,7 @@ namespace Tripulacao_Amaldicoada {
         pJog2 = NULL;
 
         jogando = false;
+        pausado = false;
+        faseSelecionada = 0;
     }
-
 }

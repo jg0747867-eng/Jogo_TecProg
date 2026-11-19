@@ -5,6 +5,7 @@
 #include "Obstaculo.h"
 #include "Inimigo.h"
 #include "Teia.h"
+#include "Espinho.h"
 
 #include <iostream>
 
@@ -82,11 +83,13 @@ namespace Tripulacao_Amaldicoada {
 
 					if (pObstaculo != NULL)
 					{
+						if (dynamic_cast<Entidades::Obstaculos::Espinho*>(pObstaculo) != NULL)
+							continue;
+
 						if (verificarColisao(pJogador, pObstaculo))
 						{
 							pObstaculo->obstaculizar(pJogador);
 
-							// Feita essa parte para n�o afetar a teia
 							if (dynamic_cast<Entidades::Obstaculos::Teia*>(pObstaculo) == NULL)
 							{
 								tratarColisaoEntidadeObstaculo(pJogador, pObstaculo);
@@ -125,7 +128,8 @@ namespace Tripulacao_Amaldicoada {
 
 						if (caindo && baseJog <= metadeIni)
 						{
-							pInim->desativar();
+							pInim->receberDano(1);
+							//pInim->desativar();
 							pJogador->setNoChao(true);	
 							pJogador->pular();
 						}
@@ -166,13 +170,35 @@ namespace Tripulacao_Amaldicoada {
 
 		void GerenciadorColisoes::tratarColisoesObsDificil()
 		{
-		
+			for (unsigned int i = 0; i < LJs.size(); i++)
+			{
+				Entidades::Personagens::Jogador* pJogador = LJs[i];
+
+				if (pJogador == NULL || !pJogador->estaAtivo())
+					continue;
+
+				std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
+
+				for (it = LOs.begin(); it != LOs.end(); it++)
+				{
+					Entidades::Obstaculos::Espinho* pEspinho =
+						dynamic_cast<Entidades::Obstaculos::Espinho*>(*it);
+
+					if (pEspinho == NULL || !pEspinho->estaAtivo())
+						continue;
+
+					if (verificarColisao(pJogador, pEspinho))
+					{
+						pEspinho->obstaculizar(pJogador);
+						tratarColisaoEntidadeObstaculo(pJogador, pEspinho);
+					}
+				}
+			}
 		}
 
 		void GerenciadorColisoes::executar() 
 		{
-			//tratarColisoesObsDificil();
-
+			tratarColisoesObsDificil();
 			tratarColisoesJogsObstaculos();
 
 			for (unsigned int i = 0; i < LJs.size(); i++)

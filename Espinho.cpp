@@ -43,7 +43,7 @@ namespace Tripulacao_Amaldicoada {
             {
                 danoso = true;
 
-                body.setSize(sf::Vector2f(110.0f, 110.0f));
+                body.setSize(sf::Vector2f(90.0f, 80.0f));
                 body.setFillColor(sf::Color::White);
 
                 TexturaEspinho& carregar = obterTexturaEspinho();

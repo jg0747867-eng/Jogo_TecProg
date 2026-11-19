@@ -25,6 +25,7 @@ namespace Tripulacao_Amaldicoada {
 
             void Fantasma::inicializa()
             {
+                num_vidas = 1;
                 vel = sf::Vector2f(VELOCIDADE_INIMIGOFACIL_X,  VELOCIDADE_INIMIGOFACIL_Y);
 
                 carregarTextura("assets/fantasma.png");
@@ -120,7 +121,7 @@ namespace Tripulacao_Amaldicoada {
             {
                 if (pJogador && pJogador->getVida() > 0)
                 {
-                    pJogador->operator--();
+                    pJogador->receberDano(nivel_maldade * 1);
                 }
             }
             void Fantasma::aplicarEmpuxo()

@@ -4,6 +4,29 @@
 #define VELOCIDADE_ESQUELETO_X 2.0f
 #define INTERVALO_TIRO 2.0f
 
+namespace
+{
+    struct TexturaEsqueleto
+    {
+        sf::Texture textura;
+        bool carregada;
+
+        TexturaEsqueleto()
+        {
+            carregada = textura.loadFromFile("assets/esqueleto.png");
+
+            if (!carregada)
+                std::cout << "Erro ao carregar assets/esqueleto.png" << std::endl;
+        }
+    };
+
+    TexturaEsqueleto& obterTexturaEsqueleto()
+    {
+        static TexturaEsqueleto recurso;
+        return recurso;
+    }
+}
+
 namespace Tripulacao_Amaldicoada
 {
     namespace Entidades
@@ -14,8 +37,22 @@ namespace Tripulacao_Amaldicoada
                     pOsso(pO), lancarProjetil(), relogioPulo(), 
                     intervaloPulo(2.0f), pulando(false)
             {
-                body.setFillColor(sf::Color::Yellow);
+                num_vidas = 3;
+                body.setFillColor(sf::Color::White);
                 inicializa();
+
+                TexturaEsqueleto& carregar = obterTexturaEsqueleto();
+
+                if (carregar.carregada)
+                {
+                    body.setTexture(&carregar.textura);
+
+                    body.setTextureRect(sf::IntRect(
+                        0, 0,
+                        carregar.textura.getSize().x,
+                        carregar.textura.getSize().y
+                    ));
+                }
             }
 
             Esqueleto::~Esqueleto()
@@ -61,7 +98,8 @@ namespace Tripulacao_Amaldicoada
                     }
                     else
                     {
-                        setPosicao(getX() - static_cast<int>(vel.x), getY());                    }
+                        setPosicao(getX() - static_cast<int>(vel.x), getY());                    
+                    }
                 }
             }
 

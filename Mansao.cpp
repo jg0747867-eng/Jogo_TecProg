@@ -11,8 +11,8 @@ namespace Tripulacao_Amaldicoada{
 			Entidades::Personagens::Jogador* pJog1,
 			Entidades::Personagens::Jogador* pJog2):
 			Fase(quantidadeJogadores, pJog1, pJog2),
-			maxInimMedio(5),
-			maxObsMedio(10)
+			maxInimMedio(3),
+			maxObsMedio(5)
 		{
 			carregaFundo("assets/cenario1.png");
 			criarCenario();
@@ -73,7 +73,7 @@ namespace Tripulacao_Amaldicoada{
 					{
 						pGC->incluirInimigo(pInim);
 					}
-
+					inimigosVivos++;
 			}
 
 		}

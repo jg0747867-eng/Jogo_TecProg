@@ -1,4 +1,5 @@
 #include "Fase.h"
+#include "Inimigo.h"
 #include "GerenciadorColisoes.h"
 #include "Plataforma.h"
 #include "Jogador.h"
@@ -15,8 +16,8 @@ namespace Tripulacao_Amaldicoada {
 			pJog1(pJog1),
 			pJog2(pJog2),
 			limiteChao(1000),
-			maxFantasmas(10),
-			maxPlataformas(10),
+			maxFantasmas(5),
+			maxPlataformas(5),
 			inimigosVivos(0),
 			faseConcluida(false)
 		{
@@ -84,6 +85,7 @@ namespace Tripulacao_Amaldicoada {
 				{
 					pGC->incluirInimigo(pInim);
 				}
+				inimigosVivos++;
 			}
 		}
 		void Fase::criarPlataformas()
@@ -91,16 +93,11 @@ namespace Tripulacao_Amaldicoada {
 			int quantidade = gerarQuantidadeAleatoria(maxPlataformas);
 
 			int posicoes[10][4] = { //X, Y, Largura, Altura
-			{200,   800, 150, 35},
+			{200,   800, 190, 35},
 			{440,  700, 300, 35},
 			{820,  560, 300, 35},
 			{1200, 720, 300, 35},
-			{1540, 580, 300, 35},
-			{250,  430, 280, 35},
-			{650,  300, 280, 35},
-			{1050, 390, 280, 35},
-			{1420, 260, 280, 35},
-			{1580, 850, 260, 35} };
+			{1540, 580, 300, 35} };
 
 			for (int i = 0; i < quantidade; i++)
 			{
@@ -153,8 +150,46 @@ namespace Tripulacao_Amaldicoada {
 
 			return minimo + rand() % (maximo - minimo + 1);
 		}
-		bool Fase::acabou() const {
-			return faseConcluida;
+		bool Fase::acabou() const
+		{
+			return faseConcluida || contarInimigosVivos() == 0;
+		}
+		void Fase::concluirFase()
+		{
+			faseConcluida = true;
+		}
+
+		int Fase::contarInimigosVivos() const
+		{
+			int quantidade = 0;
+
+			for (int i = 0; i < (int)listaEnts.getTamanho(); i++)
+			{
+				Entidades::Entidade* pEntidade = listaEnts[i];
+
+				if (pEntidade != NULL && pEntidade->estaAtivo() && dynamic_cast<Entidades::Personagens::Inimigo*>(pEntidade) != NULL)
+				{
+					quantidade++;
+				}
+			}
+
+			return quantidade;
+		}
+
+		bool Fase::todosInimigosMorreram() const
+		{
+			for (int i = 0; i < (int)listaEnts.getTamanho(); i++)
+			{
+				Entidades::Entidade* pEntidade = listaEnts[i];
+
+				Entidades::Personagens::Inimigo* pInimigo =
+					dynamic_cast<Entidades::Personagens::Inimigo*>(pEntidade);
+
+				if (pInimigo != NULL && pInimigo->estaAtivo())
+					return false;
+			}
+
+			return true;
 		}
 	}
 }

@@ -27,6 +27,7 @@ namespace Tripulacao_Amaldicoada {
 
                 virtual void executar() = 0;
                 virtual void danificar(Jogador* pJo) = 0;
+                bool receberDano(int dano);
 
                 //virtual void salvar() = 0;
 

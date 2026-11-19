@@ -1,6 +1,29 @@
 #include "Plataforma.h"
 #include "Jogador.h"
 
+namespace
+{
+	struct TexturaPlataforma
+	{
+		sf::Texture textura;
+		bool carregada;
+
+		TexturaPlataforma()
+		{
+			carregada = textura.loadFromFile("assets/plataforma.png");
+
+			if (!carregada)
+				std::cout << "Erro ao carregar assets/plataforma.png" << std::endl;
+		}
+	};
+
+	TexturaPlataforma& obterTexturaPlataforma()
+	{
+		static TexturaPlataforma recurso;
+		return recurso;
+	}
+}
+
 namespace Tripulacao_Amaldicoada {
 	namespace Entidades {
 		namespace Obstaculos {
@@ -17,11 +40,19 @@ namespace Tripulacao_Amaldicoada {
 				body.setSize(sf::Vector2f(1200.0f, 30.f));
 				body.setFillColor(sf::Color::White);
 
-				/*if (!carregarTextura("assets/"))
+				TexturaPlataforma& carregar = obterTexturaPlataforma();
+
+				if (carregar.carregada)
 				{
-					body.setFillColor(sf::Color::Red);
+					body.setTexture(&carregar.textura);
+
+					body.setTextureRect(sf::IntRect(
+						0, 0,
+						carregar.textura.getSize().x,
+						carregar.textura.getSize().y
+					));
 				}
-				*/
+				
 				setPosicao(0, baseY);
 			}
 			Plataforma::Plataforma(int x, int y, int largura, int altu) :
@@ -34,13 +65,21 @@ namespace Tripulacao_Amaldicoada {
 				body.setSize(sf::Vector2f(static_cast<float>(largura),
 					static_cast<float>(altura)));
 
-				body.setFillColor(sf::Color::Black);
+				body.setFillColor(sf::Color::White);
 
-				/*if (!carregarTextura("assets/"))
+				TexturaPlataforma& carregar = obterTexturaPlataforma();
+
+				if (carregar.carregada)
 				{
-					body.setFillColor(sf::Color::Red);
+					body.setTexture(&carregar.textura);
+
+					body.setTextureRect(sf::IntRect(
+						0, 0,
+						carregar.textura.getSize().x,
+						carregar.textura.getSize().y
+					));
 				}
-				*/
+				
 				setPosicao(x, baseY);
 			}
 			Plataforma::~Plataforma()
