@@ -37,11 +37,13 @@ namespace Tripulacao_Amaldicoada {
 
                 int getID() const {return id;}
 
+                int getPontos() const {return pontos;}
+
                 // void colidir (Inimigo* pIn);
 
                 void operator--();
                 
-                void operator++(){pontos++;}
+                void operator++(int nivel_maldade);
 
                 const int getVida() const {return num_vidas;}
 
@@ -63,4 +65,3 @@ namespace Tripulacao_Amaldicoada {
 
 
 #endif
-

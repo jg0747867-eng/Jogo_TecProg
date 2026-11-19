@@ -42,12 +42,12 @@ namespace Tripulacao_Amaldicoada {
 
             void Jogador::inicializa()
             {
-                num_vidas = 10;
+                num_vidas = 20;
                 pontos = 0;
                 body.setSize(sf::Vector2f(100.0f, 100.0f));
                 body.setFillColor(sf::Color::White);
                 
-                if (!carregarTextura("assets/jogador1.png")) {
+                if (!carregarTextura("/home/carlos/FODASE/Jogo_TecProg/assets/jogador1.png")) {
                     body.setFillColor(sf::Color::Red);
                 }
 
@@ -58,6 +58,24 @@ namespace Tripulacao_Amaldicoada {
                 receberDano(1);
             }
 
+
+            void Jogador::operator++(int nivel_maldade)
+            {
+                if(nivel_maldade == 1)
+                {
+                    pontos += 2;
+                }
+                else if(nivel_maldade == 2)
+                {
+                    pontos += 4;
+                }
+                else
+                {
+                    pontos += 5;
+                }
+
+                std::cout << "\n" << pontos;
+            }
 
 
             void Jogador::mover()

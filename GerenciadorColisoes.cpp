@@ -129,6 +129,7 @@ namespace Tripulacao_Amaldicoada {
 						if (caindo && baseJog <= metadeIni)
 						{
 							pInim->receberDano(1);
+							pJogador->operator++(pInim->getNivelMaldade());
 							//pInim->desativar();
 							pJogador->setNoChao(true);	
 							pJogador->pular();
@@ -328,7 +329,7 @@ namespace Tripulacao_Amaldicoada {
 				return;
 
 			const int limiteEsquerdo = 0;
-			const int limiteDireito = 1900;
+			const int limiteDireito = 1950;
 
 			int x = pEnti->getX();
 			int largura = static_cast<int>(pEnti->getBody().getSize().x);

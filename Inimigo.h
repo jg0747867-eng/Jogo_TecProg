@@ -23,6 +23,7 @@ namespace Tripulacao_Amaldicoada {
 
                 // void salvarDataBuffer();
 
+                int getNivelMaldade() const {return nivel_maldade;}
                 virtual bool ehVoador() const {return false;}
 
                 virtual void executar() = 0;
