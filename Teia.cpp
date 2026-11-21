@@ -1,8 +1,6 @@
 #include "Teia.h"
 #include "Jogador.h"
 
-#include <cmath>
-
 
 namespace
 {
@@ -69,13 +67,7 @@ namespace Tripulacao_Amaldicoada {
                    baseDefinida = true;
                }
 
-               aplicarGravidade();
-
-               float movimento = std::sin(relogio.getElapsedTime().asSeconds() * 2.0f) * 5.0f;
-
-               setPosicao(getX(), baseY + movimento);
-
-               //aplicarEmpuxo();
+               aplicarEmpuxo();
             }
 
             void Teia::salvar()

@@ -17,8 +17,6 @@ namespace Tripulacao_Amaldicoada {
 				int baseY;
 				int empuxo;
 
-				sf::Clock relogio;
-
 			public:
 				Teia();
 				~Teia();
