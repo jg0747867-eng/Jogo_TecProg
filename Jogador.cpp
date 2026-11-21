@@ -21,6 +21,17 @@ namespace Tripulacao_Amaldicoada {
                 vermelho(false)
             {
                 inicializa();
+
+                fontePontos.loadFromFile("assets/fonte.ttf");
+
+                textoPontos.setFont(fontePontos);
+                textoPontos.setCharacterSize(25);
+                textoPontos.setFillColor(sf::Color::White);
+
+                textoVida.setFont(fontePontos);
+                textoVida.setCharacterSize(25);
+                textoVida.setFillColor(sf::Color::Red);
+
                 if (id == 1) 
                 {
                     teclaEsq  = sf::Keyboard::Left;
@@ -42,12 +53,12 @@ namespace Tripulacao_Amaldicoada {
 
             void Jogador::inicializa()
             {
-                num_vidas = 20;
+                num_vidas = 200;
                 pontos = 0;
                 body.setSize(sf::Vector2f(100.0f, 100.0f));
                 body.setFillColor(sf::Color::White);
                 
-                if (!carregarTextura("/home/carlos/FODASE/Jogo_TecProg/assets/jogador1.png")) {
+                if (!carregarTextura("assets/jogador1.png")) {
                     body.setFillColor(sf::Color::Red);
                 }
 
@@ -191,6 +202,16 @@ namespace Tripulacao_Amaldicoada {
                 {
                     envenenado = false;
                 }
+            }
+
+            void Jogador::desenharPontos(sf::RenderWindow& janela, float x, float y)
+            {
+                textoPontos.setString("Pontos: " + std::to_string(pontos));
+                textoPontos.setPosition(x, y);
+                textoVida.setString("Vida: " + std::to_string(num_vidas));
+                textoVida.setPosition(x, y + 35.f);
+                janela.draw(textoPontos);
+                janela.draw(textoVida);
             }
 
         }

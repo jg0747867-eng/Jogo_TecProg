@@ -10,7 +10,8 @@ namespace Tripulacao_Amaldicoada {
         Menu::Menu() :
             telaAtual(MENU_PRINCIPAL),
             faseSelecionada(1),
-            quantidadeJogadores(1)
+            quantidadeJogadores(1),
+            pontuacaoFinal(0)
         {
             fonte.loadFromFile("assets/fonte.ttf");
 
@@ -208,39 +209,60 @@ namespace Tripulacao_Amaldicoada {
                     centroY + 130.f
                 );
             }
-            else if (telaAtual == MENU_PAUSA) 
-{
+            else if (telaAtual == MENU_PAUSA)
+            {
+                titulo.setString("JOGO PAUSADO");
 
-            titulo.setString("JOGO PAUSADO");
+                adicionarBotao(
+                    "CONTINUAR",
+                    CONTINUAR,
+                    centroX - 180.f,
+                    centroY - 80.f
+                );
 
-            adicionarBotao(
-                "CONTINUAR",
-                CONTINUAR,
-                centroX - 180.f,
-                centroY - 80.f
-            );
+                adicionarBotao(
+                    "REINICIAR",
+                    REINICIAR,
+                    centroX - 180.f,
+                    centroY - 10.f
+                );
 
-            adicionarBotao(
-                "REINICIAR",
-                REINICIAR,
-                centroX - 180.f,
-                centroY - 10.f
-            );
+                adicionarBotao(
+                    "MENU PRINCIPAL",
+                    VOLTAR_MENU,
+                    centroX - 180.f,
+                    centroY + 60.f
+                );
 
-            adicionarBotao(
-                "MENU PRINCIPAL",
-                VOLTAR_MENU,
-                centroX - 180.f,
-                centroY + 60.f
-            );
+                adicionarBotao(
+                    "SAIR",
+                    SAIR,
+                    centroX - 180.f,
+                    centroY + 130.f
+                );
+            }
+            else if (telaAtual == DIGITAR_NOME)
+            {
+                titulo.setString("DIGITE SEU NOME");
 
-            adicionarBotao(
-                "SAIR",
-                SAIR,
-                centroX - 180.f,
-                centroY + 130.f
-            );
-}
+                adicionarBotao(
+                    "CONTINUAR",
+                    CONFIRMAR_NOME,
+                    centroX - 180.f,
+                    centroY + 80.f
+                );
+            }
+            else if (telaAtual == TELA_RESULTADO)
+            {
+                titulo.setString("FIM DE JOGO");
+
+                adicionarBotao(
+                    "VOLTAR AO MENU",
+                    CONFIRMAR_RESULTADO,
+                    centroX - 180.f,
+                    centroY + 150.f
+                );
+            }
 
             sf::FloatRect limites = titulo.getLocalBounds();
 
@@ -266,6 +288,54 @@ namespace Tripulacao_Amaldicoada {
                 janela.draw(botoes[i].forma);
                 janela.draw(botoes[i].texto);
             }
+            if (telaAtual == DIGITAR_NOME)
+            {
+                sf::Text textoNome;
+                textoNome.setFont(fonte);
+                textoNome.setCharacterSize(30);
+                textoNome.setFillColor(sf::Color::White);
+                textoNome.setString(nomeJogador + "_");
+
+                sf::FloatRect limites = textoNome.getLocalBounds();
+
+                textoNome.setOrigin(
+                    limites.left + limites.width / 2.f,
+                    limites.top + limites.height / 2.f
+                );
+
+                textoNome.setPosition(
+                    janela.getSize().x / 2.f,
+                    janela.getSize().y / 2.f
+                );
+
+                janela.draw(textoNome);
+            }
+            if (telaAtual == TELA_RESULTADO)
+            {
+                sf::Text resultado;
+                resultado.setFont(fonte);
+                resultado.setCharacterSize(35);
+                resultado.setFillColor(sf::Color::White);
+
+                resultado.setString(
+                    nomeFinal + "          " +
+                    std::to_string(pontuacaoFinal) + " pontos"
+                );
+
+                sf::FloatRect limites = resultado.getLocalBounds();
+
+                resultado.setOrigin(
+                    limites.left + limites.width / 2.f,
+                    limites.top + limites.height / 2.f
+                );
+
+                resultado.setPosition(
+                    janela.getSize().x / 2.f,
+                    janela.getSize().y / 2.f
+                );
+
+                janela.draw(resultado);
+            }
         }
 
         Menu::Resultado Menu::tratarEventos(
@@ -273,6 +343,26 @@ namespace Tripulacao_Amaldicoada {
             sf::RenderWindow& janela
         )
         {
+            if (telaAtual == DIGITAR_NOME &&
+                evento.type == sf::Event::TextEntered)
+            {
+                if (evento.text.unicode == 8)
+                {
+                    if (!nomeJogador.empty())
+                        nomeJogador.pop_back();
+                }
+                else if (evento.text.unicode >= 32 &&
+                    evento.text.unicode < 127 &&
+                    nomeJogador.size() < 16)
+                {
+                    nomeJogador += static_cast<char>(
+                        evento.text.unicode
+                        );
+                }
+
+                return NENHUM;
+            }
+
             if (evento.type != sf::Event::MouseButtonPressed ||
                 evento.mouseButton.button != sf::Mouse::Left) {
                 return NENHUM;
@@ -294,9 +384,10 @@ namespace Tripulacao_Amaldicoada {
 
                 switch (botoes[i].acao) {
 
-               case NOVO_JOGO:
-                   telaAtual = SELECIONAR_FASE;
-                   break;
+                case NOVO_JOGO:
+                    nomeJogador.clear();
+                    telaAtual = DIGITAR_NOME;
+                    break;
 
                case CONTINUAR:
 
@@ -350,10 +441,20 @@ namespace Tripulacao_Amaldicoada {
                        telaAtual = MENU_PRINCIPAL;
 
                    break;
+
+               case CONFIRMAR_NOME:
+
+                   if (nomeJogador.empty())
+                       nomeJogador = "Pirata";
+
+                   telaAtual = SELECIONAR_FASE;
+                   break;
+
+               case CONFIRMAR_RESULTADO:
+                   telaAtual = MENU_PRINCIPAL;
+                   return VOLTAR_MENU_PRINCIPAL;
                }
 
-
-               return NENHUM;
            }
 
            return NENHUM;
@@ -390,7 +491,7 @@ namespace Tripulacao_Amaldicoada {
            int limite = std::min(5, (int)pontuacoes.size());
 
            for (int i = 0; i < limite; i++) {
-               resultado += std::to_string(i + 1) + "� - ";
+               resultado += std::to_string(i + 1) + " - ";
                resultado += pontuacoes[i].first + " : ";
                resultado += std::to_string(pontuacoes[i].second);
                resultado += "\n";
@@ -449,5 +550,20 @@ namespace Tripulacao_Amaldicoada {
                janela.draw(botoes[i].forma);
                janela.draw(botoes[i].texto);
            }
+       }
+
+       void Menu::registrarResultado(int pontos)
+       {
+           nomeFinal = nomeJogador;
+           pontuacaoFinal = pontos;
+
+           pontuacoes.push_back(
+               std::make_pair(nomeFinal, pontuacaoFinal)
+           );
+       }
+
+       void Menu::abrirResultado()
+       {
+           telaAtual = TELA_RESULTADO;
        }
 }

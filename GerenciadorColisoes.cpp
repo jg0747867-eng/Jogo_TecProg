@@ -71,10 +71,6 @@ namespace Tripulacao_Amaldicoada {
 					continue;
 				}
 
-				pJogador->setNoChao(false);
-				pJogador->setLento(false);
-				pJogador->setQuedaLenta(false);
-
 				std::list<Entidades::Obstaculos::Obstaculo*>::iterator it;
 
 				for (it = LOs.begin(); it != LOs.end(); it++)
@@ -171,6 +167,7 @@ namespace Tripulacao_Amaldicoada {
 
 		void GerenciadorColisoes::tratarColisoesObsDificil()
 		{
+			
 			for (unsigned int i = 0; i < LJs.size(); i++)
 			{
 				Entidades::Personagens::Jogador* pJogador = LJs[i];
@@ -199,8 +196,16 @@ namespace Tripulacao_Amaldicoada {
 
 		void GerenciadorColisoes::executar() 
 		{
-			tratarColisoesObsDificil();
-			tratarColisoesJogsObstaculos();
+
+			for (unsigned int i = 0; i < LJs.size(); i++)
+			{
+				if (LJs[i] != NULL)
+				{
+					LJs[i]->setNoChao(false);
+					LJs[i]->setLento(false);
+					LJs[i]->setQuedaLenta(false);
+				}
+			}
 
 			for (unsigned int i = 0; i < LJs.size(); i++)
 			{
@@ -231,6 +236,8 @@ namespace Tripulacao_Amaldicoada {
 				}
 			}
 
+			tratarColisoesObsDificil();
+			tratarColisoesJogsObstaculos();
 			tratarColisoesJogsInimigos();
 			tratarColisoesJogsProjeteis();
 		}

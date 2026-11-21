@@ -17,6 +17,13 @@ namespace Tripulacao_Amaldicoada {
 			private:
 				int altura;
 				int baseY;
+				int limiteY;
+
+				bool caindo;
+				bool subindo;
+
+				float espera;
+				sf::Clock relogio;
 
 			public:
 				Plataforma();

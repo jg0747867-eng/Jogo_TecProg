@@ -154,8 +154,7 @@ namespace Tripulacao_Amaldicoada {
 
                 if (!jogando || pausado) {
 
-                    Menu::Resultado resultado =
-                        pMenu->tratarEventos(evento, janela);
+                    Menu::Resultado resultado = pMenu->tratarEventos(evento, janela);
 
                     if (resultado == Menu::INICIAR_PARTIDA) {
 
@@ -201,12 +200,17 @@ namespace Tripulacao_Amaldicoada {
 
                         pFase1->executar();
 
-                        if (!pFase1->jogadorVivo()) {
+                        if (!pFase1->jogadorVivo())
+                        {
+                            int pontos = 0;
+
+                            if (pJog1 != NULL)
+                                pontos = pJog1->getPontos();
+
+                            pMenu->registrarResultado(pontos);
+
                             terminarPartida();
-                            pMenu->abrirMenuPrincipal();
-                        }
-                        else if (pFase1->acabou()) {
-                            avancarFase();
+                            pMenu->abrirResultado();
                         }
                     }
 
@@ -214,15 +218,28 @@ namespace Tripulacao_Amaldicoada {
 
                         pFase2->executar();
 
-                        if (!pFase2->jogadorVivo()) {
+                        if (!pFase2->jogadorVivo() || pFase2->acabou())
+                        {
+                            int pontos = 0;
+
+                            if (pJog1 != NULL)
+                                pontos = pJog1->getPontos();
+
+                            pMenu->registrarResultado(pontos);
+
                             terminarPartida();
-                            pMenu->abrirMenuPrincipal();
-                        }
-                        else if (pFase2->acabou()) {
-                            terminarPartida();
-                            pMenu->abrirMenuPrincipal();
+                            pMenu->abrirResultado();
                         }
                     }
+                }
+
+                if (!pausado)
+                {
+                    if (pJog1 != NULL)
+                        pJog1->desenharPontos(janela, 30.f, 20.f);
+
+                    if (pJog2 != NULL)
+                        pJog2->desenharPontos(janela, 1650.f, 20.f);
                 }
 
                 if (pausado) {

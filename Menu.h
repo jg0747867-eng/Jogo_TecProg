@@ -11,13 +11,11 @@
 #include "Ente.h"
 
 /*
- * Ressalto novamente meu agradecimento aos colegas do PETECO,
- * Raphael Geraldine e Marco Vendramin, e também ao Burda,
- * visto que nossa implementação foi baseada na deles.
- *
- * Vide:
- * https://github.com/Raphael-Geraldine/O-Equilibrio-da-Forca/blob/master/include/Lista.h
- * e vídeo 8 da playlist Tutorial Jogo SFML.
+ * Ressalto novamente meu agradecimento ao influencer do canal,
+ * Terminal Root, onde o menu foi inspirado
+ * Video:
+ * https://youtu.be/h8-Q4eu3Qt4?si=6dOCI3o2VRJbqBUI
+ * 
  */
 
 
@@ -26,11 +24,13 @@ namespace Tripulacao_Amaldicoada {
         class Menu {
         private:
 
-            enum Tela {
+            enum Tela{
                 MENU_PRINCIPAL,
+                DIGITAR_NOME,
                 SELECIONAR_FASE,
                 SELECIONAR_JOGADORES,
                 TELA_RANKING,
+                TELA_RESULTADO,
                 MENU_PAUSA
             };
 
@@ -45,7 +45,9 @@ namespace Tripulacao_Amaldicoada {
                 DOIS_JOGADORES,
                 VOLTAR,
                 REINICIAR,
-                VOLTAR_MENU
+                VOLTAR_MENU,
+                CONFIRMAR_NOME,
+                CONFIRMAR_RESULTADO
             };
 
             struct Botao {
@@ -66,8 +68,12 @@ namespace Tripulacao_Amaldicoada {
 
             std::vector<std::pair<std::string, int>> pontuacoes;
 
+            std::string nomeJogador;
+            std::string nomeFinal;
+
             int faseSelecionada;
             int quantidadeJogadores;
+            int pontuacaoFinal;
 
             void criarBotoes(sf::RenderWindow& janela);
             void adicionarBotao(
@@ -97,6 +103,12 @@ namespace Tripulacao_Amaldicoada {
                 sf::RenderWindow& janela
             );
 
+            std::string getNomeJogador() const;
+
+            void mostrarResultado(int pontos);
+
+            void desenharResultado(sf::RenderWindow& janela);
+
             void desenhar(sf::RenderWindow& janela);
 
             int getFaseSelecionada() const;
@@ -106,6 +118,9 @@ namespace Tripulacao_Amaldicoada {
             void abrirPausa();
             void abrirMenuPrincipal();
             void desenharPausa(sf::RenderWindow& janela);
+
+            void registrarResultado(int pontos);
+            void abrirResultado();
         };
 }
 

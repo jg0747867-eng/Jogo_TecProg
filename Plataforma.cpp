@@ -33,7 +33,11 @@ namespace Tripulacao_Amaldicoada {
 			Plataforma::Plataforma() :
 				Obstaculo(),
 				altura(30),
-				baseY(600)
+				baseY(600),
+				limiteY(700),
+				caindo(false),
+				subindo(false),
+				espera(1.5f)
 			{
 				danoso = false;
 
@@ -58,7 +62,11 @@ namespace Tripulacao_Amaldicoada {
 			Plataforma::Plataforma(int x, int y, int largura, int altu) :
 				Obstaculo(),
 				altura(altu),
-				baseY(y)
+				baseY(y),
+				limiteY(y + 100),
+				caindo(false),
+				subindo(false),
+				espera(1.5f)
 			{
 				danoso = false;
 
@@ -87,8 +95,41 @@ namespace Tripulacao_Amaldicoada {
 
 			void Plataforma::executar()
 			{
-				aplicarGravidade();
-				seguraPlat();
+				if (caindo)
+				{
+					setQuedaLenta(true);
+					setNoChao(false);
+					aplicarGravidade();
+
+					if (getY() >= limiteY)
+					{
+						setPosicao(getX(), limiteY);
+						zerarVelocidadeY();
+						caindo = false;
+						relogio.restart();
+					}
+				}
+				else if (!subindo && getY() >= limiteY)
+				{
+					if (relogio.getElapsedTime().asSeconds() >= espera)
+					{
+						subindo = true;
+						setNoChao(false);
+					}
+				}
+				else if (subindo)
+				{
+					velocidadeY = -5;
+					setPosicao(getX(), getY() + velocidadeY);
+
+					if (getY() <= baseY)
+					{
+						setPosicao(getX(), baseY);
+						zerarVelocidadeY();
+						setNoChao(true);
+						subindo = false;
+					}
+				}
 			}
 			void Plataforma::seguraPlat()
 			{
@@ -118,9 +159,9 @@ namespace Tripulacao_Amaldicoada {
 
 					float baseAnterior = baseJogador - pJogador->getVelocidadeY();
 
-					// Verifica se o jogador est� caindo sobre a plataforma
 					if (pJogador->getVelocidadeY() >= 0 &&
-						baseAnterior <= topoPlataforma)
+						baseAnterior <= topoPlataforma &&
+						!subindo)
 					{
 						pJogador->setPosicao(
 							pJogador->getX(),
@@ -129,6 +170,11 @@ namespace Tripulacao_Amaldicoada {
 
 						pJogador->zerarVelocidadeY();
 						pJogador->setNoChao(true);
+
+						if (!caindo && getY() < limiteY)
+						{
+							caindo = true;
+						}
 					}
 				}
 			}

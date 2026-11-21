@@ -30,6 +30,10 @@ namespace Tripulacao_Amaldicoada {
                 sf::Clock relogioVermelho;
                 bool vermelho;
 
+                sf::Font fontePontos;
+                sf::Text textoPontos;
+                sf::Text textoVida;
+
             public:
                 Jogador(int id);
 
@@ -57,6 +61,7 @@ namespace Tripulacao_Amaldicoada {
                 bool receberDano(int dano);
                 void aplicarVeneno();
                 void atualizarVeneno();
+                void desenharPontos(sf::RenderWindow& janela, float x, float y);
 
             };
         }
