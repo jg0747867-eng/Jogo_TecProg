@@ -196,43 +196,44 @@ namespace Tripulacao_Amaldicoada {
 
                 if (!pausado) {
 
-                    if (faseSelecionada == 1 && pFase1 != NULL) {
+                if (faseSelecionada == 1 && pFase1 != NULL) {
 
-                        pFase1->executar();
+                    pFase1->executar();
 
-                        if (!pFase1->jogadorVivo())
-                        {
-                            int pontos = 0;
-
-                            if (pJog1 != NULL)
-                                pontos = pJog1->getPontos();
-
-                            pMenu->registrarResultado(pontos);
-
-                            terminarPartida();
-                            pMenu->abrirResultado();
-                        }
+                    if (!pFase1->jogadorVivo())
+                    {
+                        int pontos = (pJog1 != NULL) ? pJog1->getPontos() : 0;
+                        pMenu->registrarResultado(pontos);
+                        terminarPartida();
+                        pMenu->abrirResultado();
                     }
-
-                    else if (faseSelecionada == 2 && pFase2 != NULL) {
-
-                        pFase2->executar();
-
-                        if (!pFase2->jogadorVivo() || pFase2->acabou())
-                        {
-                            int pontos = 0;
-
-                            if (pJog1 != NULL)
-                                pontos = pJog1->getPontos();
-
-                            pMenu->registrarResultado(pontos);
-
-                            terminarPartida();
-                            pMenu->abrirResultado();
-                        }
+                    else if (pFase1->acabou())
+                    {
+                        avancarFase();
                     }
                 }
+                else if (faseSelecionada == 2 && pFase2 != NULL) {
 
+                    pFase2->executar();
+
+                    if (!pFase2->jogadorVivo() || pFase2->acabou())
+                    {
+                        int pontos = (pJog1 != NULL) ? pJog1->getPontos() : 0;
+                        pMenu->registrarResultado(pontos);
+                        terminarPartida();
+                        pMenu->abrirResultado();
+                    }
+                }
+            }
+
+            if (!pausado)
+            {
+                if (pJog1 != NULL)
+                    pJog1->desenharPontos(janela, 30.f, 20.f);
+
+                if (pJog2 != NULL)
+                    pJog2->desenharPontos(janela, 1650.f, 20.f);
+            }
                 if (!pausado)
                 {
                     if (pJog1 != NULL)
