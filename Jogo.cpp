@@ -125,6 +125,7 @@ namespace Tripulacao_Amaldicoada {
         }
     }
 
+
     void Jogo::executar()
     {
         if (pGG == NULL || pMenu == NULL)
@@ -132,56 +133,49 @@ namespace Tripulacao_Amaldicoada {
 
         sf::RenderWindow& janela = pGG->getJanela();
 
-        while (janela.isOpen()) {
-
+        while (janela.isOpen())
+        {
             sf::Event evento;
 
-            while (janela.pollEvent(evento)) {
-
-                if (evento.type == sf::Event::Closed) {
+            while (janela.pollEvent(evento))
+            {
+                if (evento.type == sf::Event::Closed)
                     janela.close();
-                }
 
-                // ESC para pausar
                 if (jogando &&
                     !pausado &&
                     evento.type == sf::Event::KeyPressed &&
-                    evento.key.code == sf::Keyboard::Escape) {
-
+                    evento.key.code == sf::Keyboard::Escape)
+                {
                     pausado = true;
                     pMenu->abrirPausa();
                 }
 
-                if (!jogando || pausado) {
-
+                if (!jogando || pausado)
+                {
                     Menu::Resultado resultado = pMenu->tratarEventos(evento, janela);
 
-                    if (resultado == Menu::INICIAR_PARTIDA) {
-
-                        faseSelecionada =
-                            pMenu->getFaseSelecionada();
-
-                        quantidadeJogadores =
-                            pMenu->getQuantidadeJogadores();
-
+                    if (resultado == Menu::INICIAR_PARTIDA)
+                    {
+                        faseSelecionada = pMenu->getFaseSelecionada();
+                        quantidadeJogadores = pMenu->getQuantidadeJogadores();
                         iniciarPartida();
                     }
-
-                    else if (resultado == Menu::RETOMAR_PARTIDA) {
+                    else if (resultado == Menu::RETOMAR_PARTIDA)
+                    {
                         pausado = false;
                     }
-
-                    else if (resultado == Menu::REINICIAR_FASE) {
+                    else if (resultado == Menu::REINICIAR_FASE)
+                    {
                         reiniciarFase();
                     }
-
-                    else if (resultado == Menu::VOLTAR_MENU_PRINCIPAL) {
-
+                    else if (resultado == Menu::VOLTAR_MENU_PRINCIPAL)
+                    {
                         terminarPartida();
                         pMenu->abrirMenuPrincipal();
                     }
-
-                    else if (resultado == Menu::SAIR_DO_JOGO) {
+                    else if (resultado == Menu::SAIR_DO_JOGO)
+                    {
                         janela.close();
                     }
                 }
@@ -192,23 +186,19 @@ namespace Tripulacao_Amaldicoada {
 
             janela.clear(sf::Color::Black);
 
-            if (jogando) {
-
-                if (!pausado) {
-
+            if (jogando)
+            {
+                if (!pausado)
+                {
                     if (faseSelecionada == 1 && pFase1 != NULL)
                     {
                         pFase1->executar();
 
                         if (!pFase1->jogadorVivo())
                         {
-                            int pontos = 0;
-
-                            if (pJog1 != NULL)
-                                pontos = pJog1->getPontos();
+                            int pontos = (pJog1 != NULL) ? pJog1->getPontos() : 0;
 
                             pMenu->registrarResultado(pontos);
-
                             terminarPartida();
                             pMenu->abrirResultado();
                         }
@@ -217,20 +207,15 @@ namespace Tripulacao_Amaldicoada {
                             avancarFase();
                         }
                     }
-
-                    else if (faseSelecionada == 2 && pFase2 != NULL) {
-
+                    else if (faseSelecionada == 2 && pFase2 != NULL)
+                    {
                         pFase2->executar();
 
                         if (!pFase2->jogadorVivo() || pFase2->acabou())
                         {
-                            int pontos = 0;
-
-                            if (pJog1 != NULL)
-                                pontos = pJog1->getPontos();
+                            int pontos = (pJog1 != NULL) ? pJog1->getPontos() : 0;
 
                             pMenu->registrarResultado(pontos);
-
                             terminarPartida();
                             pMenu->abrirResultado();
                         }
@@ -246,17 +231,18 @@ namespace Tripulacao_Amaldicoada {
                         pJog2->desenharPontos(janela, 1650.f, 20.f);
                 }
 
-                if (pausado) {
+                if (pausado)
                     pMenu->desenharPausa(janela);
-                }
             }
-            else {
+            else
+            {
                 pMenu->desenhar(janela);
             }
 
             pGG->mostrar();
         }
     }
+
 
     void Jogo::terminarPartida()
     {
