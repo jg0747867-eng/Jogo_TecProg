@@ -196,8 +196,8 @@ namespace Tripulacao_Amaldicoada {
 
                 if (!pausado) {
 
-                    if (faseSelecionada == 1 && pFase1 != NULL) {
-
+                    if (faseSelecionada == 1 && pFase1 != NULL)
+                    {
                         pFase1->executar();
 
                         if (!pFase1->jogadorVivo())
@@ -211,6 +211,10 @@ namespace Tripulacao_Amaldicoada {
 
                             terminarPartida();
                             pMenu->abrirResultado();
+                        }
+                        else if (pFase1->acabou())
+                        {
+                            avancarFase();
                         }
                     }
 

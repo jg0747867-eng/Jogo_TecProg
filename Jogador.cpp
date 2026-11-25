@@ -53,15 +53,24 @@ namespace Tripulacao_Amaldicoada {
 
             void Jogador::inicializa()
             {
-                num_vidas = 200;
-                pontos = 0;
-                body.setSize(sf::Vector2f(100.0f, 100.0f));
-                body.setFillColor(sf::Color::White);
-                
-                if (!carregarTextura("assets/jogador1.png")) {
+                try
+                {
+                    num_vidas = 200;
+                    pontos = 0;
+
+                    body.setSize(sf::Vector2f(100.0f, 100.0f));
+                    body.setFillColor(sf::Color::White);
+
+                    if (!carregarTextura("assets/jogador1.png"))
+                    {
+                        throw std::runtime_error("Erro ao carregar a textura do jogador!");
+                    }
+                }
+                catch (const std::runtime_error& erro)
+                {
+                    std::cout << erro.what() << std::endl;
                     body.setFillColor(sf::Color::Red);
                 }
-
             }
 
             void Jogador::operator--()
