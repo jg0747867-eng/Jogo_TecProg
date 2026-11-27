@@ -22,6 +22,8 @@ namespace Tripulacao_Amaldicoada {
 
                 // void salvarDataBuffer();
 
+                bool ehDanoso() const {return danoso;}
+
                 virtual void executar() = 0;
                 virtual void salvar() = 0;
                 virtual void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador) = 0;

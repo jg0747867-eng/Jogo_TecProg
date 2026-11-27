@@ -1,6 +1,7 @@
 #include "Teia.h"
 #include "Jogador.h"
 
+#include <cstdlib>
 
 namespace
 {
@@ -61,13 +62,15 @@ namespace Tripulacao_Amaldicoada {
 
             void Teia::executar()
             {
-               if (!baseDefinida)
-               {
-                   baseY = getY();
-                   baseDefinida = true;
-               }
+                if (!baseDefinida)
+                {
+                    baseY = getY();
+                    baseDefinida = true;
+                }
 
-               aplicarEmpuxo();
+                aplicarEmpuxo();
+
+                danoso = (rand() % 100 == 0);
             }
 
             void Teia::salvar()
@@ -93,7 +96,6 @@ namespace Tripulacao_Amaldicoada {
                 zerarVelocidadeY();
                 setNoChao(true);;
             }
-
 		}
 	}
 }

@@ -13,6 +13,7 @@ namespace Tripulacao_Amaldicoada {
 			private:
 
 				bool baseDefinida;
+				bool causarDano;
 
 				int baseY;
 				int empuxo;
@@ -23,6 +24,7 @@ namespace Tripulacao_Amaldicoada {
 
 				void executar();
 				void salvar();
+				bool getCausarDano() const {return causarDano;}
 
 				void obstaculizar(Tripulacao_Amaldicoada::Entidades::Personagens::Jogador* pJogador);
 

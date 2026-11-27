@@ -86,7 +86,15 @@ namespace Tripulacao_Amaldicoada {
 						{
 							pObstaculo->obstaculizar(pJogador);
 
-							if (dynamic_cast<Entidades::Obstaculos::Teia*>(pObstaculo) == NULL)
+							Entidades::Obstaculos::Teia* pTeia =
+								dynamic_cast<Entidades::Obstaculos::Teia*>(pObstaculo);
+
+							if (pTeia != NULL && pTeia->ehDanoso())
+							{
+								pJogador->receberDano(1);
+							}
+
+							if (pTeia == NULL)
 							{
 								tratarColisaoEntidadeObstaculo(pJogador, pObstaculo);
 							}
